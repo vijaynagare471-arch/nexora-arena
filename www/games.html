@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Nexora Arena — Casino Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="games.css" />
+  <style>
+    :root { --accent: #7c3aed; --accent-bright: #a78bfa; --bg-primary: #080812; --bg-secondary: #0f0f23; --bg-elevated: #181830; --bg-card: #1a1a35; --text-primary: #f1f5f9; --text-secondary: #94a3b8; --text-muted: #64748b; --border: rgba(255,255,255,0.08); --border-light: rgba(255,255,255,0.06); --success: #10b981; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); overflow: hidden; height: 100vh; }
+    #casino-app { height: 100vh; overflow: hidden; position: relative; }
+    .casino-page { flex-direction: column; height: 100vh; overflow: hidden; }
+    #game-hub { display: block; }
+    .casino-toast { position: fixed; top: 60px; left: 50%; transform: translateX(-50%); background: #1f2937; color: #fff; padding: 8px 18px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; z-index: 9999; display: none; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+    .casino-toast.error { background: #7f1d1d; }
+    .casino-toast.success { background: #064e3b; }
+  </style>
+</head>
+<body>
+<div id="casino-app">
+
+  <!-- ═══════════════════════════════════════════════
+       GAMES HUB
+  ════════════════════════════════════════════════ -->
+  <div id="game-hub">
+    <div class="game-header">
+      <button class="back-btn" onclick="window.history.back()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">🎮 Casino Games</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div style="overflow-y:auto; height:calc(100vh - 52px); padding-bottom:20px;">
+      <div style="padding:12px 16px 4px; font-size:0.65rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">🔥 Popular Games</div>
+      <div class="games-hub-grid" id="games-hub-grid">
+        <!-- Injected dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PLANE CRASH
+  ════════════════════════════════════════════════ -->
+  <div id="game-plane" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">✈️ Plane Crash</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <!-- Multiplier Arena -->
+      <div class="plane-arena">
+        <canvas id="plane-graph-canvas" width="340" height="220" class="plane-graph"></canvas>
+        <div class="plane-multiplier-display">
+          <div class="plane-multiplier-num" id="plane-multiplier-num">1.00<span class="plane-x">x</span></div>
+          <div class="plane-status-label" id="plane-status-label">WAITING FOR BETS...</div>
+        </div>
+      </div>
+      <!-- Round History -->
+      <div id="plane-history-bar" class="plane-history-bar">
+        <span class="plane-history-chip mid">2.34x</span>
+        <span class="plane-history-chip low">1.02x</span>
+        <span class="plane-history-chip high">8.51x</span>
+      </div>
+      <!-- Bet Controls -->
+      <div class="bet-controls">
+        <div id="plane-countdown" class="plane-countdown">⏳ Place your bet! Round starting soon...</div>
+        <div class="autocashout-row">
+          <label>Auto Cash Out:</label>
+          <input class="autocashout-input" id="plane-auto-cashout" type="number" min="1.1" step="0.1" placeholder="e.g. 2.00x" />
+        </div>
+        <div class="bet-amount-row">
+          <span style="font-size:0.8rem;color:var(--text-muted);">₹</span>
+          <input class="bet-amount-input" id="plane-bet-input" type="number" value="50" min="10" />
+        </div>
+        <div class="bet-preset-btns">
+          <button class="bet-preset" onclick="planeBetPreset(2)">×2</button>
+          <button class="bet-preset" onclick="planeBetPreset(0.5)">½</button>
+          <button class="bet-preset" onclick="document.getElementById('plane-bet-input').value=100">100</button>
+          <button class="bet-preset" onclick="document.getElementById('plane-bet-input').value=500">500</button>
+          <button class="bet-preset" onclick="document.getElementById('plane-bet-input').value=1000">1K</button>
+        </div>
+        <button class="bet-action-btn btn-place" id="plane-place-btn" onclick="planePlaceBet()">PLACE BET</button>
+        <button class="bet-action-btn btn-cashout" id="plane-cashout-btn" onclick="planeCashOut()" style="display:none; margin-top:8px;">CASH OUT</button>
+      </div>
+      <!-- Bet History -->
+      <div class="bet-history-panel">
+        <div class="bet-history-header">Recent Bets</div>
+        <div class="bet-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       MINES
+  ════════════════════════════════════════════════ -->
+  <div id="game-mines" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">💣 Mines</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <div class="game-card">
+        <div class="mines-header">
+          <div>
+            <div style="font-size:0.7rem;color:var(--text-muted);">Current Multiplier</div>
+            <div class="mines-multiplier" id="mines-multiplier">1.00x</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.7rem;color:var(--text-muted);">Mines</div>
+            <div style="font-size:1.1rem;font-weight:900;" id="mines-mine-count-display">3 💣</div>
+          </div>
+        </div>
+        <div class="mines-grid" id="mines-grid"></div>
+      </div>
+      <div class="bet-controls">
+        <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:6px;">Mines Count</div>
+        <div class="mines-mine-count-row">
+          <button class="mine-count-btn" data-count="1" onclick="minesSetCount(this,1)">1</button>
+          <button class="mine-count-btn active" data-count="3" onclick="minesSetCount(this,3)">3</button>
+          <button class="mine-count-btn" data-count="5" onclick="minesSetCount(this,5)">5</button>
+          <button class="mine-count-btn" data-count="10" onclick="minesSetCount(this,10)">10</button>
+          <button class="mine-count-btn" data-count="24" onclick="minesSetCount(this,24)">24</button>
+        </div>
+        <div class="bet-amount-row">
+          <span style="font-size:0.8rem;color:var(--text-muted);">₹</span>
+          <input class="bet-amount-input" id="mines-bet-input" type="number" value="50" min="10" />
+        </div>
+        <div class="bet-preset-btns">
+          <button class="bet-preset" onclick="document.getElementById('mines-bet-input').value=Math.floor(parseInt(document.getElementById('mines-bet-input').value||10)*2)">×2</button>
+          <button class="bet-preset" onclick="document.getElementById('mines-bet-input').value=Math.max(10,Math.floor(parseInt(document.getElementById('mines-bet-input').value||10)*0.5))">½</button>
+          <button class="bet-preset" onclick="document.getElementById('mines-bet-input').value=100">100</button>
+          <button class="bet-preset" onclick="document.getElementById('mines-bet-input').value=500">500</button>
+        </div>
+        <button class="bet-action-btn btn-place" id="mines-start-btn" onclick="minesStart()">START GAME</button>
+        <button class="bet-action-btn btn-cashout" id="mines-cashout-btn" onclick="minesCashOut()" style="display:none; margin-top:8px;" disabled>CASH OUT</button>
+      </div>
+      <div class="bet-history-panel">
+        <div class="bet-history-header">Recent Bets</div>
+        <div class="bet-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       SPIN & WIN
+  ════════════════════════════════════════════════ -->
+  <div id="game-spin" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">🎡 Spin & Win</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <div class="spin-arena">
+        <div class="wheel-container">
+          <div class="wheel-pointer"></div>
+          <canvas class="wheel-canvas" id="spin-wheel-canvas" width="240" height="240"></canvas>
+        </div>
+        <div class="spin-result-badge" id="spin-result-badge">🎡 Spin to win!</div>
+      </div>
+      <div class="bet-controls">
+        <div class="bet-amount-row">
+          <span style="font-size:0.8rem;color:var(--text-muted);">₹</span>
+          <input class="bet-amount-input" id="spin-bet-input" type="number" value="50" min="10" />
+        </div>
+        <div class="bet-preset-btns">
+          <button class="bet-preset" onclick="document.getElementById('spin-bet-input').value=Math.floor(parseInt(document.getElementById('spin-bet-input').value||10)*2)">×2</button>
+          <button class="bet-preset" onclick="document.getElementById('spin-bet-input').value=Math.max(10,Math.floor(parseInt(document.getElementById('spin-bet-input').value||10)*0.5))">½</button>
+          <button class="bet-preset" onclick="document.getElementById('spin-bet-input').value=100">100</button>
+          <button class="bet-preset" onclick="document.getElementById('spin-bet-input').value=500">500</button>
+        </div>
+        <button class="bet-action-btn btn-place" id="spin-place-btn" onclick="placeSpin()">SPIN NOW 🎡</button>
+      </div>
+      <div class="bet-history-panel">
+        <div class="bet-history-header">Recent Bets</div>
+        <div class="bet-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       DICE
+  ════════════════════════════════════════════════ -->
+  <div id="game-dice" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">🎲 Dice</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <div class="dice-arena">
+        <div class="dice-roll-display" id="dice-roll-display">🎲</div>
+        <div class="dice-stats-row">
+          <div class="dice-stat">
+            <div class="dice-stat-label">Prediction</div>
+            <div class="dice-stat-value" id="dice-prediction-val">50</div>
+          </div>
+          <div class="dice-stat">
+            <div class="dice-stat-label">Win Chance</div>
+            <div class="dice-stat-value" id="dice-winchance">50.0%</div>
+          </div>
+          <div class="dice-stat">
+            <div class="dice-stat-label">Multiplier</div>
+            <div class="dice-stat-value" id="dice-multiplier">1.94x</div>
+          </div>
+        </div>
+        <div class="dice-slider-row">
+          <input type="range" class="dice-slider" id="dice-slider" min="2" max="98" value="50"
+            oninput="diceSliderChange(this.value)" style="--pct:50%;" />
+        </div>
+        <div class="dice-over-under">
+          <button class="dice-direction-btn" onclick="diceSetDirection(false, this)">📉 ROLL UNDER</button>
+          <button class="dice-direction-btn active" onclick="diceSetDirection(true, this)">📈 ROLL OVER</button>
+        </div>
+      </div>
+      <div class="bet-controls">
+        <div class="bet-amount-row">
+          <span style="font-size:0.8rem;color:var(--text-muted);">₹</span>
+          <input class="bet-amount-input" id="dice-bet-input" type="number" value="50" min="10" />
+        </div>
+        <div class="bet-preset-btns">
+          <button class="bet-preset" onclick="document.getElementById('dice-bet-input').value=Math.floor(parseInt(document.getElementById('dice-bet-input').value||10)*2)">×2</button>
+          <button class="bet-preset" onclick="document.getElementById('dice-bet-input').value=Math.max(10,Math.floor(parseInt(document.getElementById('dice-bet-input').value||10)*0.5))">½</button>
+          <button class="bet-preset" onclick="document.getElementById('dice-bet-input').value=100">100</button>
+          <button class="bet-preset" onclick="document.getElementById('dice-bet-input').value=500">500</button>
+        </div>
+        <button class="bet-action-btn btn-place" id="dice-roll-btn" onclick="rollDice()">🎲 ROLL DICE</button>
+      </div>
+      <div class="bet-history-panel">
+        <div class="bet-history-header">Recent Bets</div>
+        <div class="bet-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       COINFLIP
+  ════════════════════════════════════════════════ -->
+  <div id="game-coinflip" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">🪙 Coinflip</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <div class="coin-arena">
+        <div class="coin-wrapper">
+          <div class="coin" id="coin-el">
+            <div class="coin-face coin-heads">👑</div>
+            <div class="coin-face coin-tails">⭐</div>
+          </div>
+        </div>
+        <div class="coin-choice-row">
+          <button class="coin-choice-btn" onclick="coinSelect('heads', this)">👑 HEADS<br><small style="font-size:0.65rem;opacity:0.7;">1.94x</small></button>
+          <button class="coin-choice-btn" onclick="coinSelect('tails', this)">⭐ TAILS<br><small style="font-size:0.65rem;opacity:0.7;">1.94x</small></button>
+        </div>
+        <div class="coin-result-text" id="coin-result-text"></div>
+      </div>
+      <div class="bet-controls">
+        <div class="bet-amount-row">
+          <span style="font-size:0.8rem;color:var(--text-muted);">₹</span>
+          <input class="bet-amount-input" id="coin-bet-input" type="number" value="50" min="10" />
+        </div>
+        <div class="bet-preset-btns">
+          <button class="bet-preset" onclick="document.getElementById('coin-bet-input').value=Math.floor(parseInt(document.getElementById('coin-bet-input').value||10)*2)">×2</button>
+          <button class="bet-preset" onclick="document.getElementById('coin-bet-input').value=Math.max(10,Math.floor(parseInt(document.getElementById('coin-bet-input').value||10)*0.5))">½</button>
+          <button class="bet-preset" onclick="document.getElementById('coin-bet-input').value=100">100</button>
+          <button class="bet-preset" onclick="document.getElementById('coin-bet-input').value=500">500</button>
+        </div>
+        <button class="bet-action-btn btn-place" id="coin-flip-btn" onclick="flipCoin()">🪙 FLIP COIN</button>
+      </div>
+      <div class="bet-history-panel">
+        <div class="bet-history-header">Recent Bets</div>
+        <div class="bet-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       LIMBO
+  ════════════════════════════════════════════════ -->
+  <div id="game-limbo" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">📈 Limbo</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <div class="limbo-arena">
+        <div style="font-size:0.75rem;color:var(--text-muted);">RESULT</div>
+        <div class="limbo-result-display" id="limbo-result-display">---</div>
+        <div class="limbo-target-row">
+          <label class="limbo-target-label">Target Multiplier:</label>
+          <input class="limbo-target-input" id="limbo-target" type="number" value="2.00" min="1.01" max="1000" step="0.01" />
+        </div>
+        <div style="font-size:0.72rem;color:var(--text-muted);margin-top:-8px;">Win Chance: <strong id="limbo-winchance">48.5%</strong> &nbsp;|&nbsp; Payout: <strong id="limbo-payout">2.00x</strong></div>
+      </div>
+      <div class="bet-controls">
+        <div class="bet-amount-row">
+          <span style="font-size:0.8rem;color:var(--text-muted);">₹</span>
+          <input class="bet-amount-input" id="limbo-bet-input" type="number" value="50" min="10" />
+        </div>
+        <div class="bet-preset-btns">
+          <button class="bet-preset" onclick="document.getElementById('limbo-bet-input').value=Math.floor(parseInt(document.getElementById('limbo-bet-input').value||10)*2)">×2</button>
+          <button class="bet-preset" onclick="document.getElementById('limbo-bet-input').value=Math.max(10,Math.floor(parseInt(document.getElementById('limbo-bet-input').value||10)*0.5))">½</button>
+          <button class="bet-preset" onclick="document.getElementById('limbo-bet-input').value=100">100</button>
+        </div>
+        <button class="bet-action-btn btn-place" id="limbo-place-btn" onclick="placeLimbo()">PLACE BET</button>
+      </div>
+      <div class="bet-history-panel">
+        <div class="bet-history-header">Recent Bets</div>
+        <div class="bet-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       TOWER
+  ════════════════════════════════════════════════ -->
+  <div id="game-tower" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">🗼 Tower</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+        <span style="font-size:0.75rem;color:var(--text-muted);">Current Multiplier</span>
+        <span class="tower-multiplier" id="tower-multiplier">1.00x</span>
+      </div>
+      <div class="tower-arena">
+        <div class="tower-grid" id="tower-grid"></div>
+      </div>
+      <div class="bet-controls">
+        <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:6px;">Difficulty</div>
+        <div class="tower-difficulty-row" style="margin-bottom:10px;">
+          <button class="difficulty-btn active" data-diff="easy" onclick="towerSetDifficulty(this,'easy')">Easy</button>
+          <button class="difficulty-btn" data-diff="medium" onclick="towerSetDifficulty(this,'medium')">Medium</button>
+          <button class="difficulty-btn" data-diff="hard" onclick="towerSetDifficulty(this,'hard')">Hard</button>
+        </div>
+        <div class="bet-amount-row">
+          <span style="font-size:0.8rem;color:var(--text-muted);">₹</span>
+          <input class="bet-amount-input" id="tower-bet-input" type="number" value="50" min="10" />
+        </div>
+        <button class="bet-action-btn btn-place" id="tower-start-btn" onclick="towerStart()">START CLIMB 🗼</button>
+        <button class="bet-action-btn btn-cashout" id="tower-cashout-btn" onclick="towerCashOut()" style="display:none;margin-top:8px;" disabled>CASH OUT</button>
+      </div>
+      <div class="bet-history-panel">
+        <div class="bet-history-header">Recent Bets</div>
+        <div class="bet-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       COLOR PREDICTION
+  ════════════════════════════════════════════════ -->
+  <div id="game-color" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">🎨 Color Prediction</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <div class="color-arena">
+        <div class="color-result-ball" id="color-result-ball">?</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);">Payout: Red/Green = 2x | Violet = 4.5x</div>
+        <div class="color-choice-row">
+          <button class="color-choice-btn red" onclick="colorSelect('red', this)">🔴 RED<br><small>2x</small></button>
+          <button class="color-choice-btn violet" onclick="colorSelect('violet', this)">🟣 VIOLET<br><small>4.5x</small></button>
+          <button class="color-choice-btn green" onclick="colorSelect('green', this)">🟢 GREEN<br><small>2x</small></button>
+        </div>
+        <div style="font-size:0.7rem;color:var(--text-muted);">Recent Results:</div>
+        <div class="color-history-row" id="color-history-row"></div>
+      </div>
+      <div class="bet-controls">
+        <div class="bet-amount-row">
+          <span style="font-size:0.8rem;color:var(--text-muted);">₹</span>
+          <input class="bet-amount-input" id="color-bet-input" type="number" value="50" min="10" />
+        </div>
+        <div class="bet-preset-btns">
+          <button class="bet-preset" onclick="document.getElementById('color-bet-input').value=Math.floor(parseInt(document.getElementById('color-bet-input').value||10)*2)">×2</button>
+          <button class="bet-preset" onclick="document.getElementById('color-bet-input').value=Math.max(10,Math.floor(parseInt(document.getElementById('color-bet-input').value||10)*0.5))">½</button>
+          <button class="bet-preset" onclick="document.getElementById('color-bet-input').value=100">100</button>
+        </div>
+        <button class="bet-action-btn btn-place" id="color-place-btn" onclick="placeColor()">PREDICT & BET</button>
+      </div>
+      <div class="bet-history-panel">
+        <div class="bet-history-header">Recent Bets</div>
+        <div class="bet-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PLINKO
+  ════════════════════════════════════════════════ -->
+  <div id="game-plinko" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">⬇️ Plinko</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <div class="plinko-arena">
+        <div class="plinko-canvas-wrap">
+          <canvas id="plinko-canvas" class="plinko-canvas" width="300" height="280"></canvas>
+        </div>
+        <div class="plinko-risk-row">
+          <button class="plinko-risk-btn" onclick="setPlinkoRisk('low',this)">Low Risk</button>
+          <button class="plinko-risk-btn active medium" onclick="setPlinkoRisk('medium',this)">Medium Risk</button>
+          <button class="plinko-risk-btn" onclick="setPlinkoRisk('high',this)">High Risk</button>
+        </div>
+      </div>
+      <div class="bet-controls">
+        <div class="bet-amount-row">
+          <span style="font-size:0.8rem;color:var(--text-muted);">₹</span>
+          <input class="bet-amount-input" id="plinko-bet-input" type="number" value="50" min="10" />
+        </div>
+        <div class="bet-preset-btns">
+          <button class="bet-preset" onclick="document.getElementById('plinko-bet-input').value=Math.floor(parseInt(document.getElementById('plinko-bet-input').value||10)*2)">×2</button>
+          <button class="bet-preset" onclick="document.getElementById('plinko-bet-input').value=Math.max(10,Math.floor(parseInt(document.getElementById('plinko-bet-input').value||10)*0.5))">½</button>
+          <button class="bet-preset" onclick="document.getElementById('plinko-bet-input').value=100">100</button>
+        </div>
+        <button class="bet-action-btn btn-place" id="plinko-drop-btn" onclick="dropPlinko()">⬇️ DROP BALL</button>
+      </div>
+      <div class="bet-history-panel">
+        <div class="bet-history-header">Recent Bets</div>
+        <div class="bet-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       KENO
+  ════════════════════════════════════════════════ -->
+  <div id="game-keno" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">🔢 Keno</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <div class="keno-stats">
+        <div class="keno-stat">
+          <div style="font-size:0.65rem;color:var(--text-muted);">Selected</div>
+          <div style="font-size:0.9rem;font-weight:800;" id="keno-picks-count">0 selected</div>
+        </div>
+        <div class="keno-stat">
+          <div style="font-size:0.65rem;color:var(--text-muted);">Hits</div>
+          <div style="font-size:0.9rem;font-weight:800;" id="keno-hits">—</div>
+        </div>
+        <div class="keno-stat">
+          <div style="font-size:0.65rem;color:var(--text-muted);">Win</div>
+          <div style="font-size:0.9rem;font-weight:800;color:#10b981;" id="keno-win">—</div>
+        </div>
+      </div>
+      <div class="keno-arena">
+        <div class="keno-grid" id="keno-grid"></div>
+        <button class="bet-preset" onclick="kenoQuickPick()" style="width:100%;padding:8px;border-radius:8px;margin-bottom:4px;">🎲 Quick Pick (5 random)</button>
+      </div>
+      <div class="bet-controls">
+        <div class="bet-amount-row">
+          <span style="font-size:0.8rem;color:var(--text-muted);">₹</span>
+          <input class="bet-amount-input" id="keno-bet-input" type="number" value="50" min="10" />
+        </div>
+        <div class="bet-preset-btns">
+          <button class="bet-preset" onclick="document.getElementById('keno-bet-input').value=Math.floor(parseInt(document.getElementById('keno-bet-input').value||10)*2)">×2</button>
+          <button class="bet-preset" onclick="document.getElementById('keno-bet-input').value=Math.max(10,Math.floor(parseInt(document.getElementById('keno-bet-input').value||10)*0.5))">½</button>
+          <button class="bet-preset" onclick="document.getElementById('keno-bet-input').value=100">100</button>
+        </div>
+        <button class="bet-action-btn btn-place" id="keno-play-btn" onclick="placeKeno()">🔢 PLAY KENO</button>
+      </div>
+      <div class="bet-history-panel">
+        <div class="bet-history-header">Recent Bets</div>
+        <div class="bet-history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       BONUS WHEEL
+  ════════════════════════════════════════════════ -->
+  <div id="game-bonus" class="casino-page" style="display:none;">
+    <div class="game-header">
+      <button class="back-btn" onclick="backToGamesHub()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="game-header-title">🎁 Daily Bonus Spin</span>
+      <span class="game-balance-chip">₹0</span>
+    </div>
+    <div class="game-body" style="overflow-y:auto;">
+      <div class="bonus-wheel-arena">
+        <div class="bonus-wheel-title">🎁 Daily Free Spin</div>
+        <div class="bonus-wheel-sub">Spin once a day to win bonus coins!</div>
+        <div class="wheel-container">
+          <div class="wheel-pointer"></div>
+          <canvas id="bonus-wheel-canvas" class="wheel-canvas" width="240" height="240"></canvas>
+        </div>
+        <div class="bonus-result-prize" id="bonus-result-prize"></div>
+        <button class="bonus-spin-btn" id="bonus-spin-btn" onclick="claimBonusSpin()">🎡 SPIN NOW — FREE!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Win/Loss Overlay -->
+  <div class="result-overlay" id="result-overlay" onclick="this.classList.remove('show')">
+    <div class="result-card">
+      <div class="result-emoji">🎉</div>
+      <div class="result-label win">YOU WON!</div>
+      <div class="result-amount">+₹500</div>
+      <button class="result-close-btn" onclick="document.getElementById('result-overlay').classList.remove('show')">Continue</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="casino-toast" id="casino-toast"></div>
+
+</div>
+<script src="games.js"></script>
+</body>
+</html>

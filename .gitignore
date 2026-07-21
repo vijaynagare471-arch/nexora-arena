@@ -1,0 +1,10 @@
+node_modules/
+android/app/build/
+.gradle/
+local.properties
+db.json
+functions/node_modules/
+public_html/
+*.apk
+.system_generated/
+*.log

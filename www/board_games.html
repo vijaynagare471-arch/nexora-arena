@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Nexora Arena — Board & Card Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="board_games.css" />
+</head>
+<body>
+<div id="bg-app">
+
+  <!-- ═══════════════════════════════════════════════
+       GAMES HUB SCREEN
+  ════════════════════════════════════════════════ -->
+  <div id="bg-hub-view" style="display: block; height: 100vh; display: flex; flex-direction: column;">
+    <div class="bg-header">
+      <button class="back-btn" onclick="window.history.back()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="bg-header-title">🎲 Multiplayer Board & Card Games</span>
+      <span class="game-balance-chip" id="hub-balance-chip">₹0</span>
+    </div>
+    
+    <div style="overflow-y: auto; flex: 1; padding-bottom: 20px;">
+      <!-- Banner -->
+      <div style="margin: 16px; border-radius: 16px; overflow: hidden; background: linear-gradient(135deg, #1e1b4b, #311060); padding: 20px; position: relative;">
+        <div style="font-size: 0.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.6); margin-bottom: 6px;">MULTIPLAYER ZONE</div>
+        <div style="font-size: 1.25rem; font-weight: 900; color: #fff; margin-bottom: 4px;">Play Board Games Live</div>
+        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.7);">Defeat opponents & win real cash balance!</div>
+        <div style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 3rem; opacity: 0.45;">♟️</div>
+      </div>
+
+      <div style="padding: 0 16px 4px; font-size: 0.68rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Select Board or Card Game</div>
+      
+      <div class="games-hub-grid">
+        <div class="game-hub-card" onclick="openGameLobby('ludo')">
+          <div class="game-hub-banner" style="background: linear-gradient(135deg, #7f1d1d, #ef4444);">
+            🎲
+            <span class="game-hub-banner-label">HOT</span>
+          </div>
+          <div class="game-hub-info">
+            <div class="game-hub-name">Ludo Classic</div>
+            <div class="game-hub-desc">Roll dice & race home</div>
+          </div>
+          <button class="game-hub-play-btn">PLAY NOW</button>
+        </div>
+
+        <div class="game-hub-card" onclick="openGameLobby('carrom')">
+          <div class="game-hub-banner" style="background: linear-gradient(135deg, #5c3a21, #b88b4a);">
+            ⚪
+          </div>
+          <div class="game-hub-info">
+            <div class="game-hub-name">Carrom Board</div>
+            <div class="game-hub-desc">Elastic pocketing physics</div>
+          </div>
+          <button class="game-hub-play-btn">PLAY NOW</button>
+        </div>
+
+        <div class="game-hub-card" onclick="openGameLobby('rummy')">
+          <div class="game-hub-banner" style="background: linear-gradient(135deg, #065f46, #10b981);">
+            🎴
+          </div>
+          <div class="game-hub-info">
+            <div class="game-hub-name">Rummy Card</div>
+            <div class="game-hub-desc">Form sequences & sets</div>
+          </div>
+          <button class="game-hub-play-btn">PLAY NOW</button>
+        </div>
+
+        <div class="game-hub-card" onclick="openGameLobby('callbreak')">
+          <div class="game-hub-banner" style="background: linear-gradient(135deg, #1e1b4b, #4f46e5);">
+            ♠️
+          </div>
+          <div class="game-hub-info">
+            <div class="game-hub-name">Callbreak Pro</div>
+            <div class="game-hub-desc">Bid and win tricks</div>
+          </div>
+          <button class="game-hub-play-btn">PLAY NOW</button>
+        </div>
+
+        <div class="game-hub-card" onclick="openGameLobby('uno')">
+          <div class="game-hub-banner" style="background: linear-gradient(135deg, #b45309, #f59e0b);">
+            🃏
+            <span class="game-hub-banner-label">NEW</span>
+          </div>
+          <div class="game-hub-info">
+            <div class="game-hub-name">Uno-Style Card</div>
+            <div class="game-hub-desc">Color matching card race</div>
+          </div>
+          <button class="game-hub-play-btn">PLAY NOW</button>
+        </div>
+
+        <div class="game-hub-card" onclick="openGameLobby('chess')">
+          <div class="game-hub-banner" style="background: linear-gradient(135deg, #1e293b, #64748b);">
+            ♟️
+          </div>
+          <div class="game-hub-info">
+            <div class="game-hub-name">Chess Grand</div>
+            <div class="game-hub-desc">Tactical checks & mates</div>
+          </div>
+          <button class="game-hub-play-btn">PLAY NOW</button>
+        </div>
+
+        <div class="game-hub-card" onclick="openGameLobby('dominoes')">
+          <div class="game-hub-banner" style="background: linear-gradient(135deg, #0f172a, #334155);">
+            🀰
+          </div>
+          <div class="game-hub-info">
+            <div class="game-hub-name">Dominoes</div>
+            <div class="game-hub-desc">Tile matching board game</div>
+          </div>
+          <button class="game-hub-play-btn">PLAY NOW</button>
+        </div>
+
+        <div class="game-hub-card" onclick="openGameLobby('snakes')">
+          <div class="game-hub-banner" style="background: linear-gradient(135deg, #065f46, #059669);">
+            🐍
+          </div>
+          <div class="game-hub-info">
+            <div class="game-hub-name">Snakes & Ladders</div>
+            <div class="game-hub-desc">Climb to 100 & dodge snakes</div>
+          </div>
+          <button class="game-hub-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       GAME LOBBY (SELECT FEE) SCREEN
+  ════════════════════════════════════════════════ -->
+  <div id="bg-lobby-view" style="display: none; height: 100vh; display: flex; flex-direction: column;">
+    <div class="bg-header">
+      <button class="back-btn" onclick="closeGameLobby()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="bg-header-title" id="lobby-header-title">Game Lobby</span>
+      <span class="game-balance-chip" id="lobby-balance-chip">₹0</span>
+    </div>
+    
+    <div class="lobby-screen">
+      <div id="lobby-game-icon" style="font-size: 5rem; margin-bottom: 8px;">🎲</div>
+      <h2 class="lobby-title" id="lobby-game-name">Ludo Classic</h2>
+      <p class="lobby-desc" id="lobby-game-desc">Roll the dice and guide your tokens home before the opponent bot does.</p>
+      
+      <div style="margin-top: 20px;">
+        <div style="font-size: 0.72rem; font-weight: 800; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Select Entry Fee</div>
+        <div class="fee-options-grid">
+          <button class="fee-btn active" onclick="selectEntryFee(10)">₹10</button>
+          <button class="fee-btn" onclick="selectEntryFee(50)">₹50</button>
+          <button class="fee-btn" onclick="selectEntryFee(100)">₹100</button>
+        </div>
+      </div>
+      
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); border-radius: 12px; padding: 14px; width: 100%; max-width: 320px; text-align: left; margin: 10px 0;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.78rem; margin-bottom: 6px; color: var(--text-secondary);">
+          <span>Winner Reward (90%):</span>
+          <span style="font-weight: 800; color: #10b981;" id="lobby-win-reward">₹18</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-secondary);">
+          <span>Platform Fee (10%):</span>
+          <span style="font-weight: 700; color: var(--text-muted);" id="lobby-platform-fee">₹2</span>
+        </div>
+      </div>
+      
+      <button class="start-btn" onclick="startMatch()">Start Match</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       INDIVIDUAL GAME SCREEN CONTAINERS
+  ════════════════════════════════════════════════ -->
+  <div id="bg-game-play-view" style="display: none; height: 100vh; display: flex; flex-direction: column;">
+    <div class="bg-header">
+      <span class="bg-header-title" id="play-header-title">Ludo In-Play</span>
+      <span class="game-balance-chip" id="play-balance-chip">₹0</span>
+    </div>
+
+    <!-- Gameplay Area (Loaded Dynamically) -->
+    <div id="gameplay-area" style="flex: 1; overflow-y: auto;">
+      <!-- Child content will be injected by board_games.js -->
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     RESULT OVERLAY
+════════════════════════════════════════════════ -->
+<div class="result-overlay" id="result-overlay">
+  <div class="result-box">
+    <div class="result-emoji" style="font-size: 4rem; margin-bottom: 12px;">🎉</div>
+    <h2 class="result-label win" style="font-size: 1.6rem; font-weight: 900; margin-bottom: 8px;">YOU WON!</h2>
+    <div class="result-amount" style="font-size: 1.8rem; font-weight: 900; color: #10b981; margin-bottom: 16px;">+₹18</div>
+    <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; margin-bottom: 20px;">Match complete! Your wallet balance has been updated successfully.</p>
+    <button class="start-btn" onclick="backToHub()" style="padding: 10px 0;">Back to Lobby</button>
+  </div>
+</div>
+
+<div class="casino-toast" id="bg-toast">Toast message</div>
+
+<script src="board_games.js"></script>
+</body>
+</html>

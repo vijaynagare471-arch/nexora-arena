@@ -1,0 +1,2735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>NEXORA ARENA — Play. Compete. Conquer.</title>
+  <meta name="description" content="NEXORA ARENA — Join live gaming tournaments, win real prizes, and compete with players across India. One Arena. All Games. Limitless Battles." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    window.onerror = function(msg, url, line) {
+      alert("JS Error: " + msg + "\nFile: " + url + "\nLine: " + line);
+      return false;
+    };
+  </script>
+</head>
+<body>
+<div id="app">
+
+
+
+  <!-- =====================================================
+       SCREEN 1: SPLASH
+  ===================================================== -->
+  <div id="page-splash" class="page active">
+    <div class="splash-bg-particles"></div>
+    <div class="splash-logo-wrap">
+      <div class="splash-logo-ring"></div>
+      <img src="assets/nexora_logo.jpg" alt="Nexora" class="splash-logo-img" />
+    </div>
+    <div class="splash-brand">
+      <h1>NEX<span style="color:var(--accent-bright)">O</span>RA</h1>
+      <div class="sub">ARENA</div>
+      <div class="splash-tagline">Play · Compete · Conquer</div>
+    </div>
+    <div class="splash-pills">
+      <div class="splash-pill">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bright)" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M17 7V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2"/><circle cx="12" cy="12" r="1"/></svg>
+        All Games
+      </div>
+      <div class="splash-pill">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bright)" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+        Tournaments
+      </div>
+      <div class="splash-pill">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bright)" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Rewards
+      </div>
+    </div>
+    <div class="splash-loading">
+      <div class="splash-dot"></div>
+      <div class="splash-dot"></div>
+      <div class="splash-dot"></div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 2: ONBOARDING
+  ===================================================== -->
+  <div id="page-onboarding" class="page">
+    <div class="onboarding-hero">
+      <img src="assets/tournament_hero.jpg" alt="Gaming" class="onboarding-hero-img" />
+      <div class="onboarding-hero-overlay"></div>
+    </div>
+    <div class="onboarding-slides">
+      <div class="onboarding-dots">
+        <div class="onboarding-dot active" id="ob-dot-0"></div>
+        <div class="onboarding-dot" id="ob-dot-1"></div>
+        <div class="onboarding-dot" id="ob-dot-2"></div>
+      </div>
+      <div class="onboarding-slide active" id="ob-slide-0">
+        <h2>One Arena.<br/>All Games.<br/>Limitless Battles.</h2>
+        <p>Join tournaments, win exciting prizes and become a champion in your favorite games.</p>
+      </div>
+      <div class="onboarding-slide" id="ob-slide-1">
+        <h2>Fair Play.<br/>Real Prizes.<br/>Zero Hassle.</h2>
+        <p>Our platform ensures 100% fair play with instant rewards and transparent commission structure.</p>
+      </div>
+      <div class="onboarding-slide" id="ob-slide-2">
+        <h2>Compete.<br/>Earn.<br/>Dominate.</h2>
+        <p>Add cash, join tournaments, win big — and withdraw your earnings instantly to your account.</p>
+      </div>
+      <button class="btn-primary" id="ob-next-btn" onclick="nextOnboardingSlide()">Next</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 3: AUTH (Login / Signup / OTP / Success)
+  ===================================================== -->
+  <div id="page-auth" class="page">
+    <div class="auth-header">
+      <img src="assets/nexora_logo.jpg" alt="Nexora" class="auth-logo" />
+      <div class="auth-brand">NEX<span>O</span>RA</div>
+      <div class="auth-tagline" style="font-size:0.75rem; color:var(--accent-bright); text-transform:uppercase; letter-spacing:2px; margin-top:2px;">Play · Compete · Conquer</div>
+    </div>
+
+    <!-- 1. LOGIN VIEW -->
+    <div class="auth-view active" id="auth-view-login" style="padding: 20px;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 6px;">Welcome Back!</h2>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 24px;">Login to continue your gaming journey.</p>
+      
+      <div class="input-group">
+        <label>Mobile Number</label>
+        <div class="input-wrap" style="display:flex; align-items:center;">
+          <span style="font-size:0.9rem; color:var(--text-secondary); padding: 0 10px; border-right: 1px solid rgba(255,255,255,0.08); display:flex; align-items:center; gap:6px;">🇮🇳 +91</span>
+          <input type="tel" id="login-phone" placeholder="98765 43210" style="padding-left:12px; flex:1;" />
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="submitLoginPhone()" style="margin-top: 10px;">Continue</button>
+      
+      <div class="auth-divider" style="margin: 24px 0; text-align:center; color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; position:relative;">
+        <span style="background:var(--bg-elevated); padding:0 10px; position:relative; z-index:2;">or continue with</span>
+        <div style="position:absolute; top:50%; left:0; width:100%; height:1px; background:rgba(255,255,255,0.06); z-index:1;"></div>
+      </div>
+
+      <div class="oauth-btns" style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:24px;">
+        <button class="oauth-btn" onclick="socialLogin('Google')" style="background:var(--bg-card); border:1px solid rgba(255,255,255,0.06); color:#fff; padding:10px; border-radius:6px; display:flex; align-items:center; justify-content:center; gap:8px; cursor:pointer;">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Google
+        </button>
+        <button class="oauth-btn" onclick="socialLogin('Facebook')" style="background:var(--bg-card); border:1px solid rgba(255,255,255,0.06); color:#fff; padding:10px; border-radius:6px; display:flex; align-items:center; justify-content:center; gap:8px; cursor:pointer;">
+          <svg width="16" height="16" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </button>
+      </div>
+
+      <div class="auth-signup-link" style="text-align:center; font-size:0.85rem; color:var(--text-secondary)">Don't have an account? <span onclick="switchAuthView('signup')" style="color:var(--accent-bright); font-weight:700; cursor:pointer;">Sign Up</span></div>
+    </div>
+
+    <!-- 2. CREATE ACCOUNT (SIGNUP) VIEW -->
+    <div class="auth-view" id="auth-view-signup" style="padding: 20px; display:none; max-height: calc(100vh - 120px); overflow-y: auto;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 6px;">Create Account</h2>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px;">Fill your details to register</p>
+      
+      <div class="input-group" style="margin-bottom:12px">
+        <label>Full Name</label>
+        <div class="input-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <input type="text" id="signup-fullname" placeholder="Vijay Nagare" />
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-bottom:12px">
+        <label>Email Address</label>
+        <div class="input-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <input type="email" id="signup-email" placeholder="vijaynagare@gmail.com" />
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-bottom:12px">
+        <label>Mobile Number</label>
+        <div class="input-wrap" style="display:flex; align-items:center;">
+          <span style="font-size:0.9rem; color:var(--text-secondary); padding: 0 10px; border-right: 1px solid rgba(255,255,255,0.08); display:flex; align-items:center;">🇮🇳 +91</span>
+          <input type="tel" id="signup-phone" placeholder="98765 43210" style="padding-left:12px; flex:1;" />
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-bottom:12px">
+        <label>Date of Birth</label>
+        <div class="input-wrap">
+          <input type="date" id="signup-dob" value="2004-02-02" style="padding-left:12px" />
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-bottom:12px">
+        <label>Gender</label>
+        <div class="input-wrap">
+          <select id="signup-gender" style="background:transparent; border:none; color:#fff; width:100%; height:100%; padding-left:12px; outline:none; cursor:pointer;">
+            <option value="Male" style="background:#13131f">Male</option>
+            <option value="Female" style="background:#13131f">Female</option>
+            <option value="Other" style="background:#13131f">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-bottom:16px">
+        <label>Referral Code (Optional)</label>
+        <div class="input-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <input type="text" id="signup-referral" placeholder="NEXORA2024" />
+        </div>
+      </div>
+
+      <label style="display:flex; align-items:center; gap:8px; font-size:0.78rem; color:var(--text-secondary); margin-bottom:20px; cursor:pointer;">
+        <input type="checkbox" id="signup-agree" checked style="accent-color:var(--accent);" />
+        <span>I agree to the <span style="color:var(--accent-bright)">Terms &amp; Conditions</span> and <span style="color:var(--accent-bright)">Privacy Policy</span></span>
+      </label>
+
+      <button class="btn-primary" onclick="submitSignup()" style="margin-bottom:16px;">Register Now</button>
+      <div class="auth-signup-link" style="text-align:center; font-size:0.85rem; color:var(--text-secondary)">Already have an account? <span onclick="switchAuthView('login')" style="color:var(--accent-bright); font-weight:700; cursor:pointer;">Login</span></div>
+    </div>
+
+    <!-- 3. OTP VERIFICATION VIEW -->
+    <div class="auth-view" id="auth-view-otp" style="padding: 20px; display:none;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 6px;">Verify Mobile</h2>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 24px;" id="otp-subtitle-phone">Enter the 6-digit code sent to +91 98765 43210</p>
+      
+      <div style="display:flex; justify-content:space-between; gap:8px; margin-bottom:20px;">
+        <input type="tel" maxlength="1" class="otp-box-input" id="otp-1" oninput="moveToNextOtp(1)" onkeydown="handleOtpBackspace(event, 1)" />
+        <input type="tel" maxlength="1" class="otp-box-input" id="otp-2" oninput="moveToNextOtp(2)" onkeydown="handleOtpBackspace(event, 2)" />
+        <input type="tel" maxlength="1" class="otp-box-input" id="otp-3" oninput="moveToNextOtp(3)" onkeydown="handleOtpBackspace(event, 3)" />
+        <input type="tel" maxlength="1" class="otp-box-input" id="otp-4" oninput="moveToNextOtp(4)" onkeydown="handleOtpBackspace(event, 4)" />
+        <input type="tel" maxlength="1" class="otp-box-input" id="otp-5" oninput="moveToNextOtp(5)" onkeydown="handleOtpBackspace(event, 5)" />
+        <input type="tel" maxlength="1" class="otp-box-input" id="otp-6" oninput="moveToNextOtp(6)" onkeydown="handleOtpBackspace(event, 6)" />
+      </div>
+
+      <div style="font-size:0.82rem; color:var(--text-secondary); text-align:center; margin-bottom:30px;" id="otp-timer-text">
+        Resend OTP in <b style="color:var(--accent-bright)" id="otp-seconds">00:25</b>
+      </div>
+
+      <button class="btn-primary" onclick="verifyOtpCode()">Verify &amp; Continue</button>
+      
+      <div style="text-align:center; font-size:0.85rem; color:var(--text-muted); margin-top:20px;">
+        Didn't receive code? <span onclick="resendOtpCode()" style="color:var(--accent-bright); font-weight:700; cursor:pointer;">Resend OTP</span>
+      </div>
+    </div>
+
+    <!-- 4. LOGIN SUCCESS VIEW -->
+    <div class="auth-view" id="auth-view-success" style="padding: 20px; display:none; text-align:center;">
+      <div style="margin-top: 40px; margin-bottom: 24px; display: flex; justify-content: center;">
+        <div style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--success); animation: scaleIn 0.5s ease-out;">🛡️</div>
+      </div>
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 12px;">Login Successful!</h2>
+      <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 30px;">Welcome to Nexora Arena.<br>Your account is secure and ready to use.</p>
+      
+      <button class="btn-primary" onclick="proceedToDashboard()">Go to Dashboard</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 4: HOME
+  ===================================================== -->
+  <div id="page-home" class="page">
+    <!-- Top Header Bar -->
+    <div class="top-bar" style="background:#0b0b16; border-bottom:1px solid rgba(255,255,255,0.05); padding:10px 16px; display:flex; justify-content:space-between; align-items:center; height:60px; box-sizing:border-box;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="icon-btn" onclick="openSidebarDrawer()" style="background:none; border:none; color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; width:44px; height:44px; z-index:100; position:relative;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="pointer-events:none;"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <span class="brand-name" style="font-family:var(--font-heading); font-size:1.15rem; font-weight:800; letter-spacing:1px; color:#fff;">NEX<span style="color:#3b82f6;">O</span>RA <span style="font-size:0.75rem; font-weight:600; color:var(--text-muted); opacity:0.6;">ARENA</span></span>
+      </div>
+      <div class="top-bar-right" style="display:flex; align-items:center; gap:12px;">
+        <!-- Wallet Card -->
+        <div class="wallet-badge" onclick="navigate('wallet')" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:30px; padding:6px 12px; display:flex; align-items:center; gap:8px; cursor:pointer;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg>
+          <div style="display:flex; flex-direction:column; align-items:flex-start; line-height:1;">
+            <span style="font-size:0.55rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Wallet</span>
+            <span style="font-size:0.8rem; font-weight:800; color:#fff; margin-top:1px;">₹<span id="home-wallet-bal">2,450</span></span>
+          </div>
+          <div style="background:#3b82f6; border-radius:50%; width:16px; height:16px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.7rem; font-weight:900;">+</div>
+        </div>
+        <!-- Notification Bell -->
+        <button class="icon-btn" onclick="navigate('notifications')" style="position:relative; background:none; border:none; color:#fff; cursor:pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span id="notif-badge" class="notif-badge-count" style="display:none; position:absolute; top:-4px; right:-4px; background:#ef4444; color:#fff; font-size:0.55rem; font-weight:800; border-radius:50%; width:14px; height:14px; display:flex; align-items:center; justify-content:center; border:1px solid #0c0c18;">3</span>
+        </button>
+        <!-- Avatar Picture -->
+        <div onclick="navigate('profile')" style="width:30px; height:30px; border-radius:50%; border:1.5px solid var(--accent); background:#1e1e30; overflow:hidden; cursor:pointer; display:flex; align-items:center; justify-content:center; position:relative;">
+          <img id="home-avatar-img" src="" style="width:100%; height:100%; object-fit:cover; display:none;" onerror="this.style.display='none';" alt="Avatar" />
+          <span id="home-avatar-fallback" style="font-size:0.85rem; font-weight:800; color:#fff;">N</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Homescroll Body -->
+    <div class="home-scroll scroll-body" style="padding-bottom:80px; box-sizing:border-box;">
+      <!-- Notices announcement -->
+      <div id="notices-container" style="padding: 0 16px; margin-top: 10px;"></div>
+
+      <!-- Hero Banner (Carousel) -->
+      <div class="home-banner" id="home-banner" style="margin: 24px 16px 16px; border-radius: 16px; overflow: hidden; position: relative; height: auto; box-shadow: 0 6px 20px rgba(0,0,0,0.65);">
+        <div class="home-banner-slide active" style="position:relative; width:100%; height:auto;">
+          <img src="assets/tournament_hero.jpg" alt="Championship" style="position:relative; width:100%; height:auto; display:block;" />
+          <div class="home-banner-overlay" style="position:absolute; inset:0; background:linear-gradient(to right, rgba(12,12,24,0.92) 40%, rgba(12,12,24,0.2) 100%); padding:20px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
+            <div style="font-size:0.55rem; color:#8b5cf6; font-weight:800; text-transform:uppercase; letter-spacing:2px; margin-bottom:4px;">Nexora Arena</div>
+            <div class="banner-title" style="font-size:1.15rem; font-weight:900; color:#fff; line-height:1.2; text-transform:uppercase; margin-bottom:4px;">Champions Cup</div>
+            <div style="font-size:0.6rem; color:var(--text-muted); margin-bottom:12px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Play • Compete • Win</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+              <div>
+                <div style="font-size:0.5rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Prize Pool</div>
+                <div class="banner-prize" style="font-size:1.3rem; font-weight:900; color:#eab308; margin-top:2px;">₹50,000</div>
+              </div>
+              <button class="banner-register" onclick="navigate('tournaments')" style="background:linear-gradient(135deg, #7c3aed, #db2777); border:none; color:#fff; padding:8px 16px; border-radius:6px; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; cursor:pointer; box-shadow:0 4px 10px rgba(124,58,237,0.4);">Join Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="home-banner-slide" style="position:relative; width:100%; height:auto; display:none;">
+          <img src="assets/bgmi_banner.jpg" alt="BGMI" style="position:relative; width:100%; height:auto; display:block;" />
+          <div class="home-banner-overlay" style="position:absolute; inset:0; background:linear-gradient(to right, rgba(12,12,24,0.9) 40%, rgba(12,12,24,0.3) 100%); padding:20px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
+            <div style="font-size:0.55rem; color:#ef4444; font-weight:800; text-transform:uppercase; letter-spacing:2px; margin-bottom:4px;">Esports Battle</div>
+            <div class="banner-title" style="font-size:1.15rem; font-weight:900; color:#fff; line-height:1.2; text-transform:uppercase; margin-bottom:4px;">Erangel Showdown</div>
+            <div style="font-size:0.6rem; color:var(--text-muted); margin-bottom:12px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Ultimate Survival</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+              <div>
+                <div style="font-size:0.5rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Prize Pool</div>
+                <div class="banner-prize" style="font-size:1.3rem; font-weight:900; color:#eab308; margin-top:2px;">₹30,000</div>
+              </div>
+              <button class="banner-register" onclick="navigate('tournaments')" style="background:linear-gradient(135deg, #7c3aed, #db2777); border:none; color:#fff; padding:8px 16px; border-radius:6px; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; cursor:pointer; box-shadow:0 4px 10px rgba(124,58,237,0.4);">Join Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="home-banner-slide" style="position:relative; width:100%; height:auto; display:none;">
+          <img src="assets/bgmi_banner.jpg" alt="Predict" style="position:relative; width:100%; height:auto; display:block;" />
+          <div class="home-banner-overlay" style="position:absolute; inset:0; background:linear-gradient(to right, rgba(12,12,24,0.9) 40%, rgba(12,12,24,0.3) 100%); padding:20px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
+            <div style="font-size:0.55rem; color:#eab308; font-weight:800; text-transform:uppercase; letter-spacing:2px; margin-bottom:4px;">Predict & Win</div>
+            <div class="banner-title" style="font-size:1.15rem; font-weight:900; color:#fff; line-height:1.2; text-transform:uppercase; margin-bottom:4px;">Real Cash Every Match</div>
+            <div style="font-size:0.6rem; color:var(--text-muted); margin-bottom:12px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Mega Rewards</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+              <div>
+                <div style="font-size:0.5rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Entry Fee</div>
+                <div style="font-size:1.3rem; font-weight:900; color:#10b981; margin-top:2px;">₹25 Only</div>
+              </div>
+              <button class="banner-register" onclick="navigate('predictions')" style="background:linear-gradient(135deg, #eab308, #db2777); border:none; color:#fff; padding:8px 16px; border-radius:6px; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; cursor:pointer; box-shadow:0 4px 10px rgba(234,179,8,0.4);">Predict Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="banner-dots" style="position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:10;">
+          <div class="banner-dot active" id="bd-0" style="width:12px; height:4px; border-radius:2px; background:#fff; opacity:0.8; transition:all 0.3s ease;"></div>
+          <div class="banner-dot" id="bd-1" style="width:4px; height:4px; border-radius:2px; background:#fff; opacity:0.4; transition:all 0.3s ease;"></div>
+          <div class="banner-dot" id="bd-2" style="width:4px; height:4px; border-radius:2px; background:#fff; opacity:0.4; transition:all 0.3s ease;"></div>
+        </div>
+      </div>
+
+      <!-- Quick Links (Ultra Premium Action Cards) -->
+      <div class="premium-cards-container">
+        <!-- All Games -->
+        <div class="premium-action-card card-blue" onclick="navigate('games')">
+          <div class="card-radar-bg">
+            <div class="card-radar-circle"></div>
+            <div class="card-radar-circle-inner"></div>
+            <div class="card-radar-circle-glow"></div>
+            <div class="card-radar-crosshair"></div>
+            <div class="card-icon-3d">🎮</div>
+          </div>
+          <div class="card-details">
+            <div class="card-title-premium">All Games</div>
+            <div class="card-subtitle-premium">Explore all games</div>
+          </div>
+          <div class="card-action-btn">❯</div>
+        </div>
+
+        <!-- Tournaments -->
+        <div class="premium-action-card card-purple" onclick="navigate('tournaments')">
+          <div class="card-radar-bg">
+            <div class="card-radar-circle"></div>
+            <div class="card-radar-circle-inner"></div>
+            <div class="card-radar-circle-glow"></div>
+            <div class="card-radar-crosshair"></div>
+            <div class="card-icon-3d">🏆</div>
+          </div>
+          <div class="card-details">
+            <div class="card-title-premium">Tournaments</div>
+            <div class="card-subtitle-premium">Join exciting tournaments</div>
+          </div>
+          <div class="card-action-btn">❯</div>
+        </div>
+
+        <!-- My Matches -->
+        <div class="premium-action-card card-pink" onclick="navigate('my-matches')">
+          <div class="card-radar-bg">
+            <div class="card-radar-circle"></div>
+            <div class="card-radar-circle-inner"></div>
+            <div class="card-radar-circle-glow"></div>
+            <div class="card-radar-crosshair"></div>
+            <div class="card-icon-3d">🎟️</div>
+          </div>
+          <div class="card-details">
+            <div class="card-title-premium">My Matches</div>
+            <div class="card-subtitle-premium">View your matches</div>
+          </div>
+          <div class="card-action-btn">❯</div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="premium-action-card card-green" onclick="navigate('leaderboard')">
+          <div class="card-radar-bg">
+            <div class="card-radar-circle"></div>
+            <div class="card-radar-circle-inner"></div>
+            <div class="card-radar-circle-glow"></div>
+            <div class="card-radar-crosshair"></div>
+            <div class="card-icon-3d">🛡️</div>
+          </div>
+          <div class="card-details">
+            <div class="card-title-premium">Leaderboard</div>
+            <div class="card-subtitle-premium">See top champions</div>
+          </div>
+          <div class="card-action-btn">❯</div>
+        </div>
+
+        <!-- Support -->
+        <div class="premium-action-card card-orange" onclick="navigate('contact-us')">
+          <div class="card-radar-bg">
+            <div class="card-radar-circle"></div>
+            <div class="card-radar-circle-inner"></div>
+            <div class="card-radar-circle-glow"></div>
+            <div class="card-radar-crosshair"></div>
+            <div class="card-icon-3d">🎧</div>
+          </div>
+          <div class="card-details">
+            <div class="card-title-premium">Support</div>
+            <div class="card-subtitle-premium">We're here to help</div>
+          </div>
+          <div class="card-action-btn">❯</div>
+        </div>
+      </div>
+
+      <!-- KYC Warning Banner -->
+      <div id="home-kyc-warning" style="display:none; margin: 0 16px 16px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 10px; padding: 12px 16px; align-items: center; justify-content: space-between; box-sizing: border-box;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:1.1rem;">⚠️</span>
+          <span style="font-size:0.75rem; font-weight:700; color:#ef4444; text-align:left;">Complete KYC to enable withdrawals</span>
+        </div>
+        <button class="btn btn-primary" onclick="navigate('kyc-landing')" style="width:auto; padding:6px 12px; font-size:0.65rem; border-radius:6px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; background:#ef4444; border:none; color:#fff; cursor:pointer;">Complete KYC</button>
+      </div>
+
+      <!-- Live Tournaments Header -->
+      <div class="section-header" style="display:flex; justify-content:space-between; align-items:center; padding: 0 16px; margin-bottom: 10px;">
+        <div class="section-title" style="display:flex; align-items:center; gap:6px; font-size:0.95rem; font-weight:800; color:#fff;">
+          Live Tournaments 
+          <span style="background:rgba(239,68,68,0.15); color:#ef4444; font-size:0.6rem; font-weight:800; padding:2px 6px; border-radius:4px; text-transform:uppercase; letter-spacing:0.5px; display:inline-flex; align-items:center; gap:3px;">
+            <span style="width:5px; height:5px; background:#ef4444; border-radius:50%; display:inline-block; animation:pulse 1s infinite;"></span>
+            LIVE
+          </span>
+        </div>
+        <div class="section-link" onclick="navigate('tournaments')" style="font-size:0.75rem; color:#3b82f6; display:flex; align-items:center; gap:4px; font-weight:700; cursor:pointer;">
+          View All
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+        </div>
+      </div>
+
+      <!-- Live Tournaments Horizontal Scroll Cards -->
+      <div class="horizontal-scroll-container" id="home-tournaments">
+        <!-- Injected dynamically by JS -->
+      </div>
+
+      <!-- Promo Banner Invite Friends -->
+      <div onclick="navigate('referral')" style="margin:20px 16px; background:linear-gradient(135deg, #1e1b4b, #311042); border:1px dashed rgba(168,85,247,0.4); border-radius:12px; padding:16px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.4);">
+        <div>
+          <div style="font-size:0.82rem; font-weight:800; color:#fff; letter-spacing:0.5px; text-transform:uppercase; line-height:1.3;">Invite Friends &<br>Earn Upto <span style="color:#eab308;">₹500</span></div>
+          <div style="font-size:0.65rem; color:var(--text-muted); margin-top:4px;">Share your code and earn real money</div>
+        </div>
+        <button style="background:#7c3aed; color:#fff; border:none; padding:8px 14px; border-radius:6px; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; cursor:pointer;">Invite Now</button>
+      </div>
+
+      <!-- Why NEXORA ARENA? -->
+      <div style="margin:20px 16px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:14px; padding:20px; text-align:center; box-sizing:border-box;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:20px;">
+          <div style="width:30px; height:1px; background:rgba(255,255,255,0.1);"></div>
+          <span style="font-size:0.75rem; font-weight:800; color:#fff; text-transform:uppercase; letter-spacing:1.5px; color:#dbeafe;">Why Nexora Arena?</span>
+          <div style="width:30px; height:1px; background:rgba(255,255,255,0.1);"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <span style="font-size:1.4rem;">🛡️</span>
+            <div style="font-size:0.72rem; font-weight:700; color:#fff;">100% Secure</div>
+            <div style="font-size:0.6rem; color:var(--text-muted); margin-top:-2px;">Encrypted Transactions</div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <span style="font-size:1.4rem;">⚡</span>
+            <div style="font-size:0.72rem; font-weight:700; color:#fff;">Instant Cashout</div>
+            <div style="font-size:0.6rem; color:var(--text-muted); margin-top:-2px;">Under 5 minutes</div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <span style="font-size:1.4rem;">🏆</span>
+            <div style="font-size:0.72rem; font-weight:700; color:#fff;">Fair Play</div>
+            <div style="font-size:0.6rem; color:var(--text-muted); margin-top:-2px;">Strict Anti-Cheat systems</div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <span style="font-size:1.4rem;">🎧</span>
+            <div style="font-size:0.72rem; font-weight:700; color:#fff;">24/7 Support</div>
+            <div style="font-size:0.6rem; color:var(--text-muted); margin-top:-2px;">Fast Resolution desk</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hot Predictions -->
+      <div class="section-header" style="display:flex; justify-content:space-between; align-items:center; padding: 0 16px; margin-bottom: 12px; margin-top:20px;">
+        <div class="section-title" style="font-size:0.95rem; font-weight:800; color:#fff;">Hot Predictions</div>
+        <div class="section-link" onclick="navigate('predictions')" style="font-size:0.75rem; color:#3b82f6; display:flex; align-items:center; gap:4px; font-weight:700; cursor:pointer;">
+          View All
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+        </div>
+      </div>
+      
+      <!-- Predictions Carousel / Dynamic Banners -->
+      <div class="predictions-banners-container" id="predictions-banners-container" style="margin: 0 16px 20px; border-radius: 16px; overflow: hidden; position: relative; height: auto; box-shadow: 0 6px 20px rgba(0,0,0,0.65);">
+        <!-- Injected dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 5: GAMES LIST
+  ===================================================== -->
+  <div id="page-games" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">All Games Hub</span>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height)); box-sizing:border-box; padding-bottom: 20px;">
+      
+      <!-- SECTION 1: TOURNAMENT GAMES -->
+      <div style="padding:14px 16px 6px; font-size:0.85rem; font-weight:800; color:var(--text-primary); text-transform:uppercase; letter-spacing:1px; display:flex; align-items:center; gap:6px;">
+        🏆 Tournament Games
+      </div>
+      <div class="games-list-grid" id="games-list-grid" style="margin-bottom: 20px;">
+        <!-- Injected dynamically by app.js (BGMI, Free Fire, Ludo, etc.) -->
+      </div>
+
+      <!-- SECTION 2: CASINO GAMES -->
+      <div style="padding:4px 16px 6px; font-size:0.85rem; font-weight:800; color:var(--text-primary); text-transform:uppercase; letter-spacing:1px; display:flex; align-items:center; gap:6px;">
+        🎰 Casino Games
+      </div>
+      
+      <!-- Casino Banner -->
+      <div onclick="openCasinoApp('hub')" style="margin:6px 16px 14px; border-radius:16px; overflow:hidden; background:linear-gradient(135deg,#0d1a3a,#3b0f6e); padding:20px; position:relative; cursor:pointer;">
+        <div style="font-size:0.6rem;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.6);margin-bottom:6px;">NEXORA CASINO</div>
+        <div style="font-size:1.3rem;font-weight:900;color:#fff;margin-bottom:4px;">11 Games. Real Money.</div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.7); margin-bottom: 8px;">Plane Crash · Mines · Dice · Spin · Tower + more</div>
+        <button class="btn btn-primary btn-sm" style="background:#7c3aed; border:none; padding:6px 14px;">Play Casino</button>
+        <div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:3rem;opacity:0.4;">🎰</div>
+      </div>
+
+      <!-- Quick Game Cards (opens games.html) -->
+      <div id="casino-games-cards-grid" style="padding:0 12px; display:grid; grid-template-columns:repeat(2,1fr); gap:10px;">
+        <!-- Injected dynamically by JS -->
+      </div>
+      <!-- SECTION 3: MULTIPLAYER BOARD & CARD GAMES -->
+      <div style="padding:14px 16px 6px; font-size:0.85rem; font-weight:800; color:var(--text-primary); text-transform:uppercase; letter-spacing:1px; display:flex; align-items:center; gap:6px; margin-top:20px;">
+        🎲 Multiplayer Games
+      </div>
+
+      <!-- Multiplayer Banner -->
+      <div onclick="window.openBoardGamesApp('hub')" style="margin:6px 16px 14px; border-radius:16px; overflow:hidden; background:linear-gradient(135deg,#2e1065,#1e0b45); padding:20px; position:relative; cursor:pointer; border:1px solid rgba(124,58,237,0.25);">
+        <div style="font-size:0.6rem;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.6);margin-bottom:6px;">BOARD & CARD ZONE</div>
+        <div style="font-size:1.3rem;font-weight:900;color:#fff;margin-bottom:4px;">Multiplayer. Bot AI. Cash Wins.</div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.7); margin-bottom: 8px;">Ludo · Carrom · Rummy · Callbreak · Uno · Chess · Snakes & Ladders</div>
+        <button class="btn btn-primary btn-sm" style="background:#7c3aed; border:none; padding:6px 14px;">Enter Zone</button>
+        <div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:3rem;opacity:0.4;">♟️</div>
+      </div>
+
+      <!-- Quick Board Cards -->
+      <div style="padding:0 12px; display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom: 24px;">
+        <div onclick="window.openBoardGamesApp('ludo')" style="background:linear-gradient(135deg,#7f1d1d,#ef4444); border-radius:14px; padding:14px; cursor:pointer;">
+          <div style="font-size:2rem; margin-bottom:6px;">🎲</div>
+          <div style="font-size:0.85rem;font-weight:800;">Ludo Classic</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.65);">Roll & race home</div>
+        </div>
+        <div onclick="window.openBoardGamesApp('carrom')" style="background:linear-gradient(135deg,#5c3a21,#b88b4a); border-radius:14px; padding:14px; cursor:pointer;">
+          <div style="font-size:2rem; margin-bottom:6px;">⚪</div>
+          <div style="font-size:0.85rem;font-weight:800;">Carrom Board</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.65);">Aim & Strike</div>
+        </div>
+        <div onclick="window.openBoardGamesApp('rummy')" style="background:linear-gradient(135deg,#065f46,#10b981); border-radius:14px; padding:14px; cursor:pointer;">
+          <div style="font-size:2rem; margin-bottom:6px;">🎴</div>
+          <div style="font-size:0.85rem;font-weight:800;">Rummy Card</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.65);">13 Card Sets</div>
+        </div>
+        <div onclick="window.openBoardGamesApp('callbreak')" style="background:linear-gradient(135deg,#1e1b4b,#4f46e5); border-radius:14px; padding:14px; cursor:pointer;">
+          <div style="font-size:2rem; margin-bottom:6px;">♠️</div>
+          <div style="font-size:0.85rem;font-weight:800;">Callbreak Pro</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.65);">Bid & Trump spades</div>
+        </div>
+        <div onclick="window.openBoardGamesApp('uno')" style="background:linear-gradient(135deg,#b45309,#f59e0b); border-radius:14px; padding:14px; cursor:pointer;">
+          <div style="font-size:2rem; margin-bottom:6px;">🃏</div>
+          <div style="font-size:0.85rem;font-weight:800;">Uno Card Game</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.65);">Color card race</div>
+        </div>
+        <div onclick="window.openBoardGamesApp('chess')" style="background:linear-gradient(135deg,#1e293b,#64748b); border-radius:14px; padding:14px; cursor:pointer;">
+          <div style="font-size:2rem; margin-bottom:6px;">♟️</div>
+          <div style="font-size:0.85rem;font-weight:800;">Chess Grand</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.65);">Brain checkmate</div>
+        </div>
+        <div onclick="window.openBoardGamesApp('dominoes')" style="background:linear-gradient(135deg,#0f172a,#334155); border-radius:14px; padding:14px; cursor:pointer;">
+          <div style="font-size:2rem; margin-bottom:6px;">🀰</div>
+          <div style="font-size:0.85rem;font-weight:800;">Dominoes</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.65);">Tile chain match</div>
+        </div>
+        <div onclick="window.openBoardGamesApp('snakes')" style="background:linear-gradient(135deg,#065f46,#059669); border-radius:14px; padding:14px; cursor:pointer;">
+          <div style="font-size:2rem; margin-bottom:6px;">🐍</div>
+          <div style="font-size:0.85rem;font-weight:800;">Snakes & Ladders</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.65);">Climb to 100</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 6: TOURNAMENTS LIST
+  ===================================================== -->
+  <div id="page-tournaments" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Tournaments</span>
+      <div class="icon-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      </div>
+    </div>
+    <div class="filter-tabs" id="tournament-filter-tabs">
+      <button class="filter-tab active" onclick="filterTournaments('all', this)">All</button>
+      <button class="filter-tab" onclick="filterTournaments('live', this)">🔴 Live</button>
+      <button class="filter-tab" onclick="filterTournaments('upcoming', this)">Upcoming</button>
+      <button class="filter-tab" onclick="filterTournaments('completed', this)">Completed</button>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height) - 50px); box-sizing:border-box;">
+      <div class="tournaments-list" id="tournaments-list">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 7: TOURNAMENT DETAIL
+  ===================================================== -->
+  <div id="page-tournament-detail" class="page">
+    <div class="sub-header" style="position:relative">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Tournament Details</span>
+      <button class="icon-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </button>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height))">
+      <div class="td-hero" id="td-hero">
+        <img src="assets/bgmi_banner.jpg" alt="Tournament" id="td-hero-img" />
+        <div class="td-hero-overlay"></div>
+        <div class="td-hero-badge" id="td-status-badge">LIVE</div>
+      </div>
+      <div class="td-body">
+        <div class="td-title-row">
+          <div>
+            <div class="td-game" id="td-game">BGMI</div>
+            <div class="td-name" id="td-name">BGMI Solo Showdown</div>
+            <div class="td-slots" id="td-slots">60/100 Slots</div>
+          </div>
+        </div>
+        <div class="td-stats">
+          <div class="td-stat">
+            <div class="td-stat-label">Prize Pool</div>
+            <div class="td-stat-value" id="td-prize">₹50,000</div>
+          </div>
+          <div class="td-stat">
+            <div class="td-stat-label">Entry Fee</div>
+            <div class="td-stat-value normal" id="td-fee">₹50</div>
+          </div>
+          <div class="td-stat">
+            <div class="td-stat-label">Mode</div>
+            <div class="td-stat-value normal" id="td-mode">TPP</div>
+          </div>
+        </div>
+        <div class="td-stats" style="grid-template-columns:repeat(2,1fr)">
+          <div class="td-stat">
+            <div class="td-stat-label">Map</div>
+            <div class="td-stat-value normal" id="td-map">Erangel</div>
+          </div>
+          <div class="td-stat">
+            <div class="td-stat-label">Date & Time</div>
+            <div class="td-stat-value normal" id="td-date">15 May · 6PM</div>
+          </div>
+        </div>
+        <div id="td-winners-podium-container" style="display:none;"></div>
+        <div class="td-section-title" style="margin-top:20px">Rules & Description</div>
+        <div class="td-rules" id="td-rules-desc">
+          <div class="td-rule">No Hacker</div>
+          <div class="td-rule">No Teaming</div>
+          <div class="td-rule">Fair Play Only</div>
+          <div class="td-rule">Must be in Room 5 minutes before start</div>
+        </div>
+        <!-- Prize Distribution -->
+        <div class="td-section-title">Prize Distribution</div>
+        <div class="td-rules" id="td-prize-dist">
+          <div class="td-rule">🥇 1st Place — ₹20,000</div>
+          <div class="td-rule">🥈 2nd Place — ₹12,000</div>
+          <div class="td-rule">🥉 3rd Place — ₹8,000</div>
+          <div class="td-rule">4th–10th — ₹1,428 each</div>
+        </div>
+      </div>
+    </div>
+    <div class="join-bar">
+      <button class="btn-primary" id="join-btn" onclick="joinTournament()">Join Now ₹50</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 8: MATCH ROOM
+  ===================================================== -->
+  <div id="page-match-room" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Match Room</span>
+      <button class="icon-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+      </button>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height))">
+      <div class="match-room-body">
+        <div class="match-info-card">
+          <div class="match-info-row">
+            <span class="match-label">Tournament</span>
+            <span class="match-value" id="mr-t-name">BGMI Solo Showdown</span>
+          </div>
+          <div class="match-info-row">
+            <span class="match-label">Type</span>
+            <span class="match-value" id="mr-t-type">TPP · Solo</span>
+          </div>
+          <div class="match-info-row">
+            <span class="match-label">Joined Players</span>
+            <span class="match-value"><b style="color:var(--success)" id="mr-joined-players">60 / 100</b></span>
+          </div>
+          <div class="match-info-row">
+            <span class="match-label">Match ID</span>
+            <span class="match-value" style="color:var(--accent-bright);font-family:monospace" id="mr-t-match-id">#NXA12345</span>
+          </div>
+        </div>
+
+        <div id="mr-winners-podium-container" style="display:none;"></div>
+        <div class="countdown-block" id="mr-countdown-container">
+          <div class="countdown-label">Room Starting In</div>
+          <div class="countdown-timer" id="countdown-display">02:30</div>
+        </div>
+
+        <!-- Room ID & Password Section (Shown only <= 10 min before start) -->
+        <div id="mr-room-details-box" style="display:none; background:linear-gradient(135deg, var(--bg-card), var(--bg-surface)); border:1px dashed var(--accent-bright); border-radius:14px; padding:16px; margin:16px 0; text-align:center;">
+          <div style="font-size:0.75rem; color:var(--accent-bright); text-transform:uppercase; font-weight:800; letter-spacing:1px; margin-bottom:10px;">🔥 ROOM ACCESS GRANTED 🔥</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:10px;">
+            <div style="background:var(--bg-elevated); padding:10px; border-radius:8px; border:1px solid var(--border-light);">
+              <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:2px;">Room ID</div>
+              <div style="font-size:1.15rem; font-weight:900; color:#fff; font-family:monospace;" id="mr-room-id-display">-----</div>
+            </div>
+            <div style="background:var(--bg-elevated); padding:10px; border-radius:8px; border:1px solid var(--border-light);">
+              <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:2px;">Password</div>
+              <div style="font-size:1.15rem; font-weight:900; color:#fff; font-family:monospace;" id="mr-room-pass-display">-----</div>
+            </div>
+          </div>
+          <div style="font-size:0.68rem; color:var(--text-muted);">Please copy these details and join the game client match lobby immediately.</div>
+        </div>
+
+        <!-- Room Details Pending Section (Shown > 10 min before start) -->
+        <div id="mr-room-pending-box" style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:14px; padding:18px; margin:16px 0; text-align:center;">
+          <div style="font-size:1.3rem; margin-bottom:6px;">⏳</div>
+          <div style="font-size:0.85rem; font-weight:800; color:#fff; margin-bottom:4px;">Lobby Details Pending</div>
+          <div style="font-size:0.72rem; color:var(--text-muted); line-height:1.3;">Room ID, Password &amp; Countdown will reveal exactly 10 minutes before the match start time. Keep checking!</div>
+        </div>
+
+        <div class="players-section-title">
+          Players
+          <span class="players-count" id="players-count">60/100</span>
+        </div>
+        <div id="players-list">
+          <!-- Injected by JS -->
+        </div>
+
+        <div style="padding-top:16px">
+          <div style="background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:14px;text-align:center">
+            <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:6px">Room is Full</div>
+            <div style="font-size:0.78rem;color:var(--text-dim)">Wait for the countdown to join the match</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 9: WALLET
+  ===================================================== -->
+  <div id="page-wallet" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Wallet</span>
+      <button class="icon-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+      </button>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height))">
+      <div class="wallet-balance-card">
+        <div class="wallet-label">Total Balance</div>
+        <div class="wallet-amount"><span class="rupee">₹</span><span id="wallet-balance">2,450</span></div>
+      </div>
+      <div class="wallet-action-tabs">
+        <button class="wallet-tab active" id="wtab-add" onclick="switchWalletTab('add')">Add Cash</button>
+        <button class="wallet-tab" id="wtab-withdraw" onclick="switchWalletTab('withdraw')">Withdraw</button>
+        <button class="wallet-tab" id="wtab-tx" onclick="switchWalletTab('tx')">Transactions</button>
+      </div>
+      <!-- Add Cash Panel -->
+      <div class="wallet-panel active" id="wpanel-add">
+        
+        <!-- State 1: Cash Addition Form -->
+        <div id="add-cash-form-wrapper">
+          <div style="padding:0 16px">
+            <div class="input-group" style="margin-bottom:16px">
+              <label>Enter Amount</label>
+              <div class="input-wrap">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <input type="number" id="add-cash-amount" placeholder="₹ Enter amount" min="10" />
+              </div>
+            </div>
+            <div class="payment-label">Recommended</div>
+            <div class="quick-amounts">
+              <button class="quick-amt" onclick="setQuickAmt(100, this)">₹100</button>
+              <button class="quick-amt" onclick="setQuickAmt(200, this)">₹200</button>
+              <button class="quick-amt" onclick="setQuickAmt(500, this)">₹500</button>
+              <button class="quick-amt" onclick="setQuickAmt(1000, this)">₹1000</button>
+            </div>
+            <div class="payment-label">Payment Methods</div>
+            <div class="payment-methods" id="payment-methods">
+              <div class="pm-option selected" onclick="selectPM(this)">
+                <div class="pm-icon">🏦</div>
+                <div class="pm-name">UPI</div>
+                <div class="pm-radio"></div>
+              </div>
+              <div class="pm-option" onclick="selectPM(this)">
+                <div class="pm-icon">🇬</div>
+                <div class="pm-name">Google Pay</div>
+                <div class="pm-radio"></div>
+              </div>
+              <div class="pm-option" onclick="selectPM(this)">
+                <div class="pm-icon">📱</div>
+                <div class="pm-name">PhonePe</div>
+                <div class="pm-radio"></div>
+              </div>
+              <div class="pm-option" onclick="selectPM(this)">
+                <div class="pm-icon">📷</div>
+                <div class="pm-name">UPI QR Code (Manual Verify)</div>
+                <div class="pm-radio"></div>
+              </div>
+              <div class="pm-option" onclick="selectPM(this)">
+                <div class="pm-icon">💳</div>
+                <div class="pm-name">Paytm</div>
+                <div class="pm-radio"></div>
+              </div>
+              <div class="pm-option" onclick="selectPM(this)">
+                <div class="pm-icon">🏛️</div>
+                <div class="pm-name">Net Banking</div>
+                <div class="pm-radio"></div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:16px; padding-bottom: calc(var(--nav-height) + 24px)">
+            <button class="btn-primary" onclick="addCash()">Proceed to Pay</button>
+          </div>
+        </div>
+
+        <!-- State 2: Request Pending / Dispute Overlay -->
+        <div id="add-cash-pending-wrapper" style="display:none; text-align:center; padding:30px 16px; box-sizing:border-box;">
+          
+          <!-- Dynamic Header Area -->
+          <div id="add-cash-pending-header-icon" style="width:72px; height:72px; border-radius:50%; background:rgba(234,179,8,0.1); border:2px solid #eab308; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:2.2rem;">⏳</div>
+          <h3 id="add-cash-pending-header-title" style="font-size:1.2rem; font-weight:800; color:#fff; margin-bottom:8px;">Verification in Progress</h3>
+          <p id="add-cash-pending-text" style="font-size:0.8rem; color:var(--text-secondary); line-height:1.5; margin:0 auto 24px; max-width:280px;">
+            Payment is being verified. Wallet balance will update within 5 minutes.
+          </p>
+
+          <!-- Timer Countdown Card (Hidden on Rejection) -->
+          <div id="add-cash-pending-timer-container" style="background:var(--bg-elevated); border:1px solid var(--border-light); border-radius:12px; padding:14px; margin-bottom:20px;">
+            <div style="font-size:0.68rem; color:var(--text-muted); text-transform:uppercase; font-weight:800; letter-spacing:0.5px;">Estimated Wait Time</div>
+            <div id="add-cash-pending-timer" style="font-size:2rem; font-weight:900; color:var(--warning); font-family:monospace; margin-top:4px;">05:00</div>
+          </div>
+
+          <!-- Rejection Detail Box (Visible only on Rejection) -->
+          <div id="add-cash-rejection-reason-box" style="display:none; background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.15); border-radius:10px; padding:12px; margin-bottom:20px; text-align:left;">
+            <div style="font-size:0.7rem; color:#ef4444; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">Reason for Rejection</div>
+            <div id="add-cash-rejection-reason-text" style="font-size:0.82rem; color:#fff; margin-top:4px; font-weight:600; line-height:1.4;">--</div>
+          </div>
+
+          <!-- Transaction details (Always visible) -->
+          <div style="background:rgba(255,255,255,0.02); border-radius:10px; border:1px solid rgba(255,255,255,0.05); padding:12px; font-size:0.78rem; text-align:left; display:flex; flex-direction:column; gap:6px; margin-bottom:20px;">
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-muted);">Amount:</span><span style="font-weight:700; color:#fff;" id="add-cash-pending-amount">₹0.00</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-muted);">UTR / Txn ID:</span><span style="font-family:monospace; color:#fff;" id="add-cash-pending-utr">--</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-muted);">Status:</span><span id="add-cash-pending-status-badge" class="badge pending" style="font-size:0.62rem; padding:2px 6px;">PENDING</span></div>
+          </div>
+
+          <!-- Screenshot Dispute Upload (Visible only on Rejection) -->
+          <div id="add-cash-dispute-section" style="display:none; text-align:left; background:var(--bg-card); border:1px solid var(--border-light); border-radius:12px; padding:16px; box-sizing:border-box;">
+            <div style="font-size:0.85rem; font-weight:800; color:#fff; margin-bottom:6px;">Raise a Dispute / Re-verify</div>
+            <p style="font-size:0.72rem; color:var(--text-secondary); line-height:1.4; margin-bottom:12px;">If you completed the payment but it got rejected, please upload the receipt screenshot below to re-verify.</p>
+            
+            <div style="margin-bottom:14px;">
+              <input type="file" id="dispute-screenshot-input" accept="image/*" style="display:none;" onchange="previewDisputeScreenshot(event)" />
+              <button class="btn btn-ghost btn-sm" onclick="document.getElementById('dispute-screenshot-input').click()" style="width:100%; border:1px dashed var(--border-light); padding:12px; border-radius:8px; display:flex; align-items:center; justify-content:center; gap:8px; cursor:pointer;">
+                <span>📷 Upload Payment Screenshot</span>
+              </button>
+              <div id="dispute-preview-container" style="display:none; text-align:center; margin-top:12px;">
+                <img id="dispute-preview-img" src="" style="max-width:100%; max-height:180px; object-fit:contain; border-radius:6px; border:1px solid var(--border-light);" />
+              </div>
+            </div>
+
+            <button onclick="submitQrPaymentDispute()" class="btn-primary" style="width:100%; padding:10px; font-size:0.8rem;">Submit Dispute Receipt</button>
+          </div>
+          
+          <div style="margin-top:28px;">
+            <a onclick="navigate('contact-us')" style="display:block; font-size:0.78rem; color:#3b82f6; font-weight:700; cursor:pointer; text-decoration:none;">CONTACT SUPPORT</a>
+          </div>
+        </div>
+
+      </div>
+      <!-- Withdraw Panel -->
+      <div class="wallet-panel" id="wpanel-withdraw">
+        <!-- KYC Lock Overlay container -->
+        <div id="kyc-lock-container" style="display:none; padding:30px 16px; text-align:center; box-sizing:border-box;">
+          <div style="width:60px; height:60px; border-radius:50%; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:2rem;">🔒</div>
+          <h3 style="font-size:1.1rem; font-weight:800; color:#fff; margin-bottom:8px;">KYC Verification Required</h3>
+          <p style="font-size:0.78rem; color:var(--text-secondary); line-height:1.5; margin-bottom:24px;">You need to complete KYC verification to withdraw your winnings.</p>
+          <button class="btn-primary" onclick="navigate('kyc-landing')">Complete KYC</button>
+          <a onclick="navigate('contact-us')" style="display:block; font-size:0.75rem; color:#3b82f6; font-weight:700; margin-top:16px; cursor:pointer; text-decoration:none;">LEARN MORE</a>
+        </div>
+        
+        <div class="cash-body" id="withdraw-panel-body">
+          <div class="cash-balance-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Available Balance: ₹<span id="avail-balance">2,450</span>
+          </div>
+          <div class="input-group" style="margin-bottom:16px">
+            <label>Enter Amount</label>
+            <div class="input-wrap">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <input type="number" id="withdraw-amount" placeholder="₹ Enter amount" min="100" />
+            </div>
+          </div>
+          <!-- Method Selector -->
+          <div style="display:flex; gap:8px; margin-bottom:16px;">
+            <button type="button" id="withdraw-method-upi" style="flex:1; padding:8px 12px; border-radius:6px; background:var(--accent); border:none; color:#fff; font-size:0.78rem; font-weight:700; cursor:pointer;" onclick="switchWithdrawMethod('upi')">UPI</button>
+            <button type="button" id="withdraw-method-bank" style="flex:1; padding:8px 12px; border-radius:6px; background:var(--bg-card); border:1px solid rgba(255,255,255,0.06); color:var(--text-secondary); font-size:0.78rem; font-weight:700; cursor:pointer;" onclick="switchWithdrawMethod('bank')">Bank Account</button>
+          </div>
+
+          <!-- UPI Input -->
+          <div class="input-group" id="group-withdraw-upi" style="margin-bottom:16px">
+            <label>UPI ID</label>
+            <div class="input-wrap">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+              <input type="text" id="withdraw-upi" placeholder="Enter your UPI ID (e.g. name@upi)" />
+            </div>
+          </div>
+
+          <!-- Bank Inputs (hidden by default) -->
+          <div id="group-withdraw-bank" style="display:none; margin-bottom:16px">
+            <div class="input-group" style="margin-bottom:12px">
+              <label>Bank Name</label>
+              <div class="input-wrap">
+                <input type="text" id="withdraw-bank-name" placeholder="e.g. State Bank of India" style="padding-left:12px" />
+              </div>
+            </div>
+            <div class="input-group" style="margin-bottom:12px">
+              <label>Account Number</label>
+              <div class="input-wrap">
+                <input type="text" id="withdraw-bank-acc" placeholder="Enter Account Number" style="padding-left:12px" />
+              </div>
+            </div>
+            <div class="input-group" style="margin-bottom:12px">
+              <label>IFSC Code</label>
+              <div class="input-wrap">
+                <input type="text" id="withdraw-bank-ifsc" placeholder="e.g. SBIN0001234" style="padding-left:12px" />
+              </div>
+            </div>
+            <div class="input-group" style="margin-bottom:12px">
+              <label>Account Holder Name</label>
+              <div class="input-wrap">
+                <input type="text" id="withdraw-bank-holder" placeholder="Enter Holder Name" style="padding-left:12px" />
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:20px" id="withdraw-min-hint">Minimum withdraw amount is ₹100</div>
+          <button class="btn-primary" onclick="withdrawCash()">Withdraw Now</button>
+        </div>
+      </div>
+      </div>
+      <!-- Transactions Panel -->
+      <div class="wallet-panel" id="wpanel-tx">
+        <div class="transaction-list" id="tx-list">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: MY MATCHES
+  ===================================================== -->
+  <div id="page-my-matches" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">My Matches</span>
+      <div style="width: 32px;"></div>
+    </div>
+    
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height))">
+      <!-- Tabs for Joined vs Completed -->
+      <div class="wallet-action-tabs" style="margin: 16px;">
+        <button class="wallet-tab active" id="btn-matches-joined" onclick="switchMatchesTab('joined')">Joined Tournaments</button>
+        <button class="wallet-tab" id="btn-matches-history" onclick="switchMatchesTab('history')">Match History</button>
+      </div>
+
+      <!-- Joined Tournaments Panel -->
+      <div id="matches-joined-panel" class="wallet-panel active" style="padding: 0 16px 80px;">
+        <div id="joined-tournaments-list" class="tournament-cards">
+          <!-- Dynamically filled -->
+        </div>
+      </div>
+
+      <!-- Match History Panel -->
+      <div id="matches-history-panel" class="wallet-panel" style="padding: 0 16px 80px;">
+        <div id="past-matches-list" class="tournament-cards">
+          <!-- Dynamically filled -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 10: PROFILE
+  ===================================================== -->
+  <div id="page-profile" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Profile</span>
+      <button class="icon-btn" onclick="navigate('settings')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height))">
+      <div class="profile-hero" style="position:relative; overflow:hidden; padding: 24px 16px; text-align:center;">
+        <div style="position:relative; display:inline-block; margin-bottom:12px;">
+          <div id="profile-avatar-container" onclick="document.getElementById('profile-avatar-input').click()" style="width:90px; height:90px; border-radius:50%; background:linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); border:3px solid var(--accent); box-shadow:0 8px 20px rgba(124, 58, 237, 0.4); display:flex; align-items:center; justify-content:center; cursor:pointer; overflow:hidden; position:relative;">
+            <img id="profile-avatar-img" src="" style="width:100%; height:100%; object-fit:cover; display:none;" onerror="this.style.display='none';" />
+            <span id="profile-avatar-fallback" style="font-size:2.2rem; font-weight:900; color:#fff;">N</span>
+            <div style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.6); color:#fff; font-size:0.55rem; font-weight:800; text-transform:uppercase; padding:3px 0; text-align:center;">Edit</div>
+          </div>
+          <input type="file" id="profile-avatar-input" style="display:none;" accept="image/*" onchange="window.handleProfileAvatarChange(event)" />
+        </div>
+
+        <div class="profile-name" id="profile-name" style="font-size:1.3rem; font-weight:900; color:#fff; margin-bottom:4px;">NexoraPlayer</div>
+        <div class="profile-id" id="profile-user-id" style="font-size:0.75rem; color:rgba(255,255,255,0.4); font-family:monospace; margin-bottom:12px;">ID: NKAJ890</div>
+
+        <!-- Live Rank Badge -->
+        <div id="profile-rank-badge" style="display:inline-flex; align-items:center; gap:6px; background:rgba(234,179,8,0.12); border:1px solid rgba(234,179,8,0.25); border-radius:20px; padding:4px 12px; font-size:0.7rem; font-weight:800; color:#eab308; text-transform:uppercase; letter-spacing:0.5px;">
+          👑 Live Rank: <span id="profile-live-rank" style="font-weight:900; color:#fff;">#--</span>
+        </div>
+      </div>
+
+      <div class="profile-stats">
+        <div class="pstat">
+          <div class="pstat-val" id="profile-stat-tournaments">45</div>
+          <div class="pstat-label">Tournaments</div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-val" id="profile-stat-wins">23</div>
+          <div class="pstat-label">Wins</div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-val" id="profile-stat-winrate">51.1%</div>
+          <div class="pstat-label">Win Rate</div>
+        </div>
+      </div>
+
+      <!-- Personal Details Card -->
+      <div style="margin: 0 16px 16px; background:linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.025) 100%); border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:16px;">
+        <div style="font-size:0.72rem; font-weight:900; color:rgba(255,255,255,0.35); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.04); padding-bottom:8px; text-align:left;">Personal Details</div>
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:0.8rem; text-align:left;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:rgba(255,255,255,0.4);">Email</span>
+            <span style="color:#fff; font-weight:700;" id="profile-email-val">-</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:rgba(255,255,255,0.4);">Mobile Number</span>
+            <span style="color:#fff; font-weight:700;" id="profile-phone-val">-</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:rgba(255,255,255,0.4);">Joined On</span>
+            <span style="color:#fff; font-weight:700;" id="profile-joined-val">-</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:rgba(255,255,255,0.4);">KYC Verification</span>
+            <span id="profile-kyc-status-badge" style="font-size:0.6rem; font-weight:900; padding:2px 8px; border-radius:10px; text-transform:uppercase;">Unverified</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-menu">
+        <div class="menu-item" onclick="navigate('my-matches'); switchMatchesTab('joined');">
+          <div class="menu-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
+          <span class="menu-label">My Tournaments</span>
+          <svg class="menu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+        </div>
+        <div class="menu-item" onclick="navigate('my-matches'); switchMatchesTab('history');">
+          <div class="menu-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M17 7V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2"/><circle cx="12" cy="12" r="1"/></svg></div>
+          <span class="menu-label">Match History</span>
+          <svg class="menu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+        </div>
+        <div class="menu-item" onclick="navigate('wallet')">
+          <div class="menu-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+          <span class="menu-label">Wallet</span>
+          <svg class="menu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+        </div>
+        <div class="menu-item" onclick="navigate('referral')">
+          <div class="menu-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <span class="menu-label">Refer &amp; Earn</span>
+          <svg class="menu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+        </div>
+        <div class="menu-item" onclick="navigate('support')">
+          <div class="menu-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <span class="menu-label">Support</span>
+          <svg class="menu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+        </div>
+        <div class="menu-item" onclick="navigate('commission')">
+          <div class="menu-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <span class="menu-label">Commission Info</span>
+          <svg class="menu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+        </div>
+        <div class="menu-item" onclick="navigate('settings')">
+          <div class="menu-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06A2 2 0 0 1 4.29 17l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 0 1 7.04 4.3l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06A2 2 0 0 1 19.7 7.05l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+          <span class="menu-label">Settings</span>
+          <svg class="menu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+        </div>
+        <div class="menu-item danger" onclick="doLogout()">
+          <div class="menu-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></div>
+          <span class="menu-label">Logout</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 11: ADD CASH (standalone)
+  ===================================================== -->
+  <!-- Embedded in Wallet — also accessible as standalone -->
+
+  <!-- =====================================================
+       SCREEN 12: COMMISSION INFO
+  ===================================================== -->
+  <div id="page-commission" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Commission Info</span>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height))">
+      <div class="commission-body">
+        <div class="commission-hero">
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Our Platform Commission</div>
+          <div class="commission-pct">15%</div>
+          <div class="commission-sub">of every paid entry</div>
+        </div>
+        <div style="font-size:1rem;font-weight:700;margin-bottom:14px">How It Works?</div>
+        <div class="commission-points">
+          <div class="commission-point">
+            <div class="cp-bullet"></div>
+            <div class="cp-text">15% commission on every paid tournament entry fee is collected by the platform.</div>
+          </div>
+          <div class="commission-point">
+            <div class="cp-bullet"></div>
+            <div class="cp-text">Used for platform maintenance, security, server costs, and 24/7 customer support.</div>
+          </div>
+          <div class="commission-point">
+            <div class="cp-bullet"></div>
+            <div class="cp-text">Ensures a fair & smooth experience for all users with anti-cheat systems.</div>
+          </div>
+          <div class="commission-point">
+            <div class="cp-bullet"></div>
+            <div class="cp-text">No hidden charges. 100% transparent commission structure with no surprise deductions.</div>
+          </div>
+          <div class="commission-point">
+            <div class="cp-bullet"></div>
+            <div class="cp-text">Remaining 85% goes directly to the prize pool distributed among winners.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 13: REFERRAL & EARN
+  ===================================================== -->
+  <div id="page-referral" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Refer &amp; Earn</span>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height))">
+      <div class="referral-hero">
+        <img src="assets/tournament_hero.jpg" alt="Referral" />
+        <div class="referral-hero-overlay">
+          <div class="referral-hero-title">Invite Friends<br>Earn Rewards</div>
+          <div class="referral-hero-sub">Share your code and earn ₹20 per referral</div>
+        </div>
+      </div>
+      <div class="referral-body">
+        <div class="referral-code-card">
+          <div class="referral-code-label">Your Referral Code</div>
+          <div class="referral-code" onclick="copyReferralCode()">
+            NEXORA123
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+          <div class="referral-code-hint">Tap to copy</div>
+        </div>
+        <div class="referral-earn-cards">
+          <div class="ref-earn-card">
+            <div class="ref-earn-label">You Earn</div>
+            <div class="ref-earn-amount">₹20</div>
+            <div class="ref-earn-sub">Per Referral</div>
+          </div>
+          <div class="ref-earn-card">
+            <div class="ref-earn-label">Your Friend Gets</div>
+            <div class="ref-earn-amount">₹20</div>
+            <div class="ref-earn-sub">Bonus Cash</div>
+          </div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:16px;margin-bottom:20px">
+          <div style="font-size:0.9rem;font-weight:700;margin-bottom:12px">How it works?</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--text-muted)">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--accent-subtle);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent-bright);font-size:0.8rem;flex-shrink:0">1</div>
+              Share your referral code with friends
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--text-muted)">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--accent-subtle);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent-bright);font-size:0.8rem;flex-shrink:0">2</div>
+              Friend signs up using your code
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--text-muted)">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--accent-subtle);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent-bright);font-size:0.8rem;flex-shrink:0">3</div>
+              Both of you get ₹20 in your wallets
+            </div>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="shareReferral()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;margin-right:8px"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Invite Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN 14: SUPPORT
+  ===================================================== -->
+  <div id="page-support" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Support</span>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height))">
+      <div class="support-body">
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:16px">How can we help you?</div>
+        <div class="support-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search for help..." id="support-search-input" oninput="searchHelp(this.value)" />
+        </div>
+        <div style="font-size:0.9rem;font-weight:700;margin-bottom:12px">Quick Help</div>
+        <div class="quick-help-list" id="quick-help-list">
+          <div class="qh-item">
+            How to Join Tournament
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+          </div>
+          <div class="qh-item">
+            How to Add Cash
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+          </div>
+          <div class="qh-item">
+            How to Withdraw
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+          </div>
+          <div class="qh-item">
+            Rules &amp; Guidelines
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+          </div>
+          <div class="qh-item">
+            Report an Issue
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+          </div>
+          <div class="qh-item">
+            Fair Play Policy
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+          </div>
+          <div class="qh-item">
+            Prize Distribution
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+          </div>
+        </div>
+        <div style="background:linear-gradient(135deg,#1a0a3c,#2d1060);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;text-align:center;margin-bottom:16px">
+          <div style="font-size:1.5rem;margin-bottom:8px">🎮</div>
+          <div style="font-size:0.9rem;font-weight:700;margin-bottom:4px">24/7 Live Support</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:16px">Our team is always here to help you</div>
+          <button class="btn-primary" onclick="navigate('contact-us')">Contact Us</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: CONTACT US
+  ===================================================== -->
+  <div id="page-contact-us" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Contact Us</span>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height)); padding: 20px 16px; box-sizing: border-box;">
+      
+      <!-- Contact Info Cards -->
+      <div style="font-size:1.15rem; font-weight:800; color:#fff; margin-bottom:6px;">Need Help? We are here for you!</div>
+      <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.4;">If you have any issue, feel free to contact our support team.</p>
+      
+      <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;">
+        <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:16px; display:flex; align-items:center; gap:16px;">
+          <div style="width:40px; height:40px; border-radius:50%; background:rgba(124,58,237,0.1); color:var(--accent-bright); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">✉️</div>
+          <div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Email</div>
+            <div style="font-size:0.9rem; font-weight:700; color:#fff; margin-top:2px;" id="u-supp-email">support@nexoraarena.com</div>
+          </div>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:16px; display:flex; align-items:center; gap:16px;">
+          <div style="width:40px; height:40px; border-radius:50%; background:rgba(124,58,237,0.1); color:var(--accent-bright); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">📞</div>
+          <div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Phone</div>
+            <div style="font-size:0.9rem; font-weight:700; color:#fff; margin-top:2px;" id="u-supp-phone">+91 98765 43210</div>
+          </div>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:16px; display:flex; align-items:center; gap:16px;">
+          <div style="width:40px; height:40px; border-radius:50%; background:rgba(124,58,237,0.1); color:var(--accent-bright); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">🌐</div>
+          <div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Website</div>
+            <div style="font-size:0.9rem; font-weight:700; color:#fff; margin-top:2px;" id="u-supp-website">https://nexoraarena.com</div>
+          </div>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:16px; display:flex; align-items:center; gap:16px;">
+          <div style="width:40px; height:40px; border-radius:50%; background:rgba(124,58,237,0.1); color:var(--accent-bright); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">🕒</div>
+          <div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Working Hours</div>
+            <div style="font-size:0.9rem; font-weight:700; color:#fff; margin-top:2px;" id="u-supp-hours">Mon - Sat (10:00 AM - 8:00 PM)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manual Payment Dispute & Verify Container -->
+      <div id="support-manual-payment-container" style="margin-bottom:24px;"></div>
+
+      <button class="btn-primary" onclick="navigate('ticket-create')" style="margin-bottom:30px;">Create Ticket</button>
+
+      <!-- User's Existing Support Tickets -->
+      <div style="font-size:0.95rem; font-weight:800; color:#fff; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+        <span>My Support Tickets</span>
+        <span style="font-size:0.75rem; color:var(--text-muted); font-weight:500;" id="u-tickets-count">0 tickets</span>
+      </div>
+      <div id="user-tickets-list" style="display:flex; flex-direction:column; gap:12px;">
+        <!-- Dynamically loaded tickets -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: CREATE SUPPORT TICKET
+  ===================================================== -->
+  <div id="page-ticket-create" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Create Ticket</span>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height)); padding: 20px 16px; box-sizing: border-box;">
+      
+      <!-- Category Selection -->
+      <div class="input-group" style="margin-bottom:16px;">
+        <label>Issue Category</label>
+        <div class="input-wrap" style="height:46px;">
+          <select id="tk-create-category" style="background:transparent; border:none; color:#fff; width:100%; height:100%; padding-left:12px; outline:none; cursor:pointer; font-weight:600;">
+            <option value="Payment Issue" style="background:#13131f">Payment Issue</option>
+            <option value="Deposit Issue" style="background:#13131f">Deposit Issue</option>
+            <option value="Tournament Issue" style="background:#13131f">Tournament Issue</option>
+            <option value="Withdraw Issue" style="background:#13131f">Withdraw Issue</option>
+            <option value="Account Issue" style="background:#13131f">Account Issue</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Subject -->
+      <div class="input-group" style="margin-bottom:16px;">
+        <label>Subject</label>
+        <div class="input-wrap">
+          <input type="text" id="tk-create-subject" placeholder="Summary of the issue..." style="padding-left:12px;" />
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="input-group" style="margin-bottom:16px;">
+        <label>Description</label>
+        <div class="input-wrap" style="height:120px; padding:8px 0;">
+          <textarea id="tk-create-description" placeholder="Explain the problem in detail..." style="background:transparent; border:none; color:#fff; width:100%; height:100%; padding:4px 12px; outline:none; resize:none; font-family:inherit; font-size:0.9rem; line-height:1.4; box-sizing:border-box;"></textarea>
+        </div>
+      </div>
+
+      <!-- Contact Preference -->
+      <div class="input-group" style="margin-bottom:20px;">
+        <label>Preferred Contact Method</label>
+        <div style="display:flex; gap:16px; margin-top:8px;">
+          <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; color:#fff; cursor:pointer;">
+            <input type="radio" name="tk-create-pref" value="Email" checked style="accent-color:var(--accent);" /> Email
+          </label>
+          <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; color:#fff; cursor:pointer;">
+            <input type="radio" name="tk-create-pref" value="Phone" style="accent-color:var(--accent);" /> Phone
+          </label>
+          <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; color:#fff; cursor:pointer;">
+            <input type="radio" name="tk-create-pref" value="App Notification" style="accent-color:var(--accent);" /> App Notification
+          </label>
+        </div>
+      </div>
+
+      <!-- File Attachment Upload UI -->
+      <div class="input-group" style="margin-bottom:24px;">
+        <label>Proof Files (Images, PDFs, Docs)</label>
+        <div style="border:2px dashed var(--border); background:rgba(124,58,237,0.03); border-radius:var(--radius-lg); padding:24px 16px; text-align:center; cursor:pointer; margin-top:6px; transition:0.3s;" onclick="document.getElementById('tk-user-files').click()">
+          <span style="font-size:1.8rem; display:block; margin-bottom:8px;">📤</span>
+          <span style="font-size:0.85rem; font-weight:700; color:#fff; display:block;">Tap to Upload</span>
+          <span style="font-size:0.7rem; color:var(--text-muted); margin-top:4px; display:block;">Images, PDFs, or Docs. Max file size: 5MB</span>
+          <input type="file" id="tk-user-files" multiple style="display:none;" onchange="handleUserFilesSelect(event)" />
+        </div>
+        <!-- Selected Files List -->
+        <div id="tk-selected-files-list" style="margin-top:12px; display:flex; flex-direction:column; gap:8px;"></div>
+      </div>
+
+      <button class="btn-primary" onclick="submitSupportTicket()">Submit Ticket</button>
+
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: TICKET SUCCESS
+  ===================================================== -->
+  <div id="page-ticket-success" class="page">
+    <div class="scroll-body" style="padding:40px 24px; text-align:center; max-height:100vh; box-sizing:border-box;">
+      <div style="margin-top:50px; margin-bottom:24px; display:flex; justify-content:center;">
+        <div style="width:80px; height:80px; background:rgba(16, 185, 129, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2.5rem; color:var(--success); animation:scaleIn 0.5s ease-out;">✔️</div>
+      </div>
+      <h2 style="font-size:1.5rem; font-weight:800; color:#fff; margin-bottom:12px;">Ticket Created Successfully!</h2>
+      <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5; margin-bottom:30px;">Your ticket has been submitted. Support team will get back to you soon.<br>Your Ticket ID is:</p>
+      
+      <div style="font-size:1.4rem; font-weight:900; font-family:monospace; color:var(--accent-bright); background:var(--bg-card); border:1px solid var(--border-light); padding:12px 24px; border-radius:8px; display:inline-block; margin-bottom:40px; letter-spacing:1px;" id="tk-success-id">NX-2026-0001</div>
+
+      <button class="btn-primary" id="tk-btn-view" style="margin-bottom:12px;">View Ticket</button>
+      <button class="btn btn-outline" onclick="navigate('home')" style="border-color:var(--border-light); color:#fff;">Back to Home</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: TICKET DETAILS & CONVERSATION
+  ===================================================== -->
+  <div id="page-ticket-details" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title" id="tk-dt-id-title">Ticket details</span>
+    </div>
+    
+    <div style="display:flex; flex-direction:column; height:calc(100vh - var(--header-height));">
+      
+      <!-- Top info bar -->
+      <div style="background:var(--bg-card); border-bottom:1px solid var(--border-light); padding:12px 16px; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <div style="font-size:0.9rem; font-weight:800; color:#fff;" id="tk-dt-category">Payment Issue</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;" id="tk-dt-subject">Cashback not received</div>
+        </div>
+        <span class="badge" id="tk-dt-status-badge" style="padding:4px 10px; font-size:0.7rem; border-radius:4px; font-weight:700;">OPEN</span>
+      </div>
+
+      <!-- Chat messages log -->
+      <div style="flex:1; overflow-y:auto; padding:16px;" id="tk-dt-chat-box"></div>
+
+      <!-- Footer reply panel -->
+      <div style="background:var(--bg-surface); border-top:1px solid var(--border-light); padding:12px; box-sizing:border-box;">
+        <div style="display:flex; gap:10px; align-items:center;">
+          <!-- Hidden file input for chat attachment -->
+          <button class="icon-btn" onclick="document.getElementById('tk-dt-reply-files').click()" style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:8px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+          </button>
+          <input type="file" id="tk-dt-reply-files" multiple style="display:none;" onchange="handleChatReplyFilesSelect(event)" />
+          
+          <input type="text" id="tk-dt-reply-input" placeholder="Type a message..." style="flex:1; height:44px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:8px; color:#fff; padding-left:14px; outline:none; font-size:0.9rem;" />
+          
+          <button class="icon-btn" onclick="submitUserTicketReply()" style="background:var(--accent); color:#fff; border-radius:8px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polyline points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+        <!-- Reply Selected Attachments Preview -->
+        <div id="tk-dt-reply-attachments-preview" style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;"></div>
+      </div>
+
+    </div>
+    <input type="hidden" id="tk-dt-hidden-id" />
+  </div>
+
+  <!-- =====================================================
+       BOTTOM NAVIGATION
+  ===================================================== -->
+  <nav class="bottom-nav" id="bottom-nav" style="display:none">
+    <button class="nav-item active" id="nav-home" onclick="navigate('home')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+      <span>Home</span>
+    </button>
+    <button class="nav-item" id="nav-tournaments" onclick="navigate('tournaments')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      <span>Tournaments</span>
+    </button>
+    <button class="nav-item nav-item-play" id="nav-games" onclick="navigate('games')">
+      <div class="play-btn-glow">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20V4L15 16V4H20V20L9 8V20H4Z" fill="url(#paint0_linear_logo)"/>
+          <defs>
+            <linearGradient id="paint0_linear_logo" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#dbeafe"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <span style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.5px;">Play</span>
+    </button>
+    <button class="nav-item" id="nav-predictions" onclick="navigate('predictions')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span>Predict</span>
+    </button>
+    <button class="nav-item" id="nav-wallet" onclick="navigate('wallet')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg>
+      <span>Wallet</span>
+    </button>
+    <button class="nav-item" id="nav-profile" onclick="navigate('profile')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+  <!-- =====================================================
+       SCREEN: WITHDRAWAL PROCESSING
+  ===================================================== -->
+  <div id="page-withdraw-processing" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="navigate('wallet')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Withdrawal Processing</span>
+    </div>
+    <div class="scroll-body" style="padding: 24px; text-align: center; max-height:calc(100vh - var(--header-height)); box-sizing: border-box;">
+      <div style="margin-top: 40px; margin-bottom: 24px; display: flex; justify-content: center;">
+        <div style="width: 80px; height: 80px; background: rgba(124, 58, 237, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; animation: pulse 2s infinite;">⏳</div>
+      </div>
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 12px;">Request Submitted!</h2>
+      <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 24px;">Your withdrawal request of <b style="color:#fff" id="wp-amount-text">₹1,000.00</b> is being processed.</p>
+      
+      <div class="match-info-card" style="margin-bottom: 24px; text-align: left;">
+        <div class="match-info-row">
+          <span class="match-label">Amount</span>
+          <span class="match-value" style="color:var(--accent-bright); font-weight:700;" id="wp-amount-badge">₹1,000.00</span>
+        </div>
+        <div class="match-info-row">
+          <span class="match-label">Status</span>
+          <span class="match-value"><span class="badge pending" style="background:#f59e0b; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem;">Processing</span></span>
+        </div>
+      </div>
+
+      <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 8px; padding: 12px 16px; font-size: 0.8rem; color: #f59e0b; display: flex; gap: 8px; align-items: center; text-align: left; margin-bottom: 30px; line-height: 1.4;">
+        <span>⚠️</span>
+        <span>Amount has been deducted from your wallet. You will be notified once payment is sent.</span>
+      </div>
+
+      <button class="btn-primary" onclick="navigate('wallet')">Back to Wallet</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: WITHDRAWAL SUCCESSFUL
+  ===================================================== -->
+  <div id="page-withdraw-success" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="navigate('wallet')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Withdrawal Successful</span>
+    </div>
+    <div class="scroll-body" style="padding: 24px; text-align: center; max-height:calc(100vh - var(--header-height)); box-sizing: border-box;">
+      <div style="margin-top: 40px; margin-bottom: 24px; display: flex; justify-content: center;">
+        <div style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--success); animation: scaleIn 0.5s ease-out;">✅</div>
+      </div>
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 12px;">Payment Successful!</h2>
+      <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 24px;">Your withdrawal request of <b style="color:#fff" id="ws-amount-text">₹1,000.00</b> has been approved and payment is sent.</p>
+      
+      <div class="match-info-card" style="margin-bottom: 30px; text-align: left;">
+        <div class="match-info-row">
+          <span class="match-label">Amount</span>
+          <span class="match-value" style="color:var(--success); font-weight:700;" id="ws-amount-badge">₹1,000.00</span>
+        </div>
+        <div class="match-info-row">
+          <span class="match-label">Method</span>
+          <span class="match-value" id="ws-method-badge">UPI</span>
+        </div>
+        <div class="match-info-row">
+          <span class="match-label">Date & Time</span>
+          <span class="match-value" id="ws-time-badge">12 Jun 2024, 09:45 PM</span>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="navigate('wallet')">Back to Wallet</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: SETTINGS
+  ===================================================== -->
+  <div id="page-settings" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title" id="sett-title">Settings</span>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height)); padding: 20px 16px; box-sizing: border-box;">
+      
+      <!-- Theme Selection -->
+      <div style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px;" id="sett-sec-appearance">Appearance</div>
+      <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:16px; display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
+        <div>
+          <div style="font-size:0.95rem; font-weight:700; color:#fff;" id="sett-darkmode-label">Dark Mode</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;" id="sett-darkmode-sub">Enable dark theme for the app</div>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="sett-darkmode-toggle" onchange="toggleDarkMode(this.checked)" />
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <!-- Language Selection -->
+      <div style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px;" id="sett-sec-preferences">Preferences</div>
+      <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:16px; margin-bottom:24px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+          <div>
+            <div style="font-size:0.95rem; font-weight:700; color:#fff;" id="sett-lang-label">App Language</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;" id="sett-lang-sub">Select your preferred language</div>
+          </div>
+        </div>
+        <div class="input-wrap" style="height:44px;">
+          <select id="sett-lang-select" onchange="changeLanguage(this.value)" style="background:transparent; border:none; color:#fff; width:100%; height:100%; padding-left:12px; outline:none; cursor:pointer; font-weight:600;">
+            <option value="en" style="background:#13131f">English</option>
+            <option value="hi" style="background:#13131f">Hindi (हिन्दी)</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: KYC LANDING PAGE
+  ===================================================== -->
+  <div id="page-kyc-landing" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">KYC Verification</span>
+    </div>
+    <div class="scroll-body" style="padding: 24px; text-align: center; max-height:calc(100vh - var(--header-height)); box-sizing: border-box;">
+      <div style="margin-top: 30px; margin-bottom: 20px; display: flex; justify-content: center;">
+        <div style="width: 76px; height: 76px; background: rgba(124, 58, 237, 0.1); border: 1.5px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem;">🛡️</div>
+      </div>
+      <h2 style="font-size: 1.35rem; font-weight: 800; color: #fff; margin-bottom: 8px;">Complete KYC to Secure Your Account</h2>
+      <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; margin-bottom: 30px;">As per government regulations, KYC is mandatory to withdraw your winnings.</p>
+      
+      <!-- Key points -->
+      <div style="text-align: left; margin-bottom: 40px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <span style="font-size: 1.2rem; background: rgba(16, 185, 129, 0.1); padding: 6px; border-radius: 8px;">🛡️</span>
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; color: #fff; margin: 0 0 2px;">Secure & Safe</h4>
+            <p style="font-size: 0.72rem; color: var(--text-muted); margin: 0;">Your data is 100% secure with us.</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <span style="font-size: 1.2rem; background: rgba(59, 130, 246, 0.1); padding: 6px; border-radius: 8px;">⚡</span>
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; color: #fff; margin: 0 0 2px;">Quick Verification</h4>
+            <p style="font-size: 0.72rem; color: var(--text-muted); margin: 0;">Verification usually takes 24-48 hours.</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <span style="font-size: 1.2rem; background: rgba(245, 158, 11, 0.1); padding: 6px; border-radius: 8px;">💳</span>
+          <div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; color: #fff; margin: 0 0 2px;">Withdraw Anytime</h4>
+            <p style="font-size: 0.72rem; color: var(--text-muted); margin: 0;">Withdraw your winnings after KYC approval.</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="navigate('kyc-step1')">Start KYC</button>
+      <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 12px;">It will only take 2-3 minutes</div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: KYC STEP 1 - PERSONAL DETAILS
+  ===================================================== -->
+  <div id="page-kyc-step1" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Personal Details</span>
+    </div>
+    <div class="scroll-body" style="padding: 24px; max-height:calc(100vh - var(--header-height)); box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="font-size: 0.72rem; font-weight: 800; color: var(--accent-bright); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;">Step 1 of 4</div>
+        
+        <!-- Input fields -->
+        <div class="input-group" style="margin-bottom: 16px;">
+          <label>Full Name (As per PAN)</label>
+          <div class="input-wrap">
+            <input type="text" id="kyc-fullname" placeholder="Enter full name" style="padding-left:12px" />
+          </div>
+        </div>
+        
+        <div class="input-group" style="margin-bottom: 16px;">
+          <label>Date of Birth</label>
+          <div class="input-wrap">
+            <input type="date" id="kyc-dob" style="padding-left:12px; color-scheme: dark;" />
+          </div>
+        </div>
+
+        <div class="input-group" style="margin-bottom: 16px;">
+          <label>Gender</label>
+          <div style="display:flex; gap:8px;">
+            <button type="button" id="kyc-gender-male" class="quick-amt" style="flex:1; border-radius:6px; margin:0;" onclick="selectKycGender('Male')">Male</button>
+            <button type="button" id="kyc-gender-female" class="quick-amt" style="flex:1; border-radius:6px; margin:0;" onclick="selectKycGender('Female')">Female</button>
+            <button type="button" id="kyc-gender-other" class="quick-amt" style="flex:1; border-radius:6px; margin:0;" onclick="selectKycGender('Other')">Other</button>
+          </div>
+        </div>
+
+        <div class="input-group" style="margin-bottom: 16px;">
+          <label>Mobile Number</label>
+          <div class="input-wrap">
+            <span style="color:var(--text-muted); font-size:0.85rem; font-weight:700; margin-left:12px;">+91</span>
+            <input type="number" id="kyc-phone" placeholder="Enter mobile number" style="padding-left:8px" />
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" style="margin-top:20px;" onclick="validateKycStep1()">Continue</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: KYC STEP 2 - PAN CARD UPLOAD
+  ===================================================== -->
+  <div id="page-kyc-step2" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">PAN Card</span>
+    </div>
+    <div class="scroll-body" style="padding: 24px; max-height:calc(100vh - var(--header-height)); box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="font-size: 0.72rem; font-weight: 800; color: var(--accent-bright); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Step 2 of 4</div>
+        <h3 style="font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 4px;">Upload clear image of your PAN Card</h3>
+        <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 24px;">Ensure the name, photo, and details are readable.</p>
+
+        <!-- Mock PAN Upload Box -->
+        <div onclick="triggerPanUpload()" style="height: 160px; border: 1.5px dashed var(--border-light); border-radius: 12px; background: var(--bg-card); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; overflow: hidden; position: relative;">
+          <input type="file" id="kyc-pan-file" accept="image/*,application/pdf" style="display: none;" onchange="handlePanUploaded(this)" />
+          <div id="pan-placeholder" style="text-align: center; padding: 20px;">
+            <span style="font-size: 2rem;">📤</span>
+            <div style="font-size: 0.78rem; font-weight: 800; color: #fff; margin-top: 6px;">Upload PAN Card Image</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">JPG, PNG or PDF (Max 5MB)</div>
+          </div>
+          <img id="pan-preview" style="display: none; width: 100%; height: 100%; object-fit: contain;" />
+        </div>
+      </div>
+
+      <button class="btn-primary" style="margin-top:20px;" onclick="validateKycStep2()">Continue</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: KYC STEP 3 - SELFIE UPLOAD
+  ===================================================== -->
+  <div id="page-kyc-step3" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Selfie Verification</span>
+    </div>
+    <div class="scroll-body" style="padding: 24px; max-height:calc(100vh - var(--header-height)); box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="font-size: 0.72rem; font-weight: 800; color: var(--accent-bright); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Step 3 of 4</div>
+        <h3 style="font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 4px;">Click your clear selfie</h3>
+        <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 24px;">Make sure your face is clearly visible inside the frame.</p>
+
+        <!-- Round Camera Circle simulation -->
+        <div style="display:flex; justify-content:center; margin-bottom:24px;">
+          <div onclick="triggerSelfieUpload()" style="width: 170px; height: 170px; border-radius: 50%; border: 3px solid var(--accent); overflow: hidden; background: #1a1a2e; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; position: relative;">
+            <input type="file" id="kyc-selfie-file" accept="image/*" style="display: none;" onchange="handleSelfieUploaded(this)" />
+            <div id="selfie-placeholder" style="text-align: center;">
+              <span style="font-size: 1.8rem;">📸</span>
+              <div style="font-size: 0.7rem; font-weight: 800; color: #fff; margin-top: 4px;">Take Selfie</div>
+            </div>
+            <img id="selfie-preview" style="display: none; width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" style="margin-top:20px;" onclick="submitKycVerification()">Continue</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: KYC STEP 4 - SUBMITTED SUCCESS
+  ===================================================== -->
+  <div id="page-kyc-submitted" class="page">
+    <div class="scroll-body" style="padding: 24px; text-align: center; max-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+      <div style="margin-top: 60px;">
+        <div style="display: flex; justify-content: center; margin-bottom: 24px;">
+          <div style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">✅</div>
+        </div>
+        <h2 style="font-size: 1.35rem; font-weight: 800; color: #fff; margin-bottom: 12px;">KYC Submitted Successfully!</h2>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 30px;">Your verification is under review. You will be notified once it's approved.</p>
+        
+        <!-- Checklist next steps -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 12px; padding: 20px; text-align: left; box-sizing: border-box;">
+          <h4 style="font-size: 0.85rem; font-weight: 800; color: #fff; margin: 0 0 16px;">What happens next?</h4>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; gap: 8px; align-items: center; font-size: 0.75rem; color: var(--text-secondary);">
+              <span style="color:var(--success)">✔</span> Our team will verify your documents.
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center; font-size: 0.75rem; color: var(--text-secondary);">
+              <span style="color:var(--success)">✔</span> You will get a notification.
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center; font-size: 0.75rem; color: var(--text-secondary);">
+              <span style="color:var(--success)">✔</span> After approval, you can withdraw your winnings.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" style="margin-bottom: 20px;" onclick="navigate('home')">Go to Home</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: NOTIFICATIONS
+  ===================================================== -->
+  <div id="page-notifications" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Notifications</span>
+      <button class="btn btn-outline btn-sm" onclick="deleteAllNotifications()" style="width:auto; font-size:0.75rem; padding:4px 10px; border-radius:4px; border:1px solid var(--accent); color:#fff; background:transparent;">Clear All</button>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height))">
+      <div class="notifications-list" id="user-notifications-list" style="padding: 16px;">
+        <!-- Loaded dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: LEADERBOARD / RANKINGS
+  ===================================================== -->
+  <div id="page-leaderboard" class="page">
+    <div class="sub-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <span class="sub-header-title">Leaderboard</span>
+      <div class="icon-btn" onclick="renderLeaderboard()">
+        <span>🔄</span>
+      </div>
+    </div>
+    <div class="scroll-body" style="max-height:calc(100vh - var(--header-height))">
+      
+      <!-- Top 3 Podium (Mockup Design) -->
+      <div class="podium-container" style="display:flex; justify-content:center; align-items:flex-end; gap:20px; padding:30px 16px 20px; background:linear-gradient(to bottom, #1d1b4c 0%, #0c0c18 100%); margin-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.05); position:relative;">
+        
+        <!-- 2nd Place -->
+        <div id="podium-2" style="display:flex; flex-direction:column; align-items:center; width:80px;">
+          <div style="width:55px; height:55px; border-radius:50%; border:2px solid #94a3b8; overflow:hidden; background:#1e1e30; display:flex; align-items:center; justify-content:center; position:relative; margin-bottom:8px;">
+            <img src="assets/valorant_thumb.jpg" style="width:100%; height:100%; object-fit:cover;" />
+            <div style="position:absolute; bottom:-4px; background:#94a3b8; color:#000; border-radius:50%; width:16px; height:16px; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:900;">2</div>
+          </div>
+          <span class="podium-name" style="font-size:0.75rem; font-weight:800; color:#fff; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%;">Player_2</span>
+          <span class="podium-wins" style="font-size:0.65rem; color:#94a3b8; font-weight:700;">68 Wins</span>
+        </div>
+
+        <!-- 1st Place -->
+        <div id="podium-1" style="display:flex; flex-direction:column; align-items:center; width:95px; transform:translateY(-10px); position:relative;">
+          <div style="position:absolute; top:-18px; font-size:1.2rem; z-index:5;">👑</div>
+          <div style="width:70px; height:70px; border-radius:50%; border:3.5px solid #eab308; overflow:hidden; background:#1e1e30; display:flex; align-items:center; justify-content:center; position:relative; margin-bottom:8px; box-shadow:0 0 15px rgba(234,179,8,0.3);">
+            <img src="assets/valorant_thumb.jpg" style="width:100%; height:100%; object-fit:cover;" />
+            <div style="position:absolute; bottom:-4px; background:#eab308; color:#000; border-radius:50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:900;">1</div>
+          </div>
+          <span class="podium-name" style="font-size:0.85rem; font-weight:900; color:#fff; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%;">Player_1</span>
+          <span class="podium-wins" style="font-size:0.7rem; color:#eab308; font-weight:800;">82 Wins</span>
+        </div>
+
+        <!-- 3rd Place -->
+        <div id="podium-3" style="display:flex; flex-direction:column; align-items:center; width:80px;">
+          <div style="width:50px; height:50px; border-radius:50%; border:2px solid #b45309; overflow:hidden; background:#1e1e30; display:flex; align-items:center; justify-content:center; position:relative; margin-bottom:8px;">
+            <img src="assets/valorant_thumb.jpg" style="width:100%; height:100%; object-fit:cover;" />
+            <div style="position:absolute; bottom:-4px; background:#b45309; color:#fff; border-radius:50%; width:16px; height:16px; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:900;">3</div>
+          </div>
+          <span class="podium-name" style="font-size:0.75rem; font-weight:800; color:#fff; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%;">Player_3</span>
+          <span class="podium-wins" style="font-size:0.65rem; color:#b45309; font-weight:700;">59 Wins</span>
+        </div>
+        
+      </div>
+
+      <!-- Rankings Table List -->
+      <div style="padding: 0 16px 20px;">
+        <div style="font-size:0.8rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Top Ranked Players</div>
+        <div id="leaderboard-list-container" style="display:flex; flex-direction:column; gap:8px;">
+          <!-- Loaded dynamically by JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: PREDICTIONS
+  ===================================================== -->
+  <div id="page-predictions" class="page">
+    <div class="top-bar" style="background:#0b0b16; border-bottom:1px solid rgba(255,255,255,0.05); padding:10px 16px; display:flex; justify-content:space-between; align-items:center; height:60px; box-sizing:border-box;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="icon-btn" onclick="navigate('profile')" style="background:none; border:none; color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <span class="brand-name" style="font-family:var(--font-heading); font-size:1.15rem; font-weight:800; letter-spacing:1px; color:#fff;">NEX<span style="color:#3b82f6;">O</span>RA <span style="font-size:0.75rem; font-weight:600; color:var(--text-muted); opacity:0.6;">PREDICT</span></span>
+      </div>
+      <div class="top-bar-right" style="display:flex; align-items:center; gap:12px;">
+        <div class="wallet-badge" onclick="navigate('wallet')" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:30px; padding:6px 12px; display:flex; align-items:center; gap:8px; cursor:pointer;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg>
+          <span style="font-size:0.8rem; font-weight:800; color:#fff;" class="wallet-val">₹2,450</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-tabs-bar" style="margin-bottom:12px; padding:0 16px; margin-top:8px;" id="pred-sub-tabs">
+      <button class="ftab active" onclick="switchPredictionsSubTab('matches', this)">Matches</button>
+      <button class="ftab" onclick="switchPredictionsSubTab('points', this)">My Predictions</button>
+      <button class="ftab" onclick="switchPredictionsSubTab('leaderboard', this)">Leaderboard</button>
+      <button class="ftab" onclick="switchPredictionsSubTab('rewards', this)">Rewards</button>
+    </div>
+
+    <div class="scroll-body" style="height: calc(100vh - var(--header-height) - var(--nav-height) - 52px); padding-bottom: 24px;">
+      
+      <!-- SUBVIEW: MATCHES -->
+      <div id="pred-subview-matches" class="pred-subview">
+        <!-- Dynamic Hero Banner loaded from Admin Panel Settings -->
+        <div id="predictions-hero-banner-container"></div>
+
+        <!-- Styled scrolling categories filter bar -->
+        <div style="display:flex; gap:8px; overflow-x:auto; padding:8px 16px 14px; margin-bottom:4px; scrollbar-width:none; -ms-overflow-style:none;">
+          <style>
+            .cat-pill {
+              background:#161625; border:1px solid rgba(255,255,255,0.04); border-radius:30px; padding:8px 16px; color:rgba(255,255,255,0.7); font-size:0.75rem; font-weight:700; cursor:pointer; white-space:nowrap; transition:all 0.2s ease; display:flex; align-items:center; gap:6px;
+            }
+            .cat-pill.active {
+              background:rgba(22,163,74,0.12); border-color:#16a34a; color:#10b981;
+            }
+            .cat-pill.live-pill.active {
+              background:rgba(239,68,68,0.12); border-color:#ef4444; color:#ef4444;
+            }
+            .cat-pill.live-pill .live-dot-pulse {
+              width:6px; height:6px; border-radius:50%; background:#ef4444; display:inline-block; animation: pulse-live 1.5s infinite;
+            }
+            @keyframes pulse-live {
+              0% { transform: scale(0.9); opacity: 1; }
+              50% { transform: scale(1.4); opacity: 0.5; }
+              100% { transform: scale(0.9); opacity: 1; }
+            }
+          </style>
+          <button class="cat-pill active" id="pill-pred-all" onclick="window.filterPredictionCategory('all', this)">All Matches</button>
+          <button class="cat-pill live-pill" id="pill-pred-live" onclick="window.filterPredictionCategory('live', this)">
+            <span class="live-dot-pulse"></span>
+            <span>Live (5)</span>
+          </button>
+          <button class="cat-pill" id="pill-pred-upcoming" onclick="window.filterPredictionCategory('upcoming', this)">Upcoming</button>
+          <button class="cat-pill" id="pill-pred-cricket" onclick="window.filterPredictionCategory('Cricket', this)">Cricket ▾</button>
+          <button class="cat-pill" id="pill-pred-football" onclick="window.filterPredictionCategory('Football', this)">Football</button>
+          <button class="cat-pill" id="pill-pred-esports" onclick="window.filterPredictionCategory('Esports', this)">Esports</button>
+        </div>
+
+        <div id="prediction-matches-list" style="display:flex; flex-direction:column; gap:12px; padding:0 16px;">
+          <!-- Loaded dynamically by JS -->
+        </div>
+      </div>
+
+      <!-- SUBVIEW: POINTS -->
+      <div id="pred-subview-points" class="pred-subview" style="display:none;">
+        <div style="margin: 0 16px 16px; padding: 16px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-light); display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Your Points</div>
+            <div id="user-pred-points-total" style="font-size:1.75rem; font-weight:900; color:#fff; margin:4px 0;">0</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Weekly Rank: <span id="user-pred-rank" style="font-weight:700; color:#3b82f6;">#N/A</span></div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Correct Rate</div>
+            <div id="user-pred-correct-rate" style="font-size:1.5rem; font-weight:900; color:#10b981; margin:4px 0;">0%</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);"><span id="user-pred-total-count" style="font-weight:700; color:#fff;">0</span> Predictions</div>
+          </div>
+        </div>
+
+        <div style="padding: 0 16px;">
+          <div style="font-size:0.8rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Prediction History</div>
+          <div id="user-prediction-history-list" style="display:flex; flex-direction:column; gap:8px;">
+            <!-- Loaded dynamically by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBVIEW: LEADERBOARD -->
+      <div id="pred-subview-leaderboard" class="pred-subview" style="display:none;">
+        <div style="display:flex; justify-content:center; gap:8px; margin-bottom:16px;">
+          <button class="tab-btn active" onclick="switchLeaderboardTime('weekly', this)" style="padding:6px 12px; font-size:0.75rem; font-weight:700;">This Week</button>
+          <button class="tab-btn" onclick="switchLeaderboardTime('monthly', this)" style="padding:6px 12px; font-size:0.75rem; font-weight:700;">This Month</button>
+          <button class="tab-btn" onclick="switchLeaderboardTime('allTime', this)" style="padding:6px 12px; font-size:0.75rem; font-weight:700;">All Time</button>
+        </div>
+
+        <div id="pred-leaderboard-podium" style="display:flex; align-items:flex-end; justify-content:center; gap:16px; margin-bottom:20px; padding:0 16px; min-height:120px;">
+          <!-- Loaded dynamically by JS -->
+        </div>
+
+        <div style="padding: 0 16px;">
+          <div id="pred-leaderboard-list" style="display:flex; flex-direction:column; gap:8px;">
+            <!-- Loaded dynamically by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBVIEW: REWARDS -->
+      <div id="pred-subview-rewards" class="pred-subview" style="display:none;">
+        <div style="margin:0 16px 16px; padding:16px; border-radius:12px; background:linear-gradient(135deg, #1e1b4b 0%, #0c0a0f 100%); border:1px solid rgba(99, 102, 241, 0.3);">
+          <span style="font-size:0.65rem; color:#6366f1; font-weight:800; text-transform:uppercase; letter-spacing:1px; background:rgba(99, 102, 241, 0.1); padding:4px 8px; border-radius:4px;">Weekly Pool Rewards</span>
+          <h2 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin: 8px 0 4px;">Weekly Reward Distribution</h2>
+          <p style="font-size:0.75rem; color:var(--text-muted); line-height:1.4; margin:0;">Predict correctly, climb the leaderboards, and win real cash prize pool rewards automatically distributed every Sunday at 12:00 AM.</p>
+        </div>
+
+        <div style="padding:0 16px;">
+          <div style="font-size:0.8rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Rewards Breakdown</div>
+          <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-light); text-align:left;">
+                <th style="padding:8px 0; color:var(--text-muted); font-weight:600;">Rank Position</th>
+                <th style="padding:8px 0; color:var(--text-muted); font-weight:600; text-align:right;">Prize Pool Split</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border-light);">
+                <td style="padding:10px 0; color:#fff; font-weight:700;">🥇 1st Place</td>
+                <td style="padding:10px 0; color:#10b981; font-weight:800; text-align:right;">50% of Pool</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border-light);">
+                <td style="padding:10px 0; color:#fff; font-weight:700;">🥈 2nd Place</td>
+                <td style="padding:10px 0; color:#3b82f6; font-weight:800; text-align:right;">25% of Pool</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border-light);">
+                <td style="padding:10px 0; color:#fff; font-weight:700;">🥉 3rd Place</td>
+                <td style="padding:10px 0; color:#b45309; font-weight:800; text-align:right;">15% of Pool</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 0; color:var(--text-muted);">🎗️ 4th - 10th Place (Shared)</td>
+                <td style="padding:10px 0; color:var(--text-muted); text-align:right;">10% of Pool</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: PREDICTION MATCH DETAILS
+  ===================================================== -->
+  <div id="page-prediction-match-details" class="page">
+    <header class="header">
+      <button class="btn btn-ghost" onclick="goBack()" style="padding:4px 8px; font-weight:700;">← Back</button>
+      <span class="logo-title">Match Details</span>
+      <div></div>
+    </header>
+
+    <div class="scroll-body" style="height: calc(100vh - var(--header-height) - 70px); padding-bottom: 24px;">
+      <div style="margin:16px; border-radius:14px; background:linear-gradient(135deg,#1a1a2e 0%,#0d0d18 100%); border:1px solid rgba(59,130,246,0.2); overflow:hidden; position:relative;">
+        <!-- Glow background -->
+        <div style="position:absolute;top:-30px;left:50%;transform:translateX(-50%);width:200px;height:100px;background:radial-gradient(circle,rgba(59,130,246,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+        
+        <!-- Game badge -->
+        <div id="pmd-game-badge" style="text-align:center;padding:10px 16px 0;font-size:0.65rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;"></div>
+        
+        <!-- Teams Row -->
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 20px;">
+          <div style="display:flex; flex-direction:column; align-items:center; width:35%;">
+            <div style="width:52px;height:52px;border-radius:12px;overflow:hidden;border:2px solid rgba(16,185,129,0.4);margin-bottom:8px;background:#0d0d18;">
+              <img id="pmd-t1-logo" src="assets/valorant_thumb.jpg" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='assets/valorant_thumb.jpg'" />
+            </div>
+            <span id="pmd-t1-name" style="font-size:0.82rem; font-weight:800; color:#fff;text-align:center;">Team A</span>
+            <span id="pmd-t1-prob" style="font-size:0.7rem;font-weight:700;color:#10b981;margin-top:2px;">50%</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <span style="font-size:1.1rem; font-weight:900; color:rgba(255,255,255,0.25);">VS</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; width:35%;">
+            <div style="width:52px;height:52px;border-radius:12px;overflow:hidden;border:2px solid rgba(239,68,68,0.4);margin-bottom:8px;background:#0d0d18;">
+              <img id="pmd-t2-logo" src="assets/valorant_thumb.jpg" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='assets/valorant_thumb.jpg'" />
+            </div>
+            <span id="pmd-t2-name" style="font-size:0.82rem; font-weight:800; color:#fff;text-align:center;">Team B</span>
+            <span id="pmd-t2-prob" style="font-size:0.7rem;font-weight:700;color:#ef4444;margin-top:2px;">50%</span>
+          </div>
+        </div>
+
+        <!-- Probability bar -->
+        <div style="padding:0 20px 12px;">
+          <div style="height:5px; border-radius:3px; background:rgba(255,255,255,0.05); overflow:hidden; display:flex;">
+            <div id="pmd-t1-bar" style="background:linear-gradient(90deg,#10b981,#059669); width:50%; transition:width 0.6s ease;"></div>
+            <div id="pmd-t2-bar" style="background:linear-gradient(90deg,#ef4444,#dc2626); width:50%; transition:width 0.6s ease;"></div>
+          </div>
+        </div>
+
+        <!-- Footer strip -->
+        <div style="border-top:1px solid rgba(255,255,255,0.05); padding:10px 20px; display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.02);">
+          <div style="text-align:left;">
+            <div style="font-size:0.6rem; color:var(--text-muted); text-transform:uppercase;letter-spacing:0.5px;">Prize Pool</div>
+            <div id="pmd-prize" style="font-size:1.05rem; font-weight:800; color:#10b981;">₹25,000</div>
+          </div>
+          <div style="text-align:right;">
+            <div id="pmd-timer-label" style="font-size:0.6rem; color:var(--text-muted); text-transform:uppercase;letter-spacing:0.5px;">Closes In</div>
+            <div id="pmd-timer" style="font-size:0.9rem; font-weight:700; color:#ef4444; font-family:monospace;">00:00:00</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; padding:0 16px; gap:16px; border-bottom:1px solid var(--border-light); margin-bottom:16px;">
+        <button class="ftab active" id="pmd-tab-overview" onclick="switchMatchDetailTab('overview')" style="padding:8px 0; font-size:0.8rem;">Overview</button>
+        <button class="ftab" id="pmd-tab-stats" onclick="switchMatchDetailTab('stats')" style="padding:8px 0; font-size:0.8rem;">Team Stats</button>
+        <button class="ftab" id="pmd-tab-commentary" onclick="switchMatchDetailTab('commentary')" style="padding:8px 0; font-size:0.8rem;">Commentary</button>
+      </div>
+
+      <div id="pmd-content-overview" class="pmd-tab-content" style="padding:0 16px;">
+        <!-- LIVE MATCH ANIMATION -->
+        <div id="pmd-live-match-animation" style="margin-bottom:16px; border-radius:10px; background:#0e0e18; border:1px solid rgba(255,255,255,0.06); padding:12px; display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-size:0.75rem; color:var(--text-muted);">
+            <div style="font-weight:800; color:#fff;">LIVE MATCH TRACKER</div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span class="live-pulse" style="width:6px; height:6px; border-radius:50%; background:#ef4444; display:inline-block; animation: pulse 1.5s infinite;"></span>
+              <span style="color:#ef4444; font-weight:800;">LIVE</span>
+            </div>
+          </div>
+          
+          <!-- Animated pitch canvas simulation -->
+          <div style="position:relative; width:100%; height:130px; background:radial-gradient(circle, #1b3d1b 0%, #0d210d 100%); border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center;">
+            <!-- Cricket Wickets and Crease -->
+            <div style="position:absolute; width:100px; height:4px; background:rgba(255,255,255,0.2); transform:rotate(90deg); left:20px;"></div>
+            <div style="position:absolute; width:100px; height:4px; background:rgba(255,255,255,0.2); transform:rotate(90deg); right:20px;"></div>
+            <!-- Wicket poles -->
+            <div style="position:absolute; left:25px; display:flex; gap:2px; align-items:flex-end;">
+              <div style="width:2px; height:12px; background:#ef4444;"></div>
+              <div style="width:2px; height:12px; background:#ef4444;"></div>
+              <div style="width:2px; height:12px; background:#ef4444;"></div>
+            </div>
+            <div style="position:absolute; right:25px; display:flex; gap:2px; align-items:flex-end;">
+              <div style="width:2px; height:12px; background:#3b82f6;"></div>
+              <div style="width:2px; height:12px; background:#3b82f6;"></div>
+              <div style="width:2px; height:12px; background:#3b82f6;"></div>
+            </div>
+            
+            <!-- Animated ball trajectory path -->
+            <div id="pmd-animated-ball" style="position:absolute; width:10px; height:10px; border-radius:50%; background:#eab308; box-shadow: 0 0 10px #eab308; left:20px; top:65px; display:none; transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);"></div>
+            
+            <!-- Dynamic Event overlay -->
+            <div id="pmd-anim-event-text" style="position:absolute; bottom:10px; background:rgba(0,0,0,0.8); border:1px solid var(--accent-bright); padding:4px 10px; border-radius:15px; font-size:0.75rem; font-weight:800; color:#fff; display:none; animation: scaleIn 0.3s ease;">FOUR! 🏏</div>
+            
+            <div style="color:rgba(255,255,255,0.05); font-weight:900; font-size:1.8rem; letter-spacing:4px; font-family:var(--font-heading);">NEXORA ARENA</div>
+          </div>
+          
+          <!-- Scoreboard metrics row -->
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px; background:rgba(255,255,255,0.02); border-radius:6px; padding:8px;">
+            <div>
+              <div style="font-size:0.6rem; color:var(--text-muted); text-transform:uppercase;">Run Rate</div>
+              <div id="pmd-anim-runrate" style="font-size:0.85rem; font-weight:800; color:#fff; margin-top:2px;">8.18</div>
+            </div>
+            <div>
+              <div style="font-size:0.6rem; color:var(--text-muted); text-transform:uppercase;">Partnership</div>
+              <div id="pmd-anim-partnership" style="font-size:0.85rem; font-weight:800; color:#fff; margin-top:2px;">45 (28)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- USER PREDICTION CARD -->
+        <div id="pmd-user-prediction-card" style="margin-bottom:16px;"></div>
+
+        <!-- MARKETS CONTAINER -->
+        <div style="font-size:0.8rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; margin-top:8px;">Prediction Markets</div>
+        <div id="pmd-markets-list" style="display:flex; flex-direction:column; gap:12px; margin-bottom:16px;">
+          <!-- Dynamic Markets loaded by JS -->
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:8px; padding:12px; margin-bottom:16px; display:none;">
+          <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; margin-bottom:6px;">Game Segment</div>
+          <div id="pmd-game-details" style="font-size:0.85rem; color:#fff; font-weight:700;">Map 2 - Erangel (Group Stage)</div>
+        </div>
+        <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:8px; padding:12px; display:none;">
+          <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; margin-bottom:6px;">Prediction Rewards</div>
+          <div style="font-size:0.8rem; color:var(--text-secondary); line-height:1.4; margin-bottom:8px;">Correct prediction wins <b>+100 points</b> + your split share of the prize pool. Incorrect prediction incurs a penalty of <b>-20 points</b>.</div>
+          <div style="font-size:0.8rem; color:#fff; display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.05); padding-top:8px;">
+            <span>Entry Fee: <b id="pmd-entry-fee-val" style="color:#eab308;">₹25</b></span>
+            <span>Potential Win: <b id="pmd-pot-win-val" style="color:#10b981;">₹20,000</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="pmd-content-stats" class="pmd-tab-content" style="display:none; padding:0 16px;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.8rem; line-height:2.2;">
+          <tr style="border-bottom:1px solid var(--border-light);">
+            <td id="pmd-stat-t1-winrate" style="font-weight:700; color:#10b981; width:30%;">65%</td>
+            <td style="color:var(--text-muted); text-align:center; width:40%;">Win Rate (Last 10 Matches)</td>
+            <td id="pmd-stat-t2-winrate" style="font-weight:700; color:#ef4444; text-align:right; width:30%;">40%</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-light);">
+            <td id="pmd-stat-t1-kd" style="font-weight:700; color:#fff;">1.45</td>
+            <td style="color:var(--text-muted); text-align:center;">Team Average K/D Ratio</td>
+            <td id="pmd-stat-t2-kd" style="font-weight:700; color:#fff; text-align:right;">1.12</td>
+          </tr>
+          <tr>
+            <td id="pmd-stat-t1-firstblood" style="font-weight:700; color:#fff;">58%</td>
+            <td style="color:var(--text-muted); text-align:center;">First Blood Rate</td>
+            <td id="pmd-stat-t2-firstblood" style="font-weight:700; color:#fff; text-align:right;">42%</td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="pmd-content-commentary" class="pmd-tab-content" style="display:none; padding:0 16px;">
+        <div id="pmd-commentary-list" style="display:flex; flex-direction:column; gap:8px;">
+          <!-- Loaded dynamically by JS -->
+        </div>
+      </div>
+    </div>
+
+    <div id="pmd-action-container" style="position:absolute; bottom:0; left:0; width:100%; padding:12px 16px; background:var(--bg-surface); border-top:1px solid var(--border-light); box-sizing:border-box;">
+      <button class="btn-primary" style="width:100%;" onclick="openMakePredictionPage()">Predict Winner Now</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: MAKE PREDICTION
+  ===================================================== -->
+  <div id="page-make-prediction" class="page">
+    <header class="header">
+      <button class="btn btn-ghost" onclick="goBack()" style="padding:4px 8px; font-weight:700;">← Back</button>
+      <span class="logo-title">Make Prediction</span>
+      <div></div>
+    </header>
+
+    <div style="padding:20px; display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:0.95rem; font-weight:700; color:#fff; text-align:center; margin-bottom:12px;">Who will win this match?</div>
+
+      <div class="quick-amt" id="mp-t1-card" onclick="selectPredictionTeam('team1')" style="padding:16px; border-radius:10px; background:var(--bg-card); border:1px solid var(--border-light); display:flex; align-items:center; gap:16px; cursor:pointer;">
+        <img id="mp-t1-logo" src="assets/valorant_thumb.jpg" style="width:36px; height:36px; border-radius:50%; object-fit:cover;" />
+        <div style="flex:1;">
+          <div id="mp-t1-name" style="font-size:0.9rem; font-weight:800; color:#fff;">Team A</div>
+          <div style="font-size:0.7rem; color:var(--text-muted);">Points multiplier: 1.0x</div>
+        </div>
+        <div style="font-size:0.85rem; font-weight:800; color:#10b981;" id="mp-t1-percent">50% Win</div>
+      </div>
+
+      <div class="quick-amt" id="mp-t2-card" onclick="selectPredictionTeam('team2')" style="padding:16px; border-radius:10px; background:var(--bg-card); border:1px solid var(--border-light); display:flex; align-items:center; gap:16px; cursor:pointer;">
+        <img id="mp-t2-logo" src="assets/valorant_thumb.jpg" style="width:36px; height:36px; border-radius:50%; object-fit:cover;" />
+        <div style="flex:1;">
+          <div id="mp-t2-name" style="font-size:0.9rem; font-weight:800; color:#fff;">Team B</div>
+          <div style="font-size:0.7rem; color:var(--text-muted);">Points multiplier: 1.0x</div>
+        </div>
+        <div style="font-size:0.85rem; font-weight:800; color:#ef4444;" id="mp-t2-percent">50% Win</div>
+      </div>
+
+      <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:10px; padding:16px; margin-top:8px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.8rem; color:var(--text-muted);">
+          <span>Entry Fee:</span>
+          <span style="font-weight:700; color:#fff;" id="mp-entry-fee-val">₹25</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted);">
+          <span>Potential Win (Max):</span>
+          <span style="font-weight:700; color:#10b981;" id="mp-pot-win-val">₹20,000</span>
+        </div>
+      </div>
+
+      <button class="btn-primary" style="width:100%; margin-top:24px;" id="mp-confirm-btn" onclick="submitPrediction()">Confirm Prediction</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: MAKE PREDICTION / TRADE (FULL SCREEN)
+  ===================================================== -->
+  <div id="page-predictions-trade" class="page">
+    <div class="top-bar" style="background:#0b0b16; border-bottom:1px solid rgba(255,255,255,0.05); padding:10px 16px; display:flex; justify-content:space-between; align-items:center; height:60px; box-sizing:border-box;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="icon-btn" onclick="goBack()" style="background:none; border:none; color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12,19 5,12 12,5"/></svg>
+        </button>
+        <div>
+          <span style="font-size:0.95rem; font-weight:900; color:#fff; display:block;">MAKE PREDICTION / TRADE</span>
+          <span id="pt-header-match-subtitle" style="font-size:0.65rem; color:var(--text-muted); font-weight:700;">Cricket - IPL 2024</span>
+        </div>
+      </div>
+      <div class="top-bar-right" style="display:flex; align-items:center; gap:12px;">
+        <div class="wallet-badge" onclick="navigate('wallet')" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:30px; padding:6px 12px; display:flex; align-items:center; gap:8px; cursor:pointer;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2.5"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg>
+          <span style="font-size:0.8rem; font-weight:800; color:#fff;" class="wallet-val">₹2,450</span>
+          <span style="background:#10b981; color:#fff; font-size:0.7rem; font-weight:800; width:14px; height:14px; border-radius:50%; display:flex; align-items:center; justify-content:center;">+</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step Progress bar -->
+    <div style="display:flex; align-items:center; justify-content:center; padding:12px 20px; background:#0b0b16; border-bottom:1px solid rgba(255,255,255,0.02);">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="display:flex; align-items:center; gap:4px; font-size:0.7rem; font-weight:800; color:#10b981;">
+          <span style="width:16px; height:16px; border-radius:50%; background:rgba(16,185,129,0.15); display:flex; align-items:center; justify-content:center; border:1px solid #10b981; font-size:0.55rem;">✓</span>
+          <span>Match Details</span>
+        </div>
+        <div style="width:40px; height:2px; background:#10b981;"></div>
+        <div style="display:flex; align-items:center; gap:4px; font-size:0.7rem; font-weight:800; color:#3b82f6;">
+          <span style="width:16px; height:16px; border-radius:50%; background:#3b82f6; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.6rem; font-weight:900;">2</span>
+          <span>Make Prediction</span>
+        </div>
+        <div style="width:40px; height:2px; background:rgba(255,255,255,0.15);"></div>
+        <div style="display:flex; align-items:center; gap:4px; font-size:0.7rem; font-weight:800; color:rgba(255,255,255,0.35);">
+          <span style="width:16px; height:16px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.15); font-size:0.6rem; font-weight:900;">3</span>
+          <span>Confirm Trade</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-body" style="height: calc(100vh - 114px); padding:16px; box-sizing:border-box;">
+      
+      <!-- Match Header Summary -->
+      <div style="background:linear-gradient(135deg, #101021, #080811); border:1px solid rgba(255,255,255,0.04); border-radius:14px; padding:12px; margin-bottom:16px; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span id="pt-match-status" style="background:#ef4444; color:#fff; font-size:0.55rem; font-weight:900; padding:2px 6px; border-radius:4px; text-transform:uppercase;">LIVE</span>
+          <span id="pt-match-timer" style="font-size:0.7rem; color:#ef4444; font-weight:700; font-family:monospace;">02h 15m 30s</span>
+          <span id="pt-match-league" style="font-size:0.65rem; color:rgba(255,255,255,0.4); font-weight:700;">IPL 2024</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 0;">
+          <div style="display:flex; align-items:center; gap:8px; width:42%;">
+            <img id="pt-t1-logo" src="" style="width:30px; height:30px; border-radius:50%; object-fit:cover;" onerror="this.src='assets/valorant_thumb.jpg'" />
+            <span id="pt-t1-name" style="font-size:0.78rem; font-weight:800; color:#fff; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">CSK</span>
+          </div>
+          <span style="font-size:0.9rem; font-weight:900; color:rgba(255,255,255,0.15);">VS</span>
+          <div style="display:flex; align-items:center; justify-content:end; gap:8px; width:42%; text-align:right;">
+            <span id="pt-t2-name" style="font-size:0.78rem; font-weight:800; color:#fff; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">MI</span>
+            <img id="pt-t2-logo" src="" style="width:30px; height:30px; border-radius:50%; object-fit:cover;" onerror="this.src='assets/valorant_thumb.jpg'" />
+          </div>
+        </div>
+        <div id="pt-match-venue" style="font-size:0.6rem; color:rgba(255,255,255,0.35); text-align:center; font-weight:600;">MA Chidambaram Stadium, Chennai</div>
+      </div>
+
+      <!-- Who will win the match question -->
+      <div style="font-size:0.85rem; font-weight:800; color:#fff; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">Who will win the match?</div>
+
+      <!-- Option Selectors -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+        <!-- Option Team 1 -->
+        <div id="pt-card-t1" onclick="window.selectPredictionsTradeTeam('t1')" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:14px; padding:14px; display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; position:relative; transition:all 0.3s ease;">
+          <div id="pt-badge-t1" style="background:#16a34a; color:#fff; font-size:0.6rem; font-weight:900; padding:2px 6px; border-radius:4px; margin-bottom:10px;">62% Win</div>
+          <img id="pt-logo-t1" src="" style="width:42px; height:42px; border-radius:50%; object-fit:cover;" onerror="this.src='assets/valorant_thumb.jpg'" />
+          <span id="pt-lbl-t1" style="font-size:0.82rem; font-weight:800; color:#fff; margin:8px 0 2px;">CSK</span>
+          <span style="font-size:0.62rem; color:rgba(255,255,255,0.4); font-weight:600;">Chennai Super Kings</span>
+          <span style="font-size:0.75rem; font-weight:900; color:#10b981; margin-top:12px;" id="pt-odds-t1">₹ 1.85 Payout</span>
+          <div id="pt-check-t1" style="position:absolute; top:8px; right:8px; width:16px; height:16px; border-radius:50%; background:#10b981; color:#fff; display:none; align-items:center; justify-content:center; font-size:0.55rem; font-weight:900;">✓</div>
+        </div>
+
+        <!-- Option Team 2 -->
+        <div id="pt-card-t2" onclick="window.selectPredictionsTradeTeam('t2')" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:14px; padding:14px; display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; position:relative; transition:all 0.3s ease;">
+          <div id="pt-badge-t2" style="background:#dc2626; color:#fff; font-size:0.6rem; font-weight:900; padding:2px 6px; border-radius:4px; margin-bottom:10px;">38% Win</div>
+          <img id="pt-logo-t2" src="" style="width:42px; height:42px; border-radius:50%; object-fit:cover;" onerror="this.src='assets/valorant_thumb.jpg'" />
+          <span id="pt-lbl-t2" style="font-size:0.82rem; font-weight:800; color:#fff; margin:8px 0 2px;">MI</span>
+          <span style="font-size:0.62rem; color:rgba(255,255,255,0.4); font-weight:600;">Mumbai Indians</span>
+          <span style="font-size:0.75rem; font-weight:900; color:#ef4444; margin-top:12px;" id="pt-odds-t2">₹ 2.05 Payout</span>
+          <div id="pt-check-t2" style="position:absolute; top:8px; right:8px; width:16px; height:16px; border-radius:50%; background:#10b981; color:#fff; display:none; align-items:center; justify-content:center; font-size:0.55rem; font-weight:900;">✓</div>
+        </div>
+      </div>
+
+      <!-- Trade Amount Entry -->
+      <div style="background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.03); border-radius:14px; padding:14px; margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <span style="font-size:0.75rem; font-weight:700; color:rgba(255,255,255,0.45); text-transform:uppercase;">Enter Trade Amount</span>
+          <span style="font-size:0.7rem; color:var(--text-muted); font-weight:600;">Available Balance: <b class="wallet-val" style="color:#fff;">₹12,450.75</b></span>
+        </div>
+        
+        <!-- Large Input Group -->
+        <div style="display:flex; align-items:center; background:#0b0b16; border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:8px 14px; margin-bottom:12px;">
+          <span style="font-size:1.4rem; font-weight:900; color:rgba(255,255,255,0.3); margin-right:8px;">₹</span>
+          <input type="number" id="pt-stake-input" value="500" style="flex:1; background:none; border:none; color:#fff; font-size:1.4rem; font-weight:900; outline:none;" oninput="window.updatePredictionsTradeCalculations()" />
+          <button onclick="document.getElementById('pt-stake-input').value=''; window.updatePredictionsTradeCalculations()" style="background:rgba(255,255,255,0.05); border:none; width:22px; height:22px; border-radius:50%; color:rgba(255,255,255,0.4); font-weight:800; cursor:pointer;">✕</button>
+        </div>
+
+        <!-- Quick Amount Buttons -->
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:6px;">
+          <button onclick="window.addPredictionsTradeAmount(100)" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:6px; padding:6px; color:#fff; font-size:0.68rem; font-weight:800; cursor:pointer;">+100</button>
+          <button onclick="window.addPredictionsTradeAmount(500)" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:6px; padding:6px; color:#fff; font-size:0.68rem; font-weight:800; cursor:pointer;">+500</button>
+          <button onclick="window.addPredictionsTradeAmount(1000)" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:6px; padding:6px; color:#fff; font-size:0.68rem; font-weight:800; cursor:pointer;">+1,000</button>
+          <button onclick="window.addPredictionsTradeAmount(5000)" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:6px; padding:6px; color:#fff; font-size:0.68rem; font-weight:800; cursor:pointer;">+5,000</button>
+          <button onclick="window.addPredictionsTradeAmount(10000)" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:6px; padding:6px; color:#fff; font-size:0.68rem; font-weight:800; cursor:pointer;">+10,000</button>
+        </div>
+      </div>
+
+      <!-- Trade Summary Breakdown -->
+      <div style="background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.03); border-radius:14px; padding:14px; margin-bottom:16px; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:var(--text-muted);">
+          <span>You predict:</span>
+          <span style="font-weight:800; color:#fff;" id="pt-summary-predict">CSK Win</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:var(--text-muted);">
+          <span>Odds:</span>
+          <span style="font-weight:900; color:#3b82f6;" id="pt-summary-odds">1.85</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:var(--text-muted);">
+          <span>Potential Win:</span>
+          <span style="font-weight:900; color:#10b981;" id="pt-summary-win">₹925.00</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:var(--text-muted); border-top:1px solid rgba(255,255,255,0.04); padding-top:8px;">
+          <span>Payout if selected team wins:</span>
+          <span style="font-weight:900; color:#10b981;" id="pt-summary-payout">₹1,425.00</span>
+        </div>
+      </div>
+
+      <!-- Disclaimer banner -->
+      <div style="background:rgba(234,179,8,0.06); border:1px solid rgba(234,179,8,0.15); border-radius:10px; padding:10px 12px; display:flex; align-items:start; gap:8px; margin-bottom:20px;">
+        <span style="font-size:0.85rem; line-height:1.2;">⚠️</span>
+        <div>
+          <div style="font-size:0.68rem; font-weight:800; color:#eab308; text-transform:uppercase; letter-spacing:0.5px;">Trade Responsibly</div>
+          <div style="font-size:0.58rem; color:rgba(255,255,255,0.5); line-height:1.3; margin-top:2px;">Predictions are based on stats and public data. No guarantees of win payouts. Verify details before proceeding.</div>
+        </div>
+      </div>
+
+      <!-- Action confirmation button -->
+      <button class="btn-primary" style="width:100%; padding:14px; font-size:0.85rem; font-weight:900; background:linear-gradient(90deg,#16a34a,#10b981); border:none;" onclick="window.confirmPredictionsTrade()">PROCEED TO CONFIRM</button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: PREDICTION SUCCESS
+  ===================================================== -->
+  <div id="page-prediction-success" class="page">
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; padding:20px; box-sizing:border-box; text-align:center;">
+      <div style="width:72px; height:72px; border-radius:50%; background:rgba(16,185,129,0.1); border:2px solid #10b981; display:flex; align-items:center; justify-content:center; color:#10b981; font-size:2.5rem; margin-bottom:24px;">✓</div>
+      
+      <h2 style="font-size:1.5rem; font-weight:900; color:#fff; margin:0 0 12px;">Prediction Confirmed!</h2>
+      <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; max-width:280px; margin:0 0 24px;">Your pick has been locked in. If your predicted team wins, you will receive points and your prize pool reward share!</p>
+      
+      <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:10px; padding:16px; width:100%; max-width:280px; margin-bottom:24px; box-sizing:border-box; text-align:left;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.75rem; color:var(--text-muted);">
+          <span>Predicted Team:</span>
+          <span style="font-weight:700; color:#fff;" id="mps-team-val">Team A</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.75rem; color:var(--text-muted);">
+          <span>Entry Fee Paid:</span>
+          <span style="font-weight:700; color:#ef4444;" id="mps-entry-val">-₹25</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted);">
+          <span>Potential Win:</span>
+          <span style="font-weight:700; color:#10b981;" id="mps-pot-win-val">₹20,000</span>
+        </div>
+      </div>
+      
+      <div style="background:var(--bg-card); border:1px solid var(--border-light); padding:16px; border-radius:10px; width:100%; max-width:320px; text-align:left; box-sizing:border-box; margin-bottom:32px;">
+        <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:6px;">Your Pick: <b id="ps-pick-team" style="color:#3b82f6;">Team Insane</b></div>
+        <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:6px;">Points to earn: <span style="font-weight:700; color:#10b981;">+100 Points</span></div>
+        <div style="font-size:0.75rem; color:var(--text-muted);">Points penalty on loss: <span style="font-weight:700; color:#ef4444;">-20 Points</span></div>
+      </div>
+
+      <button class="btn-primary" style="width:100%; max-width:320px;" onclick="navigate('predictions')">Back to Predictions</button>
+    </div>
+  </div>
+
+    <!-- =====================================================
+       FLOATING BET SLIP DRAWER
+  ===================================================== -->
+  <div id="predictions-betslip-drawer" style="position:fixed; bottom:-100%; left:0; width:100%; height:auto; max-height:85vh; background:var(--bg-surface); border-radius:20px 20px 0 0; border-top:1px solid var(--border-light); z-index:9000; box-shadow:0 -10px 30px rgba(0,0,0,0.6); box-sizing:border-box; transition:bottom 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); display:flex; flex-direction:column; overflow:hidden;">
+    <div style="padding:16px; border-bottom:1px solid var(--border-light); display:flex; justify-content:space-between; align-items:center;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:1.1rem; font-weight:900; color:#fff;">Bet Slip</span>
+        <span id="betslip-badge-count" style="background:var(--accent-bright); color:#fff; font-size:0.7rem; font-weight:800; padding:2px 6px; border-radius:10px;">0</span>
+      </div>
+      <button onclick="clearBetSlip()" style="background:none; border:none; color:#ef4444; font-size:0.8rem; font-weight:700; cursor:pointer;">Clear All</button>
+    </div>
+    
+    <div id="betslip-items-container" style="flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px; max-height:45vh; box-sizing:border-box;">
+      <!-- Loaded dynamically by JS -->
+    </div>
+    
+    <div style="background:var(--bg-elevated); border-top:1px solid var(--border-light); padding:16px; box-sizing:border-box;">
+      <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.8rem; color:var(--text-muted);">
+        <span>Total Stake:</span>
+        <span style="font-weight:800; color:#fff; font-size:0.9rem;" id="betslip-total-stake">₹0</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-size:0.8rem; color:var(--text-muted);">
+        <span>Potential Winnings:</span>
+        <span style="font-weight:900; color:#10b981; font-size:1.05rem;" id="betslip-total-potwin">₹0</span>
+      </div>
+      
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+        <input type="checkbox" id="betslip-accept-rules" checked style="accent-color:var(--accent-bright);" />
+        <label for="betslip-accept-rules" style="font-size:0.7rem; color:var(--text-muted);">I accept all odds & rules of predictions.</label>
+      </div>
+      
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-ghost" onclick="toggleBetSlip(false)" style="flex:1; padding:12px;">Cancel</button>
+        <button class="btn-primary" onclick="confirmBetslipPlacement()" style="flex:2; padding:12px;" id="betslip-place-btn">PLACE BET</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING BET SLIP BUTTON TRIGGER -->
+  <div id="betslip-trigger-btn" onclick="toggleBetSlip(true)" style="position:fixed; bottom:76px; right:16px; background:linear-gradient(135deg, #eab308, #db2777); width:56px; height:56px; border-radius:50%; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 16px rgba(234,179,8,0.4); z-index:8000; transition:all 0.3s ease;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    <span id="betslip-trigger-badge" style="position:absolute; top:-4px; right:-4px; background:#ef4444; color:#fff; font-size:0.65rem; font-weight:800; width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid var(--bg-surface);">0</span>
+  </div>
+
+  <!-- =====================================================
+       SCREEN: BANNED USER
+  ===================================================== -->
+  <div id="page-banned" class="page">
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; padding:24px; box-sizing:border-box; text-align:center; background:#0b0b14; color:#fff;">
+      <div style="width:96px; height:96px; border-radius:50%; background:rgba(239,68,68,0.1); border:3px solid #ef4444; display:flex; align-items:center; justify-content:center; color:#ef4444; font-size:3.5rem; margin-bottom:28px;">🔒</div>
+      
+      <h2 style="font-size:1.8rem; font-weight:900; color:#fff; margin:0 0 12px; text-shadow: 0 0 15px rgba(239,68,68,0.4);">Account Suspended</h2>
+      <p style="font-size:0.9rem; color:rgba(255,255,255,0.6); line-height:1.6; max-width:320px; margin:0 0 28px;">
+        Your account has been suspended or banned due to a violation of our Terms of Service. You can no longer access predictions, matches, tournaments, or wallet systems.
+      </p>
+      
+      <div style="background:#131322; border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:18px; width:100%; max-width:320px; margin-bottom:32px; box-sizing:border-box; text-align:left; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:rgba(255,255,255,0.45);">
+          <span>Account ID:</span>
+          <span style="font-weight:700; color:#fff;" id="banned-user-id">-</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:rgba(255,255,255,0.45);">
+          <span>Reason:</span>
+          <span style="font-weight:700; color:#ef4444;" id="banned-reason-val">ToS Violation / Suspicious Activity</span>
+        </div>
+      </div>
+      
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.4);">
+        If you think this is a mistake, please contact our support team.
+      </div>
+    </div>
+  </div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+  <!-- Modal: In-game Username Prompt -->
+  <div class="modal-overlay" id="modal-join-username" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center;">
+    <div style="background:var(--bg-surface); border:1px solid var(--border-light); border-radius:18px; padding:24px; width:90%; max-width:340px; text-align:center;">
+      <div style="font-size:2rem; margin-bottom:12px;">🎮</div>
+      <div style="font-size:1.1rem; font-weight:800; color:#fff; margin-bottom:6px;">In-Game Username</div>
+      <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:18px;">Please enter your official in-game name (character ID name) to participate in this tournament.</div>
+      <input type="text" id="join-game-username" placeholder="e.g. NexoraYT" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--border-light); background:var(--bg-elevated); color:#fff; font-size:0.9rem; text-align:center; margin-bottom:20px; outline:none;" />
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <button onclick="closeJoinUsernameModal()" style="background:transparent; border:1px solid var(--border-light); color:var(--text-muted); padding:10px; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">Cancel</button>
+        <button onclick="submitJoinTournament()" style="background:var(--accent-bright); border:none; color:#fff; padding:10px; border-radius:8px; font-weight:700; font-size:0.85rem; cursor:pointer;">Confirm &amp; Join</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Manual QR Payment -->
+  <div class="modal-overlay" id="modal-manual-qr-payment" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center;">
+    <div style="background:var(--bg-surface); border:1px solid var(--border-light); border-radius:18px; padding:20px; width:90%; max-width:360px; text-align:center; box-sizing:border-box; max-height:90vh; overflow-y:auto;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <span style="font-size:1.1rem; font-weight:800; color:#fff;">Pay via UPI QR Code</span>
+        <button onclick="closeManualQrModal()" style="background:none; border:none; color:var(--text-muted); font-size:1.2rem; cursor:pointer;">✕</button>
+      </div>
+
+      <div style="font-size:0.75rem; color:var(--text-muted); line-height:1.4; margin-bottom:14px; text-align:left;">
+        Scan this QR Code using any UPI App (GPay, PhonePe, Paytm) to pay, or copy the UPI ID below.
+      </div>
+
+      <!-- QR Code Image Box -->
+      <div style="background:#fff; border-radius:12px; padding:12px; display:inline-block; margin-bottom:12px; box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+        <img id="qr-pay-image" src="/assets/qr_payment_default.jpg" style="width:180px; height:180px; object-fit:contain; display:block;" alt="Payment QR Code" onerror="this.onerror=null; this.src='/assets/qr_payment_default.jpg';" />
+      </div>
+
+      <!-- UPI ID Display & Copy -->
+      <div style="background:var(--bg-elevated); border:1px solid var(--border-light); border-radius:8px; padding:8px 12px; display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <span id="qr-pay-upi-id" style="font-size:0.8rem; font-family:monospace; color:#fff; word-break:break-all; text-align:left; flex:1; margin-right:8px;">9689901416.wallet@phonepe</span>
+        <button onclick="copyPaymentUpiId()" style="background:var(--accent); border:none; border-radius:4px; padding:6px 10px; color:#fff; font-size:0.68rem; font-weight:800; cursor:pointer; white-space:nowrap;">Copy</button>
+      </div>
+
+      <!-- Payment Form Details -->
+      <div style="text-align:left; display:flex; flex-direction:column; gap:12px;">
+        <div>
+          <label style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Deposit Amount (₹)</label>
+          <input type="number" id="qr-pay-amount" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border-light); background:var(--bg-elevated); color:#fff; font-size:0.9rem; outline:none; margin-top:4px; box-sizing:border-box;" readonly />
+        </div>
+        <div>
+          <label style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.5px;">Enter 12-Digit UTR / Transaction ID</label>
+          <input type="text" id="qr-pay-utr" placeholder="e.g. 345689012345" maxlength="12" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border-light); background:var(--bg-elevated); color:#fff; font-size:0.9rem; outline:none; margin-top:4px; font-family:monospace; box-sizing:border-box; letter-spacing:1px;" />
+        </div>
+      </div>
+
+      <button onclick="submitQrPaymentRequest()" class="btn-primary" style="width:100%; margin-top:20px; padding:12px; font-size:0.85rem;">Submit Payment Request</button>
+    </div>
+  </div>
+  <!-- =====================================================
+       SIDEBAR DRAWER MENU
+  ===================================================== -->
+  <div id="sidebar-drawer-overlay" class="drawer-overlay" onclick="closeSidebarDrawer()"></div>
+  <div id="sidebar-drawer" class="drawer-menu">
+    <!-- Close Button -->
+    <button class="drawer-close-btn" onclick="closeSidebarDrawer()">✕</button>
+
+    <!-- Drawer Profile Header -->
+    <div class="drawer-profile-header">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:44px; height:44px; border-radius:50%; border:2px solid var(--accent); background:#1e1e30; overflow:hidden; display:flex; align-items:center; justify-content:center; position:relative; flex-shrink:0;">
+          <img id="drawer-avatar-img" src="" style="width:100%; height:100%; object-fit:cover; display:none;" onerror="this.style.display='none';" alt="Avatar" />
+          <span id="drawer-avatar-fallback" style="font-size:1.1rem; font-weight:800; color:#fff;">N</span>
+        </div>
+        <div style="text-align:left; min-width: 0; flex: 1;">
+          <div id="drawer-username" style="font-size:0.95rem; font-weight:800; color:#fff; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Guest User</div>
+          <div id="drawer-balance" style="font-size:0.72rem; color:var(--text-secondary); margin-top:2px;">Balance: ₹0.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drawer Navigation Links -->
+    <div class="drawer-links-list">
+      <div class="drawer-link-item" onclick="handleDrawerNav('home')">
+        <span>🏠 Home</span>
+      </div>
+      <div class="drawer-link-item" onclick="handleDrawerNav('profile')">
+        <span>👤 My Profile</span>
+      </div>
+      <div class="drawer-link-item" onclick="handleDrawerNav('my-matches')">
+        <span>🏆 My Matches</span>
+      </div>
+      <div class="drawer-link-item" onclick="handleDrawerNav('wallet')">
+        <span>💳 Deposit & Withdraw</span>
+      </div>
+      <div class="drawer-link-item" onclick="handleDrawerNav('support')">
+        <span>💬 Help & Support</span>
+      </div>
+    </div>
+
+    <!-- Preferences Section -->
+    <div class="drawer-divider"></div>
+    <div style="padding: 10px 18px; text-align: left;">
+      <div style="font-size: 0.62rem; font-weight: 800; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px;">Preferences</div>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.82rem; color: rgba(255,255,255,0.7);">🌙 Dark Mode</span>
+        <input type="checkbox" id="drawer-dark-mode" style="width:36px; height:20px; cursor:pointer;" onchange="toggleDarkMode(this.checked)" />
+      </div>
+    </div>
+
+    <!-- Rating & Feedback Section -->
+    <div class="drawer-divider"></div>
+    <div style="padding: 12px 18px; text-align: left;">
+      <div style="font-size: 0.62rem; font-weight: 800; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px;">Enjoying Nexora?</div>
+      <button class="btn-primary" onclick="openRatingModal()" style="width:100%; font-size:0.75rem; padding:8px; border-radius:8px; background:linear-gradient(135deg, #a855f7, #7c3aed); display:flex; align-items:center; justify-content:center; gap:6px; color:#fff; border:none; cursor:pointer; font-weight:800;">
+        ⭐ Rate Us & Feedback
+      </button>
+    </div>
+
+    <!-- Developer Socials Row -->
+    <div class="drawer-socials-wrapper">
+      <div style="font-size: 0.62rem; font-weight: 800; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; text-align: center;">Stay Connected</div>
+      <div id="drawer-social-icons-row" style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
+        <!-- Dynamically rendered developer social media links -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Rating Feedback Modal -->
+  <div id="rating-feedback-modal" class="modal-overlay" style="display:none; z-index: 20000;">
+    <div class="modal-content" style="background:#0f0f1a; border: 1.5px solid rgba(124, 58, 237, 0.25); border-radius:16px; padding:20px; width:90%; max-width:320px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.6);">
+      <h3 style="font-size:1.15rem; font-weight:900; color:#fff; margin-bottom:6px; font-family:var(--font-heading);">Rate Your Experience</h3>
+      <p style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:16px;">We would love to hear your feedback!</p>
+      
+      <!-- Stars Row -->
+      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:16px; font-size:1.8rem; cursor:pointer;" id="rating-stars-row">
+        <span onclick="setRatingScore(1)" class="star" data-value="1">☆</span>
+        <span onclick="setRatingScore(2)" class="star" data-value="2">☆</span>
+        <span onclick="setRatingScore(3)" class="star" data-value="3">☆</span>
+        <span onclick="setRatingScore(4)" class="star" data-value="4">☆</span>
+        <span onclick="setRatingScore(5)" class="star" data-value="5">☆</span>
+      </div>
+
+      <!-- Feedback input -->
+      <textarea id="rating-feedback-comment" placeholder="Write your feedback here (optional)..." style="width:100%; height:80px; background:#08080f; border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px; color:#fff; font-size:0.8rem; resize:none; margin-bottom:16px; outline:none; box-sizing:border-box; font-family:inherit;"></textarea>
+
+      <!-- Buttons -->
+      <div style="display:flex; gap:10px;">
+        <button onclick="closeRatingModal()" style="flex:1; padding:10px; border-radius:8px; font-size:0.8rem; background: rgba(255,255,255,0.05); color:#fff; border:none; cursor:pointer; font-weight:700;">Cancel</button>
+        <button onclick="submitRatingFeedback()" style="flex:1; padding:10px; border-radius:8px; font-size:0.8rem; background: linear-gradient(135deg, #7c3aed, #db2777); color:#fff; border:none; cursor:pointer; font-weight:700;">Submit</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
