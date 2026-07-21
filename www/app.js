@@ -506,7 +506,7 @@ function onPageEnter(pageId) {
 // SERVER SYNC (SSE & REST API)
 // ────────────────────────────────────────────────────
 const SERVER = (window.Capacitor || (!window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')))
-  ? 'https://nexora-arena-backend.onrender.com'
+  ? 'https://nexora-arena.onrender.com'
   : window.location.origin;
 const API = SERVER + '/api';
 

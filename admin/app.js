@@ -7,7 +7,7 @@
 
 const SERVER = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')
   ? window.location.origin
-  : 'https://nexora-arena-backend.onrender.com';
+  : 'https://nexora-arena.onrender.com';
 const API = SERVER + '/api';
 let db = {};
 let revenueChart = null;
