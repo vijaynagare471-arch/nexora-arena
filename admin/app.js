@@ -4400,98 +4400,128 @@ async function loadCasinoBetsHistory() {
 function renderCasinoBetsTable(bets) {
   const tbody = document.getElementById('admin-casino-bets-tbody');
   if (!tbody) return;
-  tbody.innerHTML = bets.map(b => {
-    const payout = b.winAmount || 0;
-    const isWin = payout > 0 || b.status === 'won';
-    const statusCls = b.status === 'lost' ? 'inactive' : isWin ? 'active' : 'pending';
-    const statusTxt = b.status === 'lost' ? 'Lost' : isWin ? 'Won' : 'Active';
+  if (!Array.isArray(bets)) {
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:20px; color:var(--text-muted);">No bets found</td></tr>';
+    return;
+  }
+  
+  try {
+    tbody.innerHTML = bets.map(b => {
+      const payout = b.winAmount || 0;
+      const isWin = payout > 0 || b.status === 'won';
+      const statusCls = b.status === 'lost' ? 'inactive' : isWin ? 'active' : 'pending';
+      const statusTxt = b.status === 'lost' ? 'Lost' : isWin ? 'Won' : 'Active';
 
-    let outcomeStr = '–';
-    if (b.game === 'plane') {
-      outcomeStr = b.cashedOut ? `${b.cashOutMultiplier.toFixed(2)}x` : 'Crashed';
-    } else if (b.game === 'mines') {
-      outcomeStr = b.multiplier ? `${b.multiplier.toFixed(2)}x` : 'Mine hit';
-    } else if (b.game === 'dice') {
-      outcomeStr = `${b.roll} (${b.isOver ? 'Over' : 'Under'} ${b.prediction})`;
-    } else if (b.game === 'coinflip') {
-      outcomeStr = `${b.result.toUpperCase()} (Choice: ${b.choice.toUpperCase()})`;
-    } else if (b.game === 'limbo') {
-      outcomeStr = `${b.resultMultiplier.toFixed(2)}x (Target: ${b.targetMultiplier.toFixed(2)}x)`;
-    } else if (b.game === 'tower') {
-      outcomeStr = b.multiplier ? `${b.multiplier.toFixed(2)}x` : 'Mine hit';
-    } else if (b.game === 'color') {
-      outcomeStr = `${b.result.toUpperCase()} (Choice: ${b.choice.toUpperCase()})`;
-    } else if (b.game === 'plinko') {
-      outcomeStr = `${b.multiplier}x (Risk: ${b.risk.toUpperCase()})`;
-    } else if (b.game === 'keno') {
-      outcomeStr = `${b.hits} hits (Matched ${b.hits}/${b.picks.length})`;
-    }
+      let outcomeStr = '–';
+      try {
+        if (b.game === 'plane') {
+          outcomeStr = b.cashedOut ? `${(b.cashOutMultiplier || 0).toFixed(2)}x` : 'Crashed';
+        } else if (b.game === 'mines') {
+          outcomeStr = b.multiplier ? `${(b.multiplier || 0).toFixed(2)}x` : 'Mine hit';
+        } else if (b.game === 'dice') {
+          outcomeStr = `${b.roll || 0} (${b.isOver ? 'Over' : 'Under'} ${b.prediction || 0})`;
+        } else if (b.game === 'coinflip') {
+          outcomeStr = `${(b.result || '').toUpperCase()} (Choice: ${(b.choice || '').toUpperCase()})`;
+        } else if (b.game === 'limbo') {
+          outcomeStr = `${(b.resultMultiplier || 0).toFixed(2)}x (Target: ${(b.targetMultiplier || 0).toFixed(2)}x)`;
+        } else if (b.game === 'tower') {
+          outcomeStr = b.multiplier ? `${(b.multiplier || 0).toFixed(2)}x` : 'Mine hit';
+        } else if (b.game === 'color') {
+          outcomeStr = `${(b.result || '').toUpperCase()} (Choice: ${(b.choice || '').toUpperCase()})`;
+        } else if (b.game === 'plinko') {
+          outcomeStr = `${b.multiplier || 0}x (Risk: ${(b.risk || '').toUpperCase()})`;
+        } else if (b.game === 'keno') {
+          outcomeStr = `${b.hits || 0} hits (Matched ${b.hits || 0}/${(b.picks || []).length})`;
+        }
+      } catch (innerErr) {
+        console.error("Error formatting outcome string for bet:", b, innerErr);
+      }
 
-    return `
-      <tr>
-        <td><strong>${b.id}</strong></td>
-        <td><span style="font-weight:700; text-transform:uppercase;">${b.game}</span></td>
-        <td><code>${b.userId}</code></td>
-        <td>₹${b.amount}</td>
-        <td>${outcomeStr}</td>
-        <td><span style="color:${isWin ? '#10b981' : 'inherit'}; font-weight:700;">₹${payout}</span></td>
-        <td><span style="font-size:0.75rem; color:var(--text-muted);">${new Date(b.createdAt || Date.now()).toLocaleTimeString()}</span></td>
-        <td><span class="badge ${statusCls}">${statusTxt}</span></td>
-      </tr>
-    `;
-  }).join('') || '<tr><td colspan="8" style="text-align:center; color:var(--text-muted); padding:20px;">No casino bets found</td></tr>';
+      return `
+        <tr>
+          <td><strong>${b.id || ''}</strong></td>
+          <td><span style="font-weight:700; text-transform:uppercase;">${b.game || ''}</span></td>
+          <td><code>${b.userId || ''}</code></td>
+          <td>₹${b.amount || 0}</td>
+          <td>${outcomeStr}</td>
+          <td><span style="color:${isWin ? '#10b981' : 'inherit'}; font-weight:700;">₹${payout}</span></td>
+          <td><span style="font-size:0.75rem; color:var(--text-muted);">${new Date(b.createdAt || Date.now()).toLocaleTimeString()}</span></td>
+          <td><span class="badge ${statusCls}">${statusTxt}</span></td>
+        </tr>
+      `;
+    }).join('');
+  } catch (err) {
+    console.error("Failed to render casino bets table:", err);
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:20px; color:#ef4444;">Error loading bets data</td></tr>';
+  }
 }
 
 function setupCasinoSSE() {
   if (casinoAdminSSE) return; // already listening
-  const source = new EventSource('/sse');
-  source.addEventListener('plane_round_update', e => {
-    const round = JSON.parse(e.data);
-    updateAdminCrashUI(round);
-  });
-  casinoAdminSSE = source;
+  try {
+    const source = new EventSource(SERVER + '/sse');
+    source.addEventListener('plane_round_update', e => {
+      try {
+        const round = JSON.parse(e.data);
+        updateAdminCrashUI(round);
+      } catch (err) {
+        console.error("Error parsing plane_round_update data:", err);
+      }
+    });
+    casinoAdminSSE = source;
+  } catch (err) {
+    console.error("Failed to setup Casino SSE:", err);
+  }
 }
 
 function updateAdminCrashUI(round) {
+  if (!round) return;
   const multEl = document.getElementById('admin-crash-multiplier');
   const statusEl = document.getElementById('admin-crash-status');
   const statValEl = document.getElementById('casino-stat-crash-round');
   const statStatusEl = document.getElementById('casino-stat-crash-status');
   const tbody = document.getElementById('admin-crash-bets-tbody');
 
-  if (multEl) {
-    multEl.textContent = round.multiplier.toFixed(2) + 'x';
-    if (round.status === 'crashed') {
-      multEl.style.color = '#ef4444';
-      statusEl.textContent = 'Status: Crashed';
-    } else if (round.status === 'running') {
-      multEl.style.color = '#10b981';
-      statusEl.textContent = 'Status: Flying!';
-    } else {
-      multEl.style.color = '#3b82f6';
-      statusEl.textContent = 'Status: Waiting for bets...';
+  try {
+    const multiplierVal = typeof round.multiplier === 'number' ? round.multiplier.toFixed(2) : '1.00';
+    if (multEl) {
+      multEl.textContent = multiplierVal + 'x';
+      if (round.status === 'crashed') {
+        multEl.style.color = '#ef4444';
+        statusEl.textContent = 'Status: Crashed';
+      } else if (round.status === 'running') {
+        multEl.style.color = '#10b981';
+        statusEl.textContent = 'Status: Flying!';
+      } else {
+        multEl.style.color = '#3b82f6';
+        statusEl.textContent = 'Status: Waiting for bets...';
+      }
     }
-  }
 
-  if (statValEl) {
-    statValEl.textContent = round.multiplier.toFixed(2) + 'x';
-    statStatusEl.textContent = 'Status: ' + round.status.toUpperCase();
-  }
+    if (statValEl) {
+      statValEl.textContent = multiplierVal + 'x';
+      statStatusEl.textContent = 'Status: ' + (round.status || '').toUpperCase();
+    }
 
-  // Update bets table
-  if (tbody) {
-    tbody.innerHTML = round.bets.map(b => {
-      const statusTxt = b.cashedOut ? `Cashed out @ ${b.cashOutMultiplier.toFixed(2)}x` : round.status === 'crashed' ? 'Crashed' : 'In Flight';
-      const statusCls = b.cashedOut ? 'active' : round.status === 'crashed' ? 'inactive' : 'pending';
-      return `
-        <tr>
-          <td><code>${b.userId}</code></td>
-          <td>₹${b.amount}</td>
-          <td>${b.autoCashOut ? b.autoCashOut + 'x' : 'Manual'}</td>
-          <td><span class="badge ${statusCls}">${statusTxt}</span></td>
-        </tr>
-      `;
-    }).join('') || '<tr><td colspan="4" style="text-align:center; color:var(--text-muted); padding:10px;">No active bets in this round</td></tr>';
+    // Update bets table
+    if (tbody) {
+      const betsList = round.bets || [];
+      tbody.innerHTML = betsList.map(b => {
+        const cashOutMult = typeof b.cashOutMultiplier === 'number' ? b.cashOutMultiplier.toFixed(2) : '0.00';
+        const statusTxt = b.cashedOut ? `Cashed out @ ${cashOutMult}x` : round.status === 'crashed' ? 'Crashed' : 'In Flight';
+        const statusCls = b.cashedOut ? 'active' : round.status === 'crashed' ? 'inactive' : 'pending';
+        return `
+          <tr>
+            <td><code>${b.userId || ''}</code></td>
+            <td>₹${b.amount || 0}</td>
+            <td>${b.autoCashOut ? b.autoCashOut + 'x' : 'Manual'}</td>
+            <td><span class="badge ${statusCls}">${statusTxt}</span></td>
+          </tr>
+        `;
+      }).join('') || '<tr><td colspan="4" style="text-align:center; color:var(--text-muted); padding:10px;">No active bets in this round</td></tr>';
+    }
+  } catch (err) {
+    console.error("Failed to update admin crash UI:", err);
   }
 }
 
