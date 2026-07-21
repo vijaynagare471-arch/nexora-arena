@@ -657,43 +657,58 @@ window.deleteGame = function(id, name) {
 function renderUsers(list = db.users || []) {
   const tbody = document.getElementById('users-tbody');
   if (!tbody) return;
-  tbody.innerHTML = list.map((u, i) => {
-    const bal = u.balance !== undefined ? u.balance : 2450;
-    return `
-      <tr>
-        <td>${i+1}</td>
-        <td>
-          <div style="display:flex; align-items:center; gap:8px;">
-            ${u.avatar 
-              ? `<img src="${u.avatar}" style="width:32px; height:32px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(124,58,237,0.3);" />`
-              : `<div style="width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:0.78rem;">${(u.name || 'N').charAt(0).toUpperCase()}</div>`
-            }
-            <div>
-              <b style="color:#fff;">${u.name}</b>
-              <div style="font-size:0.68rem;color:var(--text-muted)">${u.id}</div>
+  if (!Array.isArray(list)) {
+    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:20px;color:var(--text-muted)">No users</td></tr>';
+    return;
+  }
+  
+  try {
+    tbody.innerHTML = list.map((u, i) => {
+      if (!u) return '';
+      const bal = u.balance !== undefined && u.balance !== null ? u.balance : 0;
+      const spentVal = u.spent !== undefined && u.spent !== null ? u.spent : 0;
+      const statusVal = u.status || 'active';
+      
+      return `
+        <tr>
+          <td>${i+1}</td>
+          <td>
+            <div style="display:flex; align-items:center; gap:8px;">
+              ${u.avatar 
+                ? `<img src="${u.avatar}" style="width:32px; height:32px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(124,58,237,0.3);" />`
+                : `<div style="width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:0.78rem;">${(u.name || 'N').charAt(0).toUpperCase()}</div>`
+              }
+              <div>
+                <b style="color:#fff;">${u.name || 'User'}</b>
+                <div style="font-size:0.68rem;color:var(--text-muted)">${u.id || ''}</div>
+              </div>
             </div>
-          </div>
-        </td>
-        <td style="color:var(--text-muted)">${u.email}</td>
-        <td style="color:var(--text-muted)">${u.phone}</td>
-        <td>${u.tournaments}</td>
-        <td style="color:var(--warning);font-weight:700">₹${u.spent.toLocaleString('en-IN')}</td>
-        <td style="color:var(--success);font-weight:700">₹${bal.toLocaleString('en-IN')}</td>
-        <td><span class="badge ${u.status}">${u.status.toUpperCase()}</span></td>
-        <td style="color:var(--text-muted)">${u.joined}</td>
-        <td>
-          <div class="actions-row">
-            <button class="btn btn-ghost btn-icon btn-sm" title="Manage Wallet & Bank" onclick="openManageUser('${u.id}')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-            </button>
-            <button class="btn ${u.status === 'banned' ? 'btn-success' : 'btn-danger'} btn-sm" onclick="toggleBan('${u.id}','${u.status}')">
-              ${u.status === 'banned' ? 'Unban' : 'Ban'}
-            </button>
-          </div>
-        </td>
-      </tr>
-    `;
-  }).join('') || '<tr><td colspan="10" style="text-align:center;padding:20px;color:var(--text-muted)">No users</td></tr>';
+          </td>
+          <td style="color:var(--text-muted)">${u.email || '–'}</td>
+          <td style="color:var(--text-muted)">${u.phone || '–'}</td>
+          <td>${u.tournaments || 0}</td>
+          <td style="color:var(--warning);font-weight:700">₹${spentVal.toLocaleString('en-IN')}</td>
+          <td style="color:var(--success);font-weight:700">₹${bal.toLocaleString('en-IN')}</td>
+          <td><span class="badge ${statusVal}">${statusVal.toUpperCase()}</span></td>
+          <td style="color:var(--text-muted)">${u.joined || '–'}</td>
+          <td>
+            <div class="actions-row">
+              <button class="btn btn-ghost btn-icon btn-sm" title="Manage Wallet & Bank" onclick="openManageUser('${u.id}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </button>
+              <button class="btn ${statusVal === 'banned' ? 'btn-success' : 'btn-danger'} btn-sm" onclick="toggleBan('${u.id}','${statusVal}')">
+                ${statusVal === 'banned' ? 'Unban' : 'Ban'}
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  } catch (err) {
+    console.error("Failed to render users table:", err);
+    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:20px;color:#ef4444;">Error loading users data</td></tr>';
+  }
+}
 }
 
 window.searchUsers = function(q) {
