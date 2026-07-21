@@ -1,0 +1,3525 @@
+{
+  "settings": {
+    "appName": "Nexora Arena",
+    "commission": 15,
+    "maintenanceMode": false,
+    "referralBonus": 30,
+    "minWithdrawal": 100,
+    "currency": "INR",
+    "maintenanceReason": "",
+    "maintenanceImage": "https://placeholder-url.com",
+    "maintenanceMedia": "",
+    "maintenanceMediaType": "image",
+    "maintenanceStatus": "IN PROGRESS",
+    "maintenancePercentage": 0,
+    "maintenanceTask": "Optimizing Tournament Servers",
+    "maintenanceEta": "2 Hours",
+    "maintenanceDiscord": "#",
+    "maintenanceTelegram": "#",
+    "maintenanceInstagram": "#",
+    "detectedSymbols": [],
+    "symbolLinks": {},
+    "maintenanceShowText": false
+  },
+  "stats": {
+    "totalUsers": 12458,
+    "totalTournaments": 342,
+    "totalRevenue": 1875000,
+    "totalWithdrawals": 281250
+  },
+  "games": [
+    {
+      "id": "GMRF9G3T1",
+      "tournaments": 0,
+      "active": true,
+      "name": "FREE FIRE MAX",
+      "emoji": "🎮",
+      "image": "https://placeholder-url.com",
+      "color": "#1a1a2e,#13131f"
+    },
+    {
+      "id": "GMRF9HODS",
+      "tournaments": 0,
+      "active": true,
+      "name": "BGMI",
+      "emoji": "🎮",
+      "image": "https://placeholder-url.com",
+      "color": "#1a1a2e,#13131f"
+    },
+    {
+      "id": "GMRGJFNAY",
+      "tournaments": 0,
+      "active": false,
+      "name": "Minecraft",
+      "emoji": "🎮",
+      "image": "https://placeholder-url.com",
+      "color": "#1a1a2e,#13131f"
+    },
+    {
+      "id": "GMRJEDAH4",
+      "tournaments": 0,
+      "active": true,
+      "name": "clash royale",
+      "emoji": "🎮",
+      "image": "https://placeholder-url.com",
+      "color": "#1a1a2e,#13131f"
+    },
+    {
+      "id": "GMRM4UEYE",
+      "tournaments": 0,
+      "active": true,
+      "name": "8 Ball Pool",
+      "emoji": "🎮",
+      "image": "https://placeholder-url.com",
+      "color": "#1a1a2e,#13131f"
+    },
+    {
+      "id": "GMRM4WDTG",
+      "tournaments": 0,
+      "active": true,
+      "name": "Apex Legends",
+      "emoji": "🎮",
+      "image": "https://placeholder-url.com",
+      "color": "#1a1a2e,#13131f"
+    },
+    {
+      "id": "GMRM4YCL9",
+      "tournaments": 0,
+      "active": true,
+      "name": "COD Mobile",
+      "emoji": "🎮",
+      "image": "https://placeholder-url.com",
+      "color": "#1a1a2e,#13131f"
+    },
+    {
+      "id": "GMRM4ZJEI",
+      "tournaments": 0,
+      "active": true,
+      "name": "Valorant",
+      "emoji": "🎮",
+      "image": "https://placeholder-url.com",
+      "color": "#1a1a2e,#13131f"
+    }
+  ],
+  "tournaments": [
+    {
+      "id": "TMRM55JLL",
+      "game": "FREE FIRE MAX",
+      "name": "MEGA TOURNAMENT",
+      "fee": 100,
+      "prize": 3500,
+      "prizeDistribution": "1ST PRIZE 500\n2ND PRIZE 300\n3RD PRIZE 200",
+      "slots": 40,
+      "mode": "BR",
+      "type": "SQUAD",
+      "status": "completed",
+      "map": "BARMUDA",
+      "date": "2026-07-15",
+      "time": "07:50",
+      "description": "TOURNAMENTS IS LIVE JOIN FAST",
+      "image": "https://placeholder-url.com",
+      "registered": 2,
+      "filled": 2,
+      "joinedUsers": [
+        {
+          "userId": "NKAJ890",
+          "username": "NexoraPlayer",
+          "gameUsername": "JAYESH",
+          "joinedAt": "2026-07-15T20:25:39.910Z"
+        }
+      ],
+      "roomId": "LKG",
+      "roomPassword": "234244234",
+      "winners": {
+        "first": {
+          "userId": "NKAJ890",
+          "gameUsername": "JAYESH",
+          "prize": 1000
+        },
+        "second": {
+          "userId": "NKAJ890",
+          "gameUsername": "JAYESH",
+          "prize": 50000
+        },
+        "third": {
+          "userId": "NKAJ890",
+          "gameUsername": "JAYESH",
+          "prize": 50000
+        }
+      }
+    },
+    {
+      "id": "TMRF7F0IZ",
+      "game": "FREE FIRE MAX",
+      "name": "BGMI Solo Showdown",
+      "fee": 50,
+      "prize": 500,
+      "slots": 10,
+      "mode": "TPP",
+      "type": "DUO",
+      "status": "live",
+      "map": "Erangel",
+      "date": "2024-05-15",
+      "time": "18:00",
+      "description": "",
+      "registered": 61,
+      "filled": 61,
+      "prizeDistribution": "",
+      "roomId": "",
+      "roomPassword": "",
+      "image": "https://placeholder-url.com"
+    },
+    {
+      "id": "T001",
+      "game": "BGMI",
+      "gameId": "G001",
+      "name": "BGMI Solo Showdown",
+      "prize": 50000,
+      "fee": 50,
+      "status": "live",
+      "slots": 100,
+      "filled": 60,
+      "mode": "TPP",
+      "type": "SOLO",
+      "map": "Erangel",
+      "date": "2024-05-15",
+      "time": "18:00",
+      "registered": 60,
+      "description": "Epic BGMI Solo tournament with massive prizes!"
+    },
+    {
+      "id": "T002",
+      "game": "Free Fire MAX",
+      "gameId": "G002",
+      "name": "Free Fire Max Duo",
+      "prize": 75000,
+      "fee": 90,
+      "status": "live",
+      "slots": 50,
+      "filled": 38,
+      "mode": "TPP",
+      "type": "DUO",
+      "map": "Bermuda",
+      "date": "2024-05-15",
+      "time": "19:30",
+      "registered": 38,
+      "description": "Free Fire MAX Duo championship."
+    },
+    {
+      "id": "T003",
+      "game": "Valorant",
+      "gameId": "G003",
+      "name": "Valorant 5v5 Cup",
+      "prize": 100000,
+      "fee": 100,
+      "status": "upcoming",
+      "slots": 50,
+      "filled": 29,
+      "mode": "FPP",
+      "type": "SQUAD",
+      "map": "Haven",
+      "date": "2024-05-16",
+      "time": "20:00",
+      "registered": 29,
+      "description": "Valorant squad championship - prove your team's dominance!"
+    },
+    {
+      "id": "T004",
+      "game": "COD Mobile",
+      "gameId": "G004",
+      "name": "COD Battle Royale",
+      "prize": 80000,
+      "fee": 80,
+      "status": "upcoming",
+      "slots": 100,
+      "filled": 40,
+      "mode": "BR",
+      "type": "SOLO",
+      "map": "Blackout",
+      "date": "2024-05-17",
+      "time": "18:00",
+      "registered": 40,
+      "description": "COD Mobile Battle Royale championship."
+    },
+    {
+      "id": "T005",
+      "game": "Clash Royale",
+      "gameId": "G005",
+      "name": "Clash Royale Cup",
+      "prize": 20000,
+      "fee": 30,
+      "status": "upcoming",
+      "slots": 50,
+      "filled": 32,
+      "mode": "1v1",
+      "type": "SOLO",
+      "map": "Arena",
+      "date": "2024-05-18",
+      "time": "17:00",
+      "registered": 32,
+      "description": "Clash Royale 1v1 cup."
+    }
+  ],
+  "users": [
+    {
+      "id": "GA10001",
+      "name": "Arjun Verma",
+      "email": "arjunverma@gmail.com",
+      "phone": "+91 9876543210",
+      "tournaments": 23,
+      "spent": 2300,
+      "status": "active",
+      "joined": "01 May 2024",
+      "verificationStatus": "verified",
+      "kycStatus": "approved",
+      "kycDetails": {
+        "fullName": "Arjun Verma",
+        "dob": "15/08/1998",
+        "gender": "Male",
+        "phone": "+91 9876543210",
+        "panCardImg": "assets/valorant_thumb.jpg",
+        "selfieImg": "assets/valorant_thumb.jpg",
+        "submittedAt": "12/05/2026, 04:30 PM",
+        "note": "Verified by admin."
+      }
+    },
+    {
+      "id": "GA10002",
+      "name": "Rohit Sharma",
+      "email": "rohitsharma@gmail.com",
+      "phone": "+91 9123456780",
+      "tournaments": 18,
+      "spent": 1880,
+      "status": "active",
+      "joined": "11 May 2024",
+      "verificationStatus": "verified",
+      "predictionPoints": 0
+    },
+    {
+      "id": "GA10003",
+      "name": "Priya Singh",
+      "email": "priyasingh@gmail.com",
+      "phone": "+91 9988776655",
+      "tournaments": 12,
+      "spent": 1250,
+      "status": "active",
+      "joined": "03 May 2024",
+      "kycStatus": "approved",
+      "kycDetails": {
+        "fullName": "Priya Singh",
+        "dob": "22/11/2000",
+        "gender": "Female",
+        "phone": "+91 9988776655",
+        "panCardImg": "assets/valorant_thumb.jpg",
+        "selfieImg": "assets/valorant_thumb.jpg",
+        "submittedAt": "12/07/2026, 11:20 AM",
+        "note": "KYC documents verified and approved."
+      },
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "GA10004",
+      "name": "Karan Mehta",
+      "email": "karanmehta@gmail.com",
+      "phone": "+91 8877668864",
+      "tournaments": 30,
+      "spent": 3600,
+      "status": "active",
+      "joined": "09 May 2024",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "GA10005",
+      "name": "Sneha Patel",
+      "email": "snehapatel@gmail.com",
+      "phone": "+91 9000112233",
+      "tournaments": 8,
+      "spent": 640,
+      "status": "active",
+      "joined": "15 Apr 2024",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "GAMRF9WR23",
+      "name": "NexoraPlayer",
+      "email": "nexoraplayer@gmail.com",
+      "phone": "+91 9999995750",
+      "tournaments": 0,
+      "spent": 0,
+      "status": "active",
+      "joined": "11/7/2026",
+      "verificationStatus": "verified",
+      "balance": 150,
+      "bankDetails": {
+        "bankName": "HDFC Bank",
+        "accountNumber": "50100993365146",
+        "ifsc": "HDFC0000124",
+        "accountHolder": "NexoraPlayer"
+      }
+    },
+    {
+      "id": "NKAJ890",
+      "name": "NexoraPlayer",
+      "phone": "",
+      "email": "",
+      "balance": 700,
+      "tournaments": 0,
+      "spent": 0,
+      "status": "active",
+      "joined": "13/7/2026",
+      "verificationStatus": "verified",
+      "kycStatus": "approved",
+      "kycDetails": {
+        "fullName": "alok sharma",
+        "dob": "07/08/1999",
+        "gender": "Male",
+        "phone": "+91 1234567889",
+        "panCardImg": "https://placeholder-url.com",
+        "selfieImg": "https://placeholder-url.com",
+        "submittedAt": "13/7/2026, 9:32:19 am",
+        "note": "KYC documents verified and approved."
+      },
+      "language": "en",
+      "lastBonusSpin": "Thu Jul 16 2026",
+      "predictionPoints": 300,
+      "banReason": "",
+      "avatar": "https://placeholder-url.com"
+    },
+    {
+      "id": "GAMRRHRYLU",
+      "name": "Vijay Shivaram Nagare",
+      "email": "vijaynagare471@gmail.com",
+      "phone": "+91 +917498113902",
+      "dateOfBirth": "02 Feb 2004",
+      "gender": "Male",
+      "referralCode": "",
+      "balance": 2450,
+      "tournaments": 0,
+      "spent": 0,
+      "status": "Active",
+      "joined": "19 Jul 2026, 01:16 PM",
+      "verificationStatus": "Verified",
+      "bankDetails": {
+        "bankName": "HDFC Bank",
+        "accountNumber": "50100697156294",
+        "ifsc": "HDFC0000124",
+        "accountHolder": "Vijay Shivaram Nagare"
+      }
+    },
+    {
+      "id": "GAMRRI4K2U",
+      "name": "vaibhav",
+      "email": "vijaynagare472@gmail.com",
+      "phone": "+91 +919689901416",
+      "dateOfBirth": "02 Feb 2004",
+      "gender": "Male",
+      "referralCode": "",
+      "balance": 106,
+      "tournaments": 0,
+      "spent": 0,
+      "status": "Active",
+      "joined": "19 Jul 2026, 01:25 PM",
+      "verificationStatus": "Verified",
+      "bankDetails": {
+        "bankName": "HDFC Bank",
+        "accountNumber": "50100449950072",
+        "ifsc": "HDFC0000124",
+        "accountHolder": "vaibhav"
+      }
+    },
+    {
+      "id": "GAMRT6OC8P",
+      "name": "NexoraPlayer",
+      "phone": "+91 +917498113902",
+      "email": "player_+917498113902@gmail.com",
+      "balance": 0
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TXNMRRI6JP3",
+      "date": "19/7/2026, 1:27:38 pm",
+      "user": "vaibhav",
+      "type": "added",
+      "amount": 106,
+      "method": "Admin Adjustment",
+      "status": "success"
+    },
+    {
+      "id": "TXMRRHQ78C",
+      "user": "NexoraPlayer",
+      "type": "added",
+      "amount": 500,
+      "method": "QR Code (Manual Verify)",
+      "status": "success",
+      "date": "19/7/2026",
+      "utr": "941317262419"
+    },
+    {
+      "id": "TXMRRH5ULY",
+      "user": "NexoraPlayer",
+      "type": "added",
+      "amount": 100,
+      "method": "QR Code (Manual Verify)",
+      "status": "success",
+      "date": "19/7/2026",
+      "utr": "941317262414"
+    },
+    {
+      "id": "TXMRRGVRZJ",
+      "user": "NexoraPlayer",
+      "type": "added",
+      "amount": 100,
+      "method": "QR Code (Manual Verify)",
+      "status": "success",
+      "date": "19/7/2026",
+      "utr": "941317262434"
+    },
+    {
+      "id": "TXNMRRFZ139",
+      "date": "19/7/2026, 12:25:48 pm",
+      "user": "NexoraPlayer",
+      "type": "withdrawal",
+      "amount": -100100984,
+      "method": "Bank (HDFC Bank)",
+      "status": "success"
+    },
+    {
+      "id": "TXMRQ85BX2",
+      "user": "NexoraPlayer",
+      "type": "debit",
+      "amount": -1000,
+      "method": "Predictions Bet Placement",
+      "status": "success",
+      "date": "18/7/2026"
+    },
+    {
+      "id": "TXMRQ7VBDZ",
+      "user": "NexoraPlayer",
+      "type": "credit",
+      "amount": 170,
+      "method": "Prediction Win (Match Winner)",
+      "status": "success",
+      "date": "18/7/2026"
+    },
+    {
+      "id": "TXMRQ7BSZ8",
+      "user": "NexoraPlayer",
+      "type": "credit",
+      "amount": 155,
+      "method": "Prediction Win (Team Alpha vs Team Beta)",
+      "status": "success",
+      "date": "18/7/2026"
+    },
+    {
+      "id": "TXMRQ7BSZ8",
+      "user": "NexoraPlayer",
+      "type": "credit",
+      "amount": 155,
+      "method": "Prediction Win (Team Alpha vs Team Beta)",
+      "status": "success",
+      "date": "18/7/2026"
+    },
+    {
+      "id": "TXMRQ7BSYH",
+      "user": "NexoraPlayer",
+      "type": "credit",
+      "amount": 155,
+      "method": "Prediction Win (Team Alpha vs Team Beta)",
+      "status": "success",
+      "date": "18/7/2026"
+    },
+    {
+      "id": "TXMRQ6W3FL",
+      "user": "NexoraPlayer",
+      "type": "debit",
+      "amount": -500,
+      "method": "Predictions Bet Placement",
+      "status": "success",
+      "date": "18/7/2026"
+    },
+    {
+      "id": "TXMRQ6JY2K",
+      "user": "NexoraPlayer",
+      "type": "debit",
+      "amount": -500,
+      "method": "Predictions Bet Placement",
+      "status": "success",
+      "date": "18/7/2026"
+    },
+    {
+      "id": "TXMRQ6IXVE",
+      "user": "NexoraPlayer",
+      "type": "debit",
+      "amount": -500,
+      "method": "Predictions Bet Placement",
+      "status": "success",
+      "date": "18/7/2026"
+    },
+    {
+      "id": "TXNMRNC9BZK",
+      "date": "16/7/2026, 3:30:46 pm",
+      "user": "NexoraPlayer",
+      "userId": "NKAJ890",
+      "type": "debit",
+      "description": "Play Ludo Classic",
+      "amount": "-₹10",
+      "amountRaw": -10
+    },
+    {
+      "id": "TXMRNAF3CB",
+      "user": "NexoraPlayer",
+      "type": "debit",
+      "amount": -100,
+      "method": "Predictions Bet Placement",
+      "status": "success",
+      "date": "16/7/2026"
+    },
+    {
+      "id": "TXMRNAER6S",
+      "user": "NexoraPlayer",
+      "type": "debit",
+      "amount": -300,
+      "method": "Predictions Bet Placement",
+      "status": "success",
+      "date": "16/7/2026"
+    },
+    {
+      "id": "TXMRMKB2P2",
+      "user": "NexoraPlayer",
+      "type": "debit",
+      "amount": -100,
+      "method": "Predictions Bet Placement",
+      "status": "success",
+      "date": "16/7/2026"
+    },
+    {
+      "id": "TXMRMKAV0V",
+      "user": "NexoraPlayer",
+      "type": "debit",
+      "amount": -100,
+      "method": "Predictions Bet Placement",
+      "status": "success",
+      "date": "16/7/2026"
+    },
+    {
+      "id": "TXN006240T",
+      "userId": "NKAJ890",
+      "type": "credit",
+      "desc": "Won Tournament",
+      "sub": "MEGA TOURNAMENT — THIRD Place",
+      "amount": 50000,
+      "method": "Wallet",
+      "date": "16/7/2026"
+    },
+    {
+      "id": "TXN006240S",
+      "userId": "NKAJ890",
+      "type": "credit",
+      "desc": "Won Tournament",
+      "sub": "MEGA TOURNAMENT — SECOND Place",
+      "amount": 50000,
+      "method": "Wallet",
+      "date": "16/7/2026"
+    },
+    {
+      "id": "TXN006221F",
+      "userId": "NKAJ890",
+      "type": "credit",
+      "desc": "Won Tournament",
+      "sub": "MEGA TOURNAMENT — FIRST Place",
+      "amount": 1000,
+      "method": "Wallet",
+      "date": "16/7/2026"
+    },
+    {
+      "id": "TXN139893",
+      "userId": "NKAJ890",
+      "type": "joined",
+      "desc": "Joined Tournament",
+      "sub": "MEGA TOURNAMENT — 16/7/2026",
+      "amount": -100,
+      "method": "Wallet",
+      "date": "16/7/2026"
+    },
+    {
+      "id": "TXNMRMINT7A",
+      "date": "16/7/2026, 1:42:13 am",
+      "user": "NexoraPlayer",
+      "type": "joined",
+      "amount": -100,
+      "method": "Wallet",
+      "status": "success"
+    },
+    {
+      "id": "TXNMRMHZX8M",
+      "date": "16/7/2026, 1:23:38 am",
+      "user": "NexoraPlayer",
+      "type": "added",
+      "amount": 99999999,
+      "method": "Admin Adjustment",
+      "status": "success"
+    },
+    {
+      "id": "TXNMRGKW08L",
+      "date": "11/7/2026, 9:57:57 pm",
+      "user": "NexoraPlayer",
+      "type": "withdrawal",
+      "amount": -2000,
+      "method": "UPI (dadfdsf)",
+      "status": "success"
+    },
+    {
+      "id": "TXNMRGKV5F6",
+      "date": "11/7/2026, 9:57:17 pm",
+      "user": "NexoraPlayer",
+      "type": "withdrawal",
+      "amount": -100,
+      "method": "UPI (221fssae)",
+      "status": "success"
+    },
+    {
+      "id": "TXNMRGJTKZZ",
+      "date": "11/7/2026, 9:28:04 pm",
+      "user": "NexoraPlayer",
+      "type": "withdrawal",
+      "amount": -100,
+      "method": "Bank (Maharashtra - 0392)",
+      "status": "success"
+    },
+    {
+      "id": "TXNMRFAI0DJ",
+      "date": "11/7/2026, 12:19:22 am",
+      "user": "NexoraPlayer",
+      "type": "joined",
+      "amount": -50,
+      "method": "Wallet",
+      "status": "success"
+    },
+    {
+      "id": "TXNMRF9XCI8",
+      "date": "11/7/2026, 12:03:18 am",
+      "user": "NexoraPlayer",
+      "type": "joined",
+      "amount": -50,
+      "method": "Wallet",
+      "status": "success"
+    },
+    {
+      "id": "TXNMRF95GJV",
+      "date": "10/7/2026, 11:41:37 pm",
+      "user": "NexoraPlayer",
+      "type": "withdrawal",
+      "amount": -2000,
+      "method": "UPI (abs@upi)",
+      "status": "success"
+    },
+    {
+      "id": "TXNMRF7E0T8",
+      "date": "10/7/2026, 10:52:17 pm",
+      "user": "NexoraPlayer",
+      "type": "joined",
+      "amount": -90,
+      "method": "Wallet",
+      "status": "success"
+    },
+    {
+      "id": "TXN00001",
+      "user": "Arjun Verma",
+      "type": "added",
+      "amount": 500,
+      "method": "UPI",
+      "status": "success",
+      "date": "12 Jun 2024 07:45 PM"
+    },
+    {
+      "id": "TXN00002",
+      "user": "Priya Singh",
+      "type": "joined",
+      "amount": -50,
+      "method": "Wallet",
+      "status": "success",
+      "date": "12 Jun 2024 07:10 PM"
+    },
+    {
+      "id": "TXN00003",
+      "user": "Priya Singh",
+      "type": "added",
+      "amount": 900,
+      "method": "UPI",
+      "status": "success",
+      "date": "12 Jun 2024 06:50 PM"
+    },
+    {
+      "id": "TXN00004",
+      "user": "Karan Mehta",
+      "type": "refund",
+      "amount": 50,
+      "method": "Wallet",
+      "status": "success",
+      "date": "12 Jun 2024 05:30 PM"
+    },
+    {
+      "id": "TXN00005",
+      "user": "Rohit Sharma",
+      "type": "withdrawal",
+      "amount": -300,
+      "method": "UPI",
+      "status": "pending",
+      "date": "11 Jun 2024 03:20 PM"
+    },
+    {
+      "id": "TXN00006",
+      "user": "Sneha Patel",
+      "type": "added",
+      "amount": 200,
+      "method": "PhonePe",
+      "status": "success",
+      "date": "10 Jun 2024 11:00 AM"
+    }
+  ],
+  "withdrawals": [
+    {
+      "id": "WDMRGKW08A",
+      "user": "NexoraPlayer",
+      "amount": 2000,
+      "status": "approved",
+      "date": "11/7/2026",
+      "method": "upi",
+      "details": {
+        "type": "upi",
+        "upi": "dadfdsf"
+      },
+      "paidAt": "11/7/2026, 10:17:02 pm",
+      "refNo": "UPI203953630739",
+      "notes": "Payment sent via UPI."
+    },
+    {
+      "id": "WDMRGKV5EV",
+      "user": "NexoraPlayer",
+      "amount": 100,
+      "status": "approved",
+      "date": "11/7/2026",
+      "method": "upi",
+      "details": {
+        "type": "upi",
+        "upi": "221fssae"
+      },
+      "paidAt": "13/7/2026, 9:21:55 pm",
+      "refNo": "UPI707673900192",
+      "notes": "Payment sent via UPI."
+    },
+    {
+      "id": "WDMRGJTKZN",
+      "user": "NexoraPlayer",
+      "amount": 100,
+      "status": "approved",
+      "date": "11/7/2026",
+      "method": "bank",
+      "details": {
+        "type": "bank",
+        "bankName": "Maharashtra",
+        "accountNumber": "1300209190392",
+        "ifsc": "hdkidiuw",
+        "accountHolder": "hawdh.ajk."
+      }
+    },
+    {
+      "id": "WDMRF95GJH",
+      "user": "NexoraPlayer",
+      "amount": 2000,
+      "status": "approved",
+      "date": "10/7/2026",
+      "method": "upi",
+      "details": {
+        "type": "upi",
+        "upi": "abs@upi"
+      }
+    },
+    {
+      "id": "WD001",
+      "user": "Rohit Sharma",
+      "amount": 300,
+      "upi": "rohit@okaxis",
+      "status": "approved",
+      "date": "11 Jun 2024"
+    },
+    {
+      "id": "WD002",
+      "user": "Arjun Verma",
+      "amount": 500,
+      "upi": "arjun@upi",
+      "status": "approved",
+      "date": "10 Jun 2024"
+    },
+    {
+      "id": "WD003",
+      "user": "Karan Mehta",
+      "amount": 1000,
+      "upi": "karan@paytm",
+      "status": "rejected",
+      "date": "09 Jun 2024"
+    }
+  ],
+  "banners": [
+    {
+      "id": "B001",
+      "title": "BGMI Championship",
+      "subtitle": "Win ₹5,00,000",
+      "game": "BGMI",
+      "type": "Main Banner",
+      "active": false,
+      "color": "#1a3a6c,#0d47a1"
+    },
+    {
+      "id": "B002",
+      "title": "Free Fire MAX Cup",
+      "subtitle": "₹75,000 Prize Pool",
+      "game": "Free Fire MAX",
+      "type": "Top Banner",
+      "active": false,
+      "color": "#4a1a6c,#7b1fa2"
+    },
+    {
+      "id": "B003",
+      "title": "Valorant 5v5 Cup",
+      "subtitle": "₹1,00,000 Pool",
+      "game": "Valorant",
+      "type": "Side Banner",
+      "active": false,
+      "color": "#6c1a1a,#c62828"
+    },
+    {
+      "id": "B004",
+      "title": "Get 15% Bonus",
+      "subtitle": "Add cash now",
+      "game": "All Games",
+      "type": "Offer Banner",
+      "active": false,
+      "color": "#1a4a1a,#2e7d32"
+    },
+    {
+      "id": "B005",
+      "title": "Refer & Earn",
+      "subtitle": "₹20 per referral",
+      "game": "All Games",
+      "type": "Referral Banner",
+      "active": false,
+      "color": "#3a1a0a,#bf360c"
+    },
+    {
+      "id": "BMRF7NMFG",
+      "active": false,
+      "title": "fifa worlcoup",
+      "subtitle": "1cr",
+      "game": "Free Fire MAX",
+      "type": "Offer Banner",
+      "color": "#1a1a2e,#2d1060"
+    },
+    {
+      "id": "BMRF7VTNW",
+      "active": false,
+      "title": "fifa worlcoup",
+      "subtitle": "1cr",
+      "game": "All Games",
+      "type": "Main Banner",
+      "image": "https://placeholder-url.com",
+      "color": "#1a1a2e,#2d1060"
+    },
+    {
+      "id": "BMRJEJ09N",
+      "active": false,
+      "title": "fifa worlcoup",
+      "subtitle": "50",
+      "game": "FREE FIRE MAX",
+      "type": "Main Banner",
+      "image": "https://placeholder-url.com",
+      "color": "#1a1a2e,#2d1060"
+    },
+    {
+      "id": "BMRMEB8B3",
+      "active": false,
+      "title": "MEGA TOURNAMENT",
+      "subtitle": "",
+      "game": "All Games",
+      "type": "Main Banner",
+      "image": "https://placeholder-url.com",
+      "video": "",
+      "action": {
+        "type": "tournament",
+        "page": "tournaments",
+        "tournamentId": "TMRM55JLL",
+        "url": ""
+      },
+      "buttons": [
+        {
+          "label": "Join Now",
+          "style": "success",
+          "action": "tournament",
+          "page": "tournaments",
+          "tournamentId": "TMRM55JLL",
+          "url": ""
+        }
+      ],
+      "color": "#1a1a2e,#2d1060"
+    },
+    {
+      "id": "BMRMKG03T",
+      "active": false,
+      "title": "MEGA TOURNAMENT",
+      "subtitle": "50",
+      "game": "All Games",
+      "type": "Main Banner",
+      "image": "https://placeholder-url.com",
+      "video": "",
+      "action": {
+        "type": "",
+        "page": "tournaments",
+        "tournamentId": "",
+        "url": ""
+      },
+      "buttons": [],
+      "color": "#1a1a2e,#2d1060"
+    },
+    {
+      "id": "BMRN9LJKL",
+      "active": true,
+      "title": "announcement",
+      "subtitle": "500000",
+      "game": "FREE FIRE MAX",
+      "type": "Offer Banner",
+      "image": "",
+      "video": "https://placeholder-url.com",
+      "action": {
+        "type": "page",
+        "page": "tournaments",
+        "tournamentId": "",
+        "url": ""
+      },
+      "buttons": [],
+      "color": "#1a1a2e,#2d1060",
+      "hideText": true
+    }
+  ],
+  "notices": [],
+  "revenueChart": {
+    "labels": [
+      "May 6",
+      "May 15",
+      "May 22",
+      "May 29",
+      "Jun 5",
+      "Jun 12"
+    ],
+    "data": [
+      45000,
+      72000,
+      58000,
+      95000,
+      81000,
+      120000
+    ]
+  },
+  "supportSettings": {
+    "email": "support@nexoraarena.com",
+    "phone": "+91 98765 43210",
+    "website": "https://nexoraarena.com",
+    "address": "Nexora Arena, 2nd Floor, Pune, Maharashtra - 411001",
+    "workingHours": "Mon - Sat (10:00 AM - 8:00 PM)"
+  },
+  "tickets": [
+    {
+      "id": "NX-2026-0002",
+      "user": "NexoraPlayer",
+      "userId": "NKAJ890",
+      "userEmail": "nexoraplayer@gmail.com",
+      "userPhone": "+91 98765 43210",
+      "category": "Payment Issue",
+      "subject": "hello",
+      "description": "tfu",
+      "status": "closed",
+      "prefContact": "App Notification",
+      "files": [],
+      "createdAt": "14/7/2026, 8:12:00 pm",
+      "replies": [
+        {
+          "sender": "user",
+          "message": "tfu",
+          "files": [],
+          "date": "14/7/2026, 8:12:01 pm"
+        },
+        {
+          "sender": "admin",
+          "message": "guygy",
+          "files": [],
+          "date": "14/7/2026, 8:12:28 pm"
+        }
+      ]
+    },
+    {
+      "id": "NX-2026-0001",
+      "user": "NexoraPlayer",
+      "userId": "NKAJ890",
+      "userEmail": "nexoraplayer@gmail.com",
+      "userPhone": "+91 98765 43210",
+      "category": "Payment Issue",
+      "subject": "hello",
+      "description": "ioiiol",
+      "status": "closed",
+      "prefContact": "App Notification",
+      "files": [],
+      "createdAt": "11/7/2026, 11:15:54 pm",
+      "replies": [
+        {
+          "sender": "user",
+          "message": "ioiiol",
+          "files": [],
+          "date": "11/7/2026, 11:15:54 pm"
+        },
+        {
+          "sender": "user",
+          "message": "ticekt",
+          "files": [],
+          "date": "11/7/2026, 11:16:11 pm"
+        },
+        {
+          "sender": "admin",
+          "message": "hii",
+          "files": [],
+          "date": "11/7/2026, 11:38:20 pm"
+        }
+      ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": "NTMRRHQ78Z",
+      "userId": "NKAJ890",
+      "title": "💰 Cash Deposit Approved!",
+      "body": "Your manual deposit request of ₹500 (UTR: 941317262419) has been approved and credited to your wallet.",
+      "read": true,
+      "date": "2026-07-19T07:44:55.865Z"
+    },
+    {
+      "id": "NTMRRH6NK6",
+      "userId": "NKAJ890",
+      "title": "❌ Cash Deposit Rejected",
+      "body": "Your manual deposit request of ₹500 (UTR: 941317262419) was rejected after verification. Contact support.",
+      "read": true,
+      "date": "2026-07-19T07:29:43.878Z"
+    },
+    {
+      "id": "NTMRRH5ULY",
+      "userId": "NKAJ890",
+      "title": "💰 Cash Deposit Approved!",
+      "body": "Your manual deposit request of ₹100 (UTR: 941317262414) has been approved and credited to your wallet.",
+      "read": true,
+      "date": "2026-07-19T07:29:06.364Z"
+    },
+    {
+      "id": "NTMRRGVRZK",
+      "userId": "NKAJ890",
+      "title": "💰 Cash Deposit Approved!",
+      "body": "Your manual deposit request of ₹100 (UTR: 941317262434) has been approved and credited to your wallet.",
+      "read": true,
+      "date": "2026-07-19T07:21:16.404Z"
+    },
+    {
+      "id": "NTMRQ7VBEH",
+      "userId": "NKAJ890",
+      "title": "🎉 You Won! Prediction Match Resolved",
+      "body": "Congratulations! You won the prediction on Match Winner. Gross Win: ₹185, Commission: ₹15 (15% of entry), Net Payout: ₹170 credited to wallet.",
+      "read": true,
+      "date": "2026-07-18T10:21:12.185Z"
+    },
+    {
+      "id": "NTMRQ7EOTW",
+      "userId": "NKAJ890",
+      "title": "😔 Prediction Match Result Announced",
+      "body": "The result for TEAM ALFA VS DEATA was announced. You predicted DETA, but ALFA won. Better luck next time!",
+      "read": true,
+      "date": "2026-07-18T10:08:16.436Z"
+    },
+    {
+      "id": "NTMRQ7DOC6",
+      "userId": "NKAJ890",
+      "title": "😔 Prediction Match Result Announced",
+      "body": "The result for Team Insane vs Team Mayhem was announced. You predicted Team Insane, but Team Mayhem won. Better luck next time!",
+      "read": true,
+      "date": "2026-07-18T10:07:29.142Z"
+    },
+    {
+      "id": "NTMRQ7DOC6",
+      "userId": "NKAJ890",
+      "title": "😔 Prediction Match Result Announced",
+      "body": "The result for Team Insane vs Team Mayhem was announced. You predicted Team Insane, but Team Mayhem won. Better luck next time!",
+      "read": true,
+      "date": "2026-07-18T10:07:29.142Z"
+    },
+    {
+      "id": "NTMRQ7DOC6",
+      "userId": "NKAJ890",
+      "title": "😔 Prediction Match Result Announced",
+      "body": "The result for Team Insane vs Team Mayhem was announced. You predicted undefined, but Team Mayhem won. Better luck next time!",
+      "read": true,
+      "date": "2026-07-18T10:07:29.142Z"
+    },
+    {
+      "id": "NTMRQ7BSZ8",
+      "userId": "NKAJ890",
+      "title": "😔 Prediction Match Result Announced",
+      "body": "The result for Team Alpha vs Team Beta was announced. You predicted Under 175.5, but Team Alpha won. Better luck next time!",
+      "read": true,
+      "date": "2026-07-18T10:06:01.844Z"
+    },
+    {
+      "id": "NTMRQ7BSZ8",
+      "userId": "NKAJ890",
+      "title": "🎉 You Won! Prediction Match Resolved",
+      "body": "Congratulations! You won the prediction on Team Alpha vs Team Beta. Payout: ₹155 (Entry: ₹100, Commission Deducted: ₹10) has been added to your wallet.",
+      "read": true,
+      "date": "2026-07-18T10:06:01.844Z"
+    },
+    {
+      "id": "NTMRQ7BSZ8",
+      "userId": "NKAJ890",
+      "title": "🎉 You Won! Prediction Match Resolved",
+      "body": "Congratulations! You won the prediction on Team Alpha vs Team Beta. Payout: ₹155 (Entry: ₹100, Commission Deducted: ₹10) has been added to your wallet.",
+      "read": true,
+      "date": "2026-07-18T10:06:01.844Z"
+    },
+    {
+      "id": "NTMRQ7BSZ8",
+      "userId": "NKAJ890",
+      "title": "🎉 You Won! Prediction Match Resolved",
+      "body": "Congratulations! You won the prediction on Team Alpha vs Team Beta. Payout: ₹155 (Entry: ₹100, Commission Deducted: ₹10) has been added to your wallet.",
+      "read": true,
+      "date": "2026-07-18T10:06:01.844Z"
+    },
+    {
+      "id": "NTMRQ7BSYH",
+      "userId": "GA10002",
+      "title": "😔 Prediction Match Result Announced",
+      "body": "The result for Team Alpha vs Team Beta was announced. You predicted undefined, but Team Alpha won. Better luck next time!",
+      "read": true,
+      "date": "2026-07-18T10:06:01.817Z"
+    },
+    {
+      "id": "NT_rklaepafi",
+      "title": "New Ticket Created!",
+      "body": "Ticket NX-2026-0002 has been created for Payment Issue.",
+      "date": "14/7/2026, 8:12:01 pm",
+      "read": true,
+      "screen": "support"
+    },
+    {
+      "id": "NT_6ss2y0hy4",
+      "title": "New Ticket Created!",
+      "body": "Ticket NX-2026-0001 has been created for Payment Issue.",
+      "date": "11/7/2026, 11:15:54 pm",
+      "read": true,
+      "screen": "support"
+    }
+  ],
+  "departments": [
+    {
+      "id": "dept_1",
+      "name": "Management",
+      "status": "Active"
+    },
+    {
+      "id": "dept_2",
+      "name": "Support",
+      "status": "Active"
+    },
+    {
+      "id": "dept_3",
+      "name": "Finance",
+      "status": "Active"
+    },
+    {
+      "id": "dept_4",
+      "name": "Content",
+      "status": "Inactive"
+    },
+    {
+      "id": "dept_5",
+      "name": "Tournament",
+      "status": "Active"
+    }
+  ],
+  "roles": [
+    {
+      "id": "role_1",
+      "name": "Super Admin",
+      "desc": "Full access to all modules",
+      "employees": 2,
+      "status": "Active",
+      "permissions": {
+        "viewDash": true,
+        "viewTickets": true,
+        "replyTickets": true,
+        "deleteTickets": true,
+        "viewTournaments": true,
+        "createTournaments": true,
+        "editTournaments": true,
+        "viewUsers": true,
+        "editUsers": true,
+        "deleteUsers": true
+      }
+    },
+    {
+      "id": "role_2",
+      "name": "Admin",
+      "desc": "All modules access",
+      "employees": 5,
+      "status": "Active",
+      "permissions": {
+        "viewDash": true,
+        "viewTickets": true,
+        "replyTickets": true,
+        "deleteTickets": false,
+        "viewTournaments": true,
+        "createTournaments": true,
+        "editTournaments": true,
+        "viewUsers": true,
+        "editUsers": true,
+        "deleteUsers": false
+      }
+    },
+    {
+      "id": "role_3",
+      "name": "Support Manager",
+      "desc": "Manage support tickets and replies",
+      "employees": 3,
+      "status": "Active",
+      "permissions": {
+        "viewDash": true,
+        "viewTickets": true,
+        "replyTickets": true,
+        "deleteTickets": false,
+        "viewTournaments": false,
+        "createTournaments": false,
+        "editTournaments": false,
+        "viewUsers": false,
+        "editUsers": false,
+        "deleteUsers": false
+      }
+    },
+    {
+      "id": "role_4",
+      "name": "Finance Executive",
+      "desc": "Manage finance & transactions",
+      "employees": 2,
+      "status": "Active",
+      "permissions": {
+        "viewDash": true,
+        "viewTickets": false,
+        "replyTickets": false,
+        "deleteTickets": false,
+        "viewTournaments": false,
+        "createTournaments": false,
+        "editTournaments": false,
+        "viewUsers": true,
+        "editUsers": false,
+        "deleteUsers": false
+      }
+    },
+    {
+      "id": "role_5",
+      "name": "Content Writer",
+      "desc": "Manage content & pages",
+      "employees": 2,
+      "status": "Inactive",
+      "permissions": {
+        "viewDash": false,
+        "viewTickets": false,
+        "replyTickets": false,
+        "deleteTickets": false,
+        "viewTournaments": true,
+        "createTournaments": false,
+        "editTournaments": false,
+        "viewUsers": false,
+        "editUsers": false,
+        "deleteUsers": false
+      }
+    }
+  ],
+  "employees": [
+    {
+      "id": "EMP001",
+      "name": "Vijay Nagare",
+      "email": "vijay@gmail.com",
+      "phone": "+91 98765 43210",
+      "roleId": "role_1",
+      "deptId": "dept_1",
+      "status": "Active",
+      "joinedAt": "12 Jun 2024"
+    },
+    {
+      "id": "EMP002",
+      "name": "Rohit Sharma",
+      "email": "rohit@gmail.com",
+      "phone": "+91 98765 12345",
+      "roleId": "role_3",
+      "deptId": "dept_2",
+      "status": "Active",
+      "joinedAt": "10 Jun 2024"
+    },
+    {
+      "id": "EMP003",
+      "name": "Pooja Verma",
+      "email": "pooja@gmail.com",
+      "phone": "+91 98765 54321",
+      "roleId": "role_4",
+      "deptId": "dept_3",
+      "status": "Active",
+      "joinedAt": "08 Jun 2024"
+    },
+    {
+      "id": "EMP004",
+      "name": "Karan Mehta",
+      "email": "karan@gmail.com",
+      "phone": "+91 98765 67890",
+      "roleId": "role_2",
+      "deptId": "dept_5",
+      "status": "Inactive",
+      "joinedAt": "05 Jun 2024"
+    },
+    {
+      "id": "EMP005",
+      "name": "Neha Singh",
+      "email": "neha@gmail.com",
+      "phone": "+91 98765 98765",
+      "roleId": "role_5",
+      "deptId": "dept_4",
+      "status": "Active",
+      "joinedAt": "03 Jun 2024"
+    }
+  ],
+  "employeeActivityLogs": [
+    {
+      "id": "LOG001",
+      "employee": "Rohit Sharma",
+      "action": "Replied Ticket",
+      "desc": "Replied to TK-2026-0001",
+      "time": "12 Jun 2024, 11:45 AM"
+    },
+    {
+      "id": "LOG002",
+      "employee": "Pooja Verma",
+      "action": "Closed Ticket",
+      "desc": "Closed TK-2026-0003",
+      "time": "12 Jun 2024, 11:38 AM"
+    },
+    {
+      "id": "LOG003",
+      "employee": "Karan Mehta",
+      "action": "Updated User",
+      "desc": "Updated user details",
+      "time": "12 Jun 2024, 11:10 AM"
+    },
+    {
+      "id": "LOG004",
+      "employee": "Neha Singh",
+      "action": "Created Tournament",
+      "desc": "Created tournament BGMI Cup",
+      "time": "12 Jun 2024, 10:50 AM"
+    },
+    {
+      "id": "LOG005",
+      "employee": "Rohit Sharma",
+      "action": "Assigned Ticket",
+      "desc": "Assigned ticket to Pooja Verma",
+      "time": "12 Jun 2024, 10:20 AM"
+    },
+    {
+      "id": "LOG006",
+      "employee": "Vijay Nagare",
+      "action": "Added Employee",
+      "desc": "Added new employee Rohit Sharma",
+      "time": "12 Jun 2024, 09:45 AM"
+    }
+  ],
+  "employeeTasks": [
+    {
+      "id": "TSK001",
+      "task": "Reply pending tickets",
+      "assignedTo": "Rohit Sharma",
+      "dueDate": "2026-06-15",
+      "status": "In Progress"
+    },
+    {
+      "id": "TSK002",
+      "task": "Check payment issues",
+      "assignedTo": "Pooja Verma",
+      "dueDate": "2026-06-18",
+      "status": "Pending"
+    },
+    {
+      "id": "TSK003",
+      "task": "Update tournament rules",
+      "assignedTo": "Karan Mehta",
+      "dueDate": "2026-06-16",
+      "status": "Completed"
+    },
+    {
+      "id": "TSK004",
+      "task": "Add new banner",
+      "assignedTo": "Neha Singh",
+      "dueDate": "2026-06-19",
+      "status": "Pending"
+    },
+    {
+      "id": "TSK005",
+      "task": "Monthly report",
+      "assignedTo": "Rohit Sharma",
+      "dueDate": "2026-06-20",
+      "status": "Pending"
+    }
+  ],
+  "employeeSettings": {
+    "enableModule": true,
+    "allowSignup": false,
+    "requireApproval": true,
+    "allowMemberView": true,
+    "allowProfileEdit": true,
+    "allowPasswordChange": true
+  },
+  "predictionMatches": [
+    {
+      "id": "PMMRQ7Z5BO",
+      "title": "TOTAL GAMING ESPOTRS",
+      "game": "Free Fire",
+      "team1": {
+        "name": "AJJUBHAI",
+        "logo": "https://placeholder-url.com",
+        "winProbability": 30
+      },
+      "team2": {
+        "name": "TONDE GAMER",
+        "logo": "https://placeholder-url.com",
+        "winProbability": 70
+      },
+      "prizePool": 1000,
+      "totalWinners": 0,
+      "date": "19/09/2026",
+      "time": "08:00 PM",
+      "closeTime": "20/09/2026",
+      "status": "upcoming",
+      "winner": "",
+      "gameDetails": "BARMUDA",
+      "commentary": []
+    }
+  ],
+  "userPredictions": [
+    {
+      "id": "PRDMRQ85BX2",
+      "userId": "NKAJ890",
+      "userName": "NexoraPlayer",
+      "matchId": "PMMRQ7Z5BO",
+      "matchTitle": "TOTAL GAMING ESPOTRS",
+      "marketId": "PMMRQ7Z5BO_1",
+      "marketName": "Match Winner",
+      "selection": "TONDE GAMER",
+      "odds": 2.05,
+      "stake": 1000,
+      "potentialWin": 2050,
+      "status": "pending",
+      "pointsWon": 0,
+      "submittedAt": "18/7/2026, 3:58:59 pm"
+    }
+  ],
+  "predictionSettings": {
+    "defaultEntryFee": 25,
+    "minEntryFee": 10,
+    "maxEntryFee": 100,
+    "commissionPercent": 15,
+    "minCommission": 2,
+    "pointsCorrect": 100,
+    "pointsIncorrect": -20,
+    "maxPredictionsPerUser": 1,
+    "leaderboardReset": "Weekly",
+    "rewardsSplit": {
+      "first": 80,
+      "second": 15,
+      "third": 5,
+      "others": 0
+    },
+    "leaderboardRewards": {
+      "type": "Weekly",
+      "p1": 1000,
+      "p2": 500,
+      "p3": 250,
+      "resetPeriod": "Every Week"
+    }
+  },
+  "planeRounds": [
+    {
+      "id": "RNDMRT82MGL",
+      "status": "crashed",
+      "multiplier": 1.18,
+      "crashAt": 1.18,
+      "bets": [],
+      "startTime": 1784551819692,
+      "serverSeed": "3f6ce128e914ef032a66bd6e25a4b6af",
+      "clientSeed": "nexora",
+      "nonce": 1784551811637,
+      "endTime": 1784551822468
+    },
+    {
+      "id": "RNDMRT829S5",
+      "status": "crashed",
+      "multiplier": 1.29,
+      "crashAt": 1.29,
+      "bets": [],
+      "startTime": 1784551803252,
+      "serverSeed": "b3d0113b8445f2d763c160cecd950408",
+      "clientSeed": "nexora",
+      "nonce": 1784551795205,
+      "endTime": 1784551807572
+    },
+    {
+      "id": "RNDMRT80H6P",
+      "status": "crashed",
+      "multiplier": 72.94,
+      "crashAt": 72.94,
+      "bets": [],
+      "startTime": 1784551719542,
+      "serverSeed": "ef39e1be10e2fe7dcfbf466be0692d00",
+      "clientSeed": "nexora",
+      "nonce": 1784551711489,
+      "endTime": 1784551791148
+    },
+    {
+      "id": "RNDMRT80068",
+      "status": "crashed",
+      "multiplier": 1.81,
+      "crashAt": 1.81,
+      "bets": [],
+      "startTime": 1784551697491,
+      "serverSeed": "e34d5bf330870e268ec22e0ea873e1d6",
+      "clientSeed": "nexora",
+      "nonce": 1784551689441,
+      "endTime": 1784551707436
+    },
+    {
+      "id": "RNDMRT7ZL0I",
+      "status": "crashed",
+      "multiplier": 1.57,
+      "crashAt": 1.57,
+      "bets": [],
+      "startTime": 1784551677831,
+      "serverSeed": "f54769df2d21c7ec92a9a62b996e51e6",
+      "clientSeed": "nexora",
+      "nonce": 1784551669794,
+      "endTime": 1784551685390
+    },
+    {
+      "id": "RNDMRT7Z089",
+      "status": "crashed",
+      "multiplier": 2.43,
+      "crashAt": 2.43,
+      "bets": [],
+      "startTime": 1784551650899,
+      "serverSeed": "fa4f2ad1a019e8bd06a88f94f1e06731",
+      "clientSeed": "nexora",
+      "nonce": 1784551642857,
+      "endTime": 1784551665748
+    },
+    {
+      "id": "RNDMRT7YMSD",
+      "status": "crashed",
+      "multiplier": 1.37,
+      "crashAt": 1.37,
+      "bets": [],
+      "startTime": 1784551633480,
+      "serverSeed": "74d769111079adb54f9847350670b426",
+      "clientSeed": "nexora",
+      "nonce": 1784551625437,
+      "endTime": 1784551638783
+    },
+    {
+      "id": "RNDMRT7YA5K",
+      "status": "crashed",
+      "multiplier": 1.29,
+      "crashAt": 1.29,
+      "bets": [],
+      "startTime": 1784551617102,
+      "serverSeed": "e92c6ccc1442257481304ff7cba56a64",
+      "clientSeed": "nexora",
+      "nonce": 1784551609064,
+      "endTime": 1784551621381
+    },
+    {
+      "id": "RNDMRT7XVWD",
+      "status": "crashed",
+      "multiplier": 1.46,
+      "crashAt": 1.46,
+      "bets": [],
+      "startTime": 1784551598633,
+      "serverSeed": "c6ffaf324c7380ca3f7048228746d289",
+      "clientSeed": "nexora",
+      "nonce": 1784551590590,
+      "endTime": 1784551605002
+    },
+    {
+      "id": "RNDMRT7XHOQ",
+      "status": "crashed",
+      "multiplier": 1.45,
+      "crashAt": 1.45,
+      "bets": [],
+      "startTime": 1784551580222,
+      "serverSeed": "a372a66d863f7c743c6a7018cf4f3800",
+      "clientSeed": "nexora",
+      "nonce": 1784551572170,
+      "endTime": 1784551586512
+    },
+    {
+      "id": "RNDMRT7X730",
+      "status": "crashed",
+      "multiplier": 1.1,
+      "crashAt": 1.1,
+      "bets": [],
+      "startTime": 1784551566487,
+      "serverSeed": "29d0c267c671e7c3506d7a8dbdf116d4",
+      "clientSeed": "nexora",
+      "nonce": 1784551558429,
+      "endTime": 1784551568090
+    },
+    {
+      "id": "RNDMRT7WHNH",
+      "status": "crashed",
+      "multiplier": 3.46,
+      "crashAt": 3.46,
+      "bets": [],
+      "startTime": 1784551533523,
+      "serverSeed": "0df5a677872c4333266298650f8de379",
+      "clientSeed": "nexora",
+      "nonce": 1784551525469,
+      "endTime": 1784551554327
+    },
+    {
+      "id": "RNDMRT7VH9D",
+      "status": "crashed",
+      "multiplier": 8.09,
+      "crashAt": 8.09,
+      "bets": [],
+      "startTime": 1784551486384,
+      "serverSeed": "fa20a2369b2fd732cd1f272f79227606",
+      "clientSeed": "nexora",
+      "nonce": 1784551478305,
+      "endTime": 1784551521370
+    },
+    {
+      "id": "RNDMRT7UZTU",
+      "status": "crashed",
+      "multiplier": 1.86,
+      "crashAt": 1.86,
+      "bets": [],
+      "startTime": 1784551463792,
+      "serverSeed": "7802284a0be6a985a149f6e14d2aa5f3",
+      "clientSeed": "nexora",
+      "nonce": 1784551455714,
+      "endTime": 1784551474227
+    },
+    {
+      "id": "RNDMRT7TYDV",
+      "status": "crashed",
+      "multiplier": 8.78,
+      "crashAt": 8.78,
+      "bets": [],
+      "startTime": 1784551415235,
+      "serverSeed": "b9f4b411f3f315cc722c86f2a7ea7ebc",
+      "clientSeed": "nexora",
+      "nonce": 1784551407187,
+      "endTime": 1784551451612
+    },
+    {
+      "id": "RNDMRT7TO2G",
+      "status": "crashed",
+      "multiplier": 1.08,
+      "crashAt": 1.08,
+      "bets": [],
+      "startTime": 1784551401871,
+      "serverSeed": "cf0684fa4204bd2006e39d374d2be526",
+      "clientSeed": "nexora",
+      "nonce": 1784551393816,
+      "endTime": 1784551403130
+    },
+    {
+      "id": "RNDMRT7TCIY",
+      "status": "crashed",
+      "multiplier": 1.18,
+      "crashAt": 1.18,
+      "bets": [],
+      "startTime": 1784551386942,
+      "serverSeed": "7c9aa019eac322a51bfa1e8217f53501",
+      "clientSeed": "nexora",
+      "nonce": 1784551378858,
+      "endTime": 1784551389747
+    },
+    {
+      "id": "RNDMRT7SRDQ",
+      "status": "crashed",
+      "multiplier": 2.5,
+      "crashAt": 2.5,
+      "bets": [],
+      "startTime": 1784551359501,
+      "serverSeed": "ba3fa46a3f1438d598ceaf861b48c8b3",
+      "clientSeed": "nexora",
+      "nonce": 1784551351455,
+      "endTime": 1784551374791
+    },
+    {
+      "id": "RNDMRT7SHX0",
+      "status": "crashed",
+      "multiplier": 1.01,
+      "crashAt": 1.01,
+      "bets": [],
+      "startTime": 1784551347243,
+      "serverSeed": "dc6a03a62fa1f00da0c82f5f227cf269",
+      "clientSeed": "nexora",
+      "nonce": 1784551339188,
+      "endTime": 1784551347403
+    },
+    {
+      "id": "RNDMRT7RFRM",
+      "status": "crashed",
+      "multiplier": 9.37,
+      "crashAt": 9.37,
+      "bets": [],
+      "startTime": 1784551297795,
+      "serverSeed": "fccf9eaf123b73a0feab193eed01b5d6",
+      "clientSeed": "nexora",
+      "nonce": 1784551289746,
+      "endTime": 1784551335134
+    },
+    {
+      "id": "RNDMRT7R3HW",
+      "status": "crashed",
+      "multiplier": 1.25,
+      "crashAt": 1.25,
+      "bets": [],
+      "startTime": 1784551281891,
+      "serverSeed": "9ed14ff483ac05aa014dcd0a6ebd1b66",
+      "clientSeed": "nexora",
+      "nonce": 1784551273844,
+      "endTime": 1784551285683
+    },
+    {
+      "id": "RNDMRT7QOK9",
+      "status": "crashed",
+      "multiplier": 1.54,
+      "crashAt": 1.54,
+      "bets": [],
+      "startTime": 1784551262544,
+      "serverSeed": "c471b1d7aa07018e0773b83c5587e2c0",
+      "clientSeed": "nexora",
+      "nonce": 1784551254489,
+      "endTime": 1784551269789
+    },
+    {
+      "id": "RNDMRT7QBE6",
+      "status": "crashed",
+      "multiplier": 1.34,
+      "crashAt": 1.34,
+      "bets": [],
+      "startTime": 1784551245476,
+      "serverSeed": "a202d477fa60c131fca468bf55f1e192",
+      "clientSeed": "nexora",
+      "nonce": 1784551237422,
+      "endTime": 1784551250429
+    },
+    {
+      "id": "RNDMRT7PYTD",
+      "status": "crashed",
+      "multiplier": 1.28,
+      "crashAt": 1.28,
+      "bets": [],
+      "startTime": 1784551229176,
+      "serverSeed": "e934f18663c53b7a94a66aed23f2cef7",
+      "clientSeed": "nexora",
+      "nonce": 1784551221121,
+      "endTime": 1784551233351
+    },
+    {
+      "id": "RNDMRT7PBHC",
+      "status": "crashed",
+      "multiplier": 2.96,
+      "crashAt": 2.96,
+      "bets": [],
+      "startTime": 1784551198934,
+      "serverSeed": "d483b56c85cd710a47ed5fc9e21dc33b",
+      "clientSeed": "nexora",
+      "nonce": 1784551190880,
+      "endTime": 1784551217062
+    },
+    {
+      "id": "RNDMRT7P0C1",
+      "status": "crashed",
+      "multiplier": 1.15,
+      "crashAt": 1.15,
+      "bets": [],
+      "startTime": 1784551184484,
+      "serverSeed": "e7fc37f6df5cb39aba50cc8123a2a3a2",
+      "clientSeed": "nexora",
+      "nonce": 1784551176433,
+      "endTime": 1784551186821
+    },
+    {
+      "id": "RNDMRT7OM3B",
+      "status": "crashed",
+      "multiplier": 1.46,
+      "crashAt": 1.46,
+      "bets": [],
+      "startTime": 1784551166026,
+      "serverSeed": "9bea7458967e3bfab224e25fa6f589e5",
+      "clientSeed": "nexora",
+      "nonce": 1784551157976,
+      "endTime": 1784551172375
+    },
+    {
+      "id": "RNDMRT7OBJL",
+      "status": "crashed",
+      "multiplier": 1.1,
+      "crashAt": 1.1,
+      "bets": [],
+      "startTime": 1784551152352,
+      "serverSeed": "c2937d7547c53d63a55708b1733b9b41",
+      "clientSeed": "nexora",
+      "nonce": 1784551144305,
+      "endTime": 1784551153918
+    },
+    {
+      "id": "RNDMRT7O0K7",
+      "status": "crashed",
+      "multiplier": 1.13,
+      "crashAt": 1.13,
+      "bets": [],
+      "startTime": 1784551138128,
+      "serverSeed": "0eef61788b5842456f8298ec669c0c56",
+      "clientSeed": "nexora",
+      "nonce": 1784551130071,
+      "endTime": 1784551140239
+    },
+    {
+      "id": "RNDMRT7NLDT",
+      "status": "crashed",
+      "multiplier": 1.57,
+      "crashAt": 1.57,
+      "bets": [],
+      "startTime": 1784551118456,
+      "serverSeed": "f90bc1f8e1f281856d24d8b81de623dd",
+      "clientSeed": "nexora",
+      "nonce": 1784551110401,
+      "endTime": 1784551125999
+    },
+    {
+      "id": "RNDMRT7NBVQ",
+      "status": "crashed",
+      "multiplier": 1,
+      "crashAt": 1,
+      "bets": [],
+      "startTime": 1784551106145,
+      "serverSeed": "f50929363c7cf5df52929a44836c2c88",
+      "clientSeed": "nexora",
+      "nonce": 1784551098086,
+      "endTime": 1784551106321
+    },
+    {
+      "id": "RNDMRT7LVZX",
+      "status": "crashed",
+      "multiplier": 27.11,
+      "crashAt": 27.11,
+      "bets": [],
+      "startTime": 1784551038894,
+      "serverSeed": "379561500e89707a41f0ccc819c7d406",
+      "clientSeed": "nexora",
+      "nonce": 1784551030845,
+      "endTime": 1784551094005
+    },
+    {
+      "id": "RNDMRT7LC17",
+      "status": "crashed",
+      "multiplier": 2.27,
+      "crashAt": 2.27,
+      "bets": [],
+      "startTime": 1784551013020,
+      "serverSeed": "d6057c976af19af1f30a8c0184084cae",
+      "clientSeed": "nexora",
+      "nonce": 1784551004971,
+      "endTime": 1784551026788
+    },
+    {
+      "id": "RNDMRT7KXDG",
+      "status": "crashed",
+      "multiplier": 1.51,
+      "crashAt": 1.51,
+      "bets": [],
+      "startTime": 1784550994021,
+      "serverSeed": "8c0447779e9171ff9eb4802315f433f2",
+      "clientSeed": "nexora",
+      "nonce": 1784550985972,
+      "endTime": 1784551000928
+    },
+    {
+      "id": "RNDMRT7KHDC",
+      "status": "crashed",
+      "multiplier": 1.68,
+      "crashAt": 1.68,
+      "bets": [],
+      "startTime": 1784550973272,
+      "serverSeed": "237c70c4cb4bb457bc54f3fa95d29436",
+      "clientSeed": "nexora",
+      "nonce": 1784550965233,
+      "endTime": 1784550981926
+    },
+    {
+      "id": "RNDMRT7JZBM",
+      "status": "crashed",
+      "multiplier": 1.96,
+      "crashAt": 1.96,
+      "bets": [],
+      "startTime": 1784550949892,
+      "serverSeed": "da2f941e43fd560361e9d146edbb9b32",
+      "clientSeed": "nexora",
+      "nonce": 1784550941842,
+      "endTime": 1784550961179
+    },
+    {
+      "id": "RNDMRT7ILMH",
+      "status": "crashed",
+      "multiplier": 22.95,
+      "crashAt": 22.95,
+      "bets": [],
+      "startTime": 1784550885474,
+      "serverSeed": "c9e7862a77a60521134d4879013929c4",
+      "clientSeed": "nexora",
+      "nonce": 1784550877433,
+      "endTime": 1784550937791
+    },
+    {
+      "id": "RNDMRT7I4RM",
+      "status": "crashed",
+      "multiplier": 1.79,
+      "crashAt": 1.79,
+      "bets": [],
+      "startTime": 1784550863636,
+      "serverSeed": "8b92138dc90401c57589aa92cfaa177a",
+      "clientSeed": "nexora",
+      "nonce": 1784550855586,
+      "endTime": 1784550873391
+    },
+    {
+      "id": "RNDMRT7GYF5",
+      "status": "crashed",
+      "multiplier": 12.93,
+      "crashAt": 12.93,
+      "bets": [],
+      "startTime": 1784550808745,
+      "serverSeed": "9b52b042b8adf531159c923ffb025ac7",
+      "clientSeed": "nexora",
+      "nonce": 1784550800705,
+      "endTime": 1784550851540
+    },
+    {
+      "id": "RNDMRT7GM0G",
+      "status": "crashed",
+      "multiplier": 1.27,
+      "crashAt": 1.27,
+      "bets": [],
+      "startTime": 1784550792675,
+      "serverSeed": "728b8b5173cb3e63ef813366e3cd63b1",
+      "clientSeed": "nexora",
+      "nonce": 1784550784625,
+      "endTime": 1784550796658
+    },
+    {
+      "id": "RNDMRT7FQIQ",
+      "status": "crashed",
+      "multiplier": 5.59,
+      "crashAt": 5.59,
+      "bets": [],
+      "startTime": 1784550751857,
+      "serverSeed": "b162eecf0eb48dddd32a9f1f842ea621",
+      "clientSeed": "nexora",
+      "nonce": 1784550743811,
+      "endTime": 1784550780570
+    },
+    {
+      "id": "RNDMRT7F0CQ",
+      "status": "crashed",
+      "multiplier": 3.68,
+      "crashAt": 3.68,
+      "bets": [],
+      "startTime": 1784550717937,
+      "serverSeed": "bc0b47a58321fb01889110374a0da9ae",
+      "clientSeed": "nexora",
+      "nonce": 1784550709899,
+      "endTime": 1784550739754
+    },
+    {
+      "id": "RNDMRT7EPW4",
+      "status": "crashed",
+      "multiplier": 1.09,
+      "crashAt": 1.09,
+      "bets": [],
+      "startTime": 1784550704388,
+      "serverSeed": "d3f9325c32b8e0eac8e46965d2242b07",
+      "clientSeed": "nexora",
+      "nonce": 1784550696340,
+      "endTime": 1784550705844
+    },
+    {
+      "id": "RNDMRT7E2KE",
+      "status": "crashed",
+      "multiplier": 2.96,
+      "crashAt": 2.96,
+      "bets": [],
+      "startTime": 1784550674169,
+      "serverSeed": "c8de811ebf315bfba4c906917dbad6f5",
+      "clientSeed": "nexora",
+      "nonce": 1784550666110,
+      "endTime": 1784550692288
+    },
+    {
+      "id": "RNDMRT7CPI3",
+      "status": "crashed",
+      "multiplier": 21.8,
+      "crashAt": 21.8,
+      "bets": [],
+      "startTime": 1784550610570,
+      "serverSeed": "64d88289a765260bc3d82d5c4a812a24",
+      "clientSeed": "nexora",
+      "nonce": 1784550602523,
+      "endTime": 1784550662053
+    },
+    {
+      "id": "RNDMRT7CB1Y",
+      "status": "crashed",
+      "multiplier": 1.48,
+      "crashAt": 1.48,
+      "bets": [],
+      "startTime": 1784550591853,
+      "serverSeed": "4c72fd6e03c0833be723a25350873c8f",
+      "clientSeed": "nexora",
+      "nonce": 1784550583798,
+      "endTime": 1784550598467
+    },
+    {
+      "id": "RNDMRT7BH5P",
+      "status": "crashed",
+      "multiplier": 4.91,
+      "crashAt": 4.91,
+      "bets": [],
+      "startTime": 1784550553104,
+      "serverSeed": "f07161944cc3fc40179a1ced5e3570cd",
+      "clientSeed": "nexora",
+      "nonce": 1784550545054,
+      "endTime": 1784550579732
+    },
+    {
+      "id": "RNDMRT7B2JN",
+      "status": "crashed",
+      "multiplier": 1.5,
+      "crashAt": 1.5,
+      "bets": [],
+      "startTime": 1784550534161,
+      "serverSeed": "7cf5e97c0502488e41156a589b359495",
+      "clientSeed": "nexora",
+      "nonce": 1784550526115,
+      "endTime": 1784550540976
+    },
+    {
+      "id": "RNDMRT79E3K",
+      "status": "crashed",
+      "multiplier": 2.16,
+      "crashAt": 2.16,
+      "bets": [],
+      "startTime": 1784550455836,
+      "serverSeed": "db343833fb735d216835701ebfeb20d1",
+      "clientSeed": "nexora",
+      "nonce": 1784550447777,
+      "endTime": 1784550468774
+    },
+    {
+      "id": "RNDMRT78W3O",
+      "status": "crashed",
+      "multiplier": 1.95,
+      "crashAt": 1.95,
+      "bets": [],
+      "startTime": 1784550432509,
+      "serverSeed": "2ad168a504be1cddadb9a8f6f4bbc74a",
+      "clientSeed": "nexora",
+      "nonce": 1784550424452,
+      "endTime": 1784550443697
+    }
+  ],
+  "casinoBets": [
+    {
+      "id": "BETMRMGYEKO",
+      "game": "plane",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "autoCashOut": 0,
+      "cashedOut": true,
+      "cashOutMultiplier": 1.26,
+      "roundId": "RNDMRMGYCWV",
+      "createdAt": "2026-07-15T19:24:28.104Z",
+      "winAmount": 63
+    },
+    {
+      "id": "BETMRMH03EI",
+      "game": "plane",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "autoCashOut": 0,
+      "cashedOut": false,
+      "cashOutMultiplier": 0,
+      "roundId": "RNDMRMH023L",
+      "createdAt": "2026-07-15T19:25:46.938Z"
+    },
+    {
+      "id": "BETMRMH2SLX",
+      "game": "plane",
+      "userId": "NKAJ890",
+      "amount": 13,
+      "autoCashOut": 0,
+      "cashedOut": false,
+      "cashOutMultiplier": 0,
+      "roundId": "RNDMRMH2RFL",
+      "createdAt": "2026-07-15T19:27:52.917Z"
+    },
+    {
+      "id": "BETMRMH599E",
+      "game": "color",
+      "userId": "NKAJ890",
+      "amount": 20,
+      "choice": "violet",
+      "result": "green",
+      "won": false,
+      "winAmount": 0,
+      "multiplier": 0,
+      "createdAt": "2026-07-15T19:29:47.810Z"
+    },
+    {
+      "id": "BETMRMH7DFR",
+      "game": "spin",
+      "userId": "NKAJ890",
+      "amount": 48,
+      "result": "0",
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:31:26.535Z"
+    },
+    {
+      "id": "BETMRMI0MLC",
+      "game": "coinflip",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "choice": "tails",
+      "result": "heads",
+      "won": false,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:54:11.424Z"
+    },
+    {
+      "id": "BETMRMI0OOR",
+      "game": "coinflip",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "choice": "tails",
+      "result": "heads",
+      "won": false,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:54:14.139Z"
+    },
+    {
+      "id": "BETMRMI0Q2Q",
+      "game": "coinflip",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "choice": "tails",
+      "result": "heads",
+      "won": false,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:54:15.938Z"
+    },
+    {
+      "id": "BETMRMI0RFV",
+      "game": "coinflip",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "choice": "tails",
+      "result": "tails",
+      "won": true,
+      "winAmount": 970,
+      "createdAt": "2026-07-15T19:54:17.707Z"
+    },
+    {
+      "id": "BETMRMI1185",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 20,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:54:30.389Z"
+    },
+    {
+      "id": "BETMRMI12YA",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 82,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:54:32.626Z"
+    },
+    {
+      "id": "BETMRMI13P1",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 35,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:54:33.589Z"
+    },
+    {
+      "id": "BETMRMI16HZ",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 44,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:54:37.223Z"
+    },
+    {
+      "id": "BETMRMI1IXC",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 29,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:54:53.328Z"
+    },
+    {
+      "id": "BETMRMI1K9J",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 7,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:54:55.063Z"
+    },
+    {
+      "id": "BETMRMI1LQE",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 23,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:54:56.966Z"
+    },
+    {
+      "id": "BETMRMI1MYH",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 11,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:54:58.553Z"
+    },
+    {
+      "id": "BETMRMI1O1P",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 7,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:54:59.965Z"
+    },
+    {
+      "id": "BETMRMI1P39",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 10,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:01.317Z"
+    },
+    {
+      "id": "BETMRMI1PW8",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 83,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:02.360Z"
+    },
+    {
+      "id": "BETMRMI1Q6Q",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 55,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:02.738Z"
+    },
+    {
+      "id": "BETMRMI1QB4",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 26,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:02.896Z"
+    },
+    {
+      "id": "BETMRMI1QMV",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 84,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:03.319Z"
+    },
+    {
+      "id": "BETMRMI1QX3",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 44,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:03.687Z"
+    },
+    {
+      "id": "BETMRMI1R6R",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 50,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:04.035Z"
+    },
+    {
+      "id": "BETMRMI1RGG",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 24,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:04.384Z"
+    },
+    {
+      "id": "BETMRMI1RQH",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 13,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:04.745Z"
+    },
+    {
+      "id": "BETMRMI1S44",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 53,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:05.236Z"
+    },
+    {
+      "id": "BETMRMI1SKP",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 51,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:05.833Z"
+    },
+    {
+      "id": "BETMRMI1T3E",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 50,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:06.506Z"
+    },
+    {
+      "id": "BETMRMI1TOH",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 32,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:07.265Z"
+    },
+    {
+      "id": "BETMRMI1U52",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 97,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:07.862Z"
+    },
+    {
+      "id": "BETMRMI1UJM",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 72,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:08.386Z"
+    },
+    {
+      "id": "BETMRMI1V1F",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 10,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:09.027Z"
+    },
+    {
+      "id": "BETMRMI1VHX",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 60,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:09.621Z"
+    },
+    {
+      "id": "BETMRMI1W7A",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 48,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:10.534Z"
+    },
+    {
+      "id": "BETMRMI1WM7",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": false,
+      "roll": 27,
+      "won": true,
+      "multiplier": 1.04,
+      "winAmount": 52,
+      "createdAt": "2026-07-15T19:55:11.071Z"
+    },
+    {
+      "id": "BETMRMI2NLC",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 75,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:46.032Z"
+    },
+    {
+      "id": "BETMRMI2OOO",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 11,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:47.448Z"
+    },
+    {
+      "id": "BETMRMI2P73",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 64,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:48.111Z"
+    },
+    {
+      "id": "BETMRMI2PKR",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 46,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:48.603Z"
+    },
+    {
+      "id": "BETMRMI2PS4",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 4,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:48.868Z"
+    },
+    {
+      "id": "BETMRMI2PY9",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 2,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:49.089Z"
+    },
+    {
+      "id": "BETMRMI2Q49",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 49,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:49.305Z"
+    },
+    {
+      "id": "BETMRMI2QAM",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 37,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:49.534Z"
+    },
+    {
+      "id": "BETMRMI2QHB",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 22,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:49.775Z"
+    },
+    {
+      "id": "BETMRMI2QMM",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 32,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:49.967Z"
+    },
+    {
+      "id": "BETMRMI2QXR",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 70,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:50.367Z"
+    },
+    {
+      "id": "BETMRMI2R4F",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 40,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:50.607Z"
+    },
+    {
+      "id": "BETMRMI2R9R",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 78,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:50.799Z"
+    },
+    {
+      "id": "BETMRMI2RG5",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 21,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:51.029Z"
+    },
+    {
+      "id": "BETMRMI2RLY",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 18,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:51.238Z"
+    },
+    {
+      "id": "BETMRMI2RRQ",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 61,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:51.446Z"
+    },
+    {
+      "id": "BETMRMI2RXZ",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 47,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:51.671Z"
+    },
+    {
+      "id": "BETMRMI2S3Y",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 53,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:51.886Z"
+    },
+    {
+      "id": "BETMRMI2SB8",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 78,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:52.148Z"
+    },
+    {
+      "id": "BETMRMI2SGO",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 91,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:52.344Z"
+    },
+    {
+      "id": "BETMRMI2SMO",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 87,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:52.560Z"
+    },
+    {
+      "id": "BETMRMI2SRV",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 67,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:52.747Z"
+    },
+    {
+      "id": "BETMRMI2SWX",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 9,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:52.929Z"
+    },
+    {
+      "id": "BETMRMI2T84",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 90,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:53.332Z"
+    },
+    {
+      "id": "BETMRMI2U2Z",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 68,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:54.443Z"
+    },
+    {
+      "id": "BETMRMI2U8T",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 81,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:54.653Z"
+    },
+    {
+      "id": "BETMRMI2UE4",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 96,
+      "won": true,
+      "multiplier": 13.86,
+      "winAmount": 6930,
+      "createdAt": "2026-07-15T19:55:54.844Z"
+    },
+    {
+      "id": "BETMRMI2X4T",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 78,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:58.397Z"
+    },
+    {
+      "id": "BETMRMI2XBF",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 53,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:58.635Z"
+    },
+    {
+      "id": "BETMRMI2XGY",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 2,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:58.834Z"
+    },
+    {
+      "id": "BETMRMI2XLT",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 26,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:59.009Z"
+    },
+    {
+      "id": "BETMRMI2XVS",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 38,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:55:59.368Z"
+    },
+    {
+      "id": "BETMRMI30VC",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 73,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:03.240Z"
+    },
+    {
+      "id": "BETMRMI3114",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 71,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:03.448Z"
+    },
+    {
+      "id": "BETMRMI315Z",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 3,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:03.623Z"
+    },
+    {
+      "id": "BETMRMI31AI",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 44,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:03.786Z"
+    },
+    {
+      "id": "BETMRMI31FH",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 39,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:03.965Z"
+    },
+    {
+      "id": "BETMRMI31JY",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 36,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:04.126Z"
+    },
+    {
+      "id": "BETMRMI31UE",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 78,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:04.502Z"
+    },
+    {
+      "id": "BETMRMI31YN",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 46,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:04.655Z"
+    },
+    {
+      "id": "BETMRMI323H",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 14,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:04.829Z"
+    },
+    {
+      "id": "BETMRMI32DZ",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 18,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:05.207Z"
+    },
+    {
+      "id": "BETMRMI32OU",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 27,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:05.598Z"
+    },
+    {
+      "id": "BETMRMI32V5",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 82,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:05.825Z"
+    },
+    {
+      "id": "BETMRMI332N",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 60,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:06.095Z"
+    },
+    {
+      "id": "BETMRMI337L",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 48,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:06.273Z"
+    },
+    {
+      "id": "BETMRMI33D7",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 80,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:06.475Z"
+    },
+    {
+      "id": "BETMRMI33KU",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 74,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:06.750Z"
+    },
+    {
+      "id": "BETMRMI33S2",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 24,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:07.010Z"
+    },
+    {
+      "id": "BETMRMI35DD",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 16,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:09.073Z"
+    },
+    {
+      "id": "BETMRMI369P",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 52,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:10.237Z"
+    },
+    {
+      "id": "BETMRMI36LU",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 52,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:10.674Z"
+    },
+    {
+      "id": "BETMRMI36SN",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 82,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:10.919Z"
+    },
+    {
+      "id": "BETMRMI36Y8",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 69,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:11.120Z"
+    },
+    {
+      "id": "BETMRMI373X",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 83,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:11.325Z"
+    },
+    {
+      "id": "BETMRMI37A3",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 8,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:11.547Z"
+    },
+    {
+      "id": "BETMRMI37JK",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 93,
+      "isOver": true,
+      "roll": 57,
+      "won": false,
+      "multiplier": 0,
+      "winAmount": 0,
+      "createdAt": "2026-07-15T19:56:11.888Z"
+    },
+    {
+      "id": "BETMRMI39FD",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 2,
+      "isOver": true,
+      "roll": 18,
+      "won": true,
+      "multiplier": 0.99,
+      "winAmount": 495,
+      "createdAt": "2026-07-15T19:56:14.329Z"
+    },
+    {
+      "id": "BETMRMI3AWJ",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 2,
+      "isOver": true,
+      "roll": 17,
+      "won": true,
+      "multiplier": 0.99,
+      "winAmount": 495,
+      "createdAt": "2026-07-15T19:56:16.243Z"
+    },
+    {
+      "id": "BETMRMI3CYN",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 63,
+      "isOver": true,
+      "roll": 70,
+      "won": true,
+      "multiplier": 2.62,
+      "winAmount": 1310,
+      "createdAt": "2026-07-15T19:56:18.911Z"
+    },
+    {
+      "id": "BETMRMI3DP5",
+      "game": "dice",
+      "userId": "NKAJ890",
+      "amount": 500,
+      "prediction": 63,
+      "isOver": true,
+      "roll": 69,
+      "won": true,
+      "multiplier": 2.62,
+      "winAmount": 1310,
+      "createdAt": "2026-07-15T19:56:19.865Z"
+    },
+    {
+      "id": "BETMRMI4A82",
+      "game": "mines",
+      "userId": "NKAJ890",
+      "amount": 50,
+      "mineCount": 3,
+      "status": "active",
+      "createdAt": "2026-07-15T19:57:02.018Z"
+    }
+  ],
+  "casinoStats": {
+    "totalBets": 23218,
+    "totalPayout": 12769
+  },
+  "casinoSettings": {
+    "planeMin": 10,
+    "planeMax": 10000,
+    "houseEdge": 3,
+    "minesMin": 10,
+    "minesMax": 5000,
+    "spinMin": 10,
+    "spinMax": 2000,
+    "diceMin": 10,
+    "diceMax": 5000,
+    "coinflipMin": 10,
+    "coinflipMax": 5000,
+    "limboMin": 10,
+    "limboMax": 5000,
+    "towerMin": 10,
+    "towerMax": 5000,
+    "gamesEnabled": {
+      "plane": true,
+      "mines": true,
+      "spin": true,
+      "dice": true,
+      "coinflip": true,
+      "limbo": true,
+      "tower": true,
+      "plinko": true,
+      "keno": true,
+      "color": true
+    },
+    "riggedGames": {
+      "plane": false
+    }
+  },
+  "predictions_banners": [
+    {
+      "id": "PB_001",
+      "title": "IND VS PAK T20 MATCH",
+      "subtitle": "Predict winner & win ₹50,000 points!",
+      "game": "All Games",
+      "type": "Predict & Win",
+      "active": true,
+      "color": "#8b5cf6,#db2777",
+      "action": {
+        "type": "page",
+        "page": "predictions"
+      },
+      "buttons": [
+        {
+          "label": "Predict Now",
+          "style": "primary",
+          "action": "page",
+          "page": "predictions"
+        }
+      ],
+      "hideText": false
+    }
+  ],
+  "qrPaymentSettings": {
+    "upiId": "9689901416.wallet@phonepe",
+    "qrImage": "assets/qr_payment_default.jpg"
+  },
+  "qrPaymentRequests": [
+    {
+      "id": "QRPMRRH6CRP",
+      "userId": "NKAJ890",
+      "userName": "NexoraPlayer",
+      "amount": 500,
+      "utr": "941317262419",
+      "status": "approved",
+      "date": "19/7/2026, 12:59:29 pm",
+      "timestamp": 1784447064460,
+      "disputed": false,
+      "screenshot": "https://placeholder-url.com",
+      "rejectReason": null
+    },
+    {
+      "id": "QRPMRRH4VO5",
+      "userId": "NKAJ890",
+      "userName": "NexoraPlayer",
+      "amount": 100,
+      "utr": "941317262414",
+      "status": "approved",
+      "date": "19/7/2026, 12:58:21 pm",
+      "timestamp": 1784446101095
+    },
+    {
+      "id": "QRPMRRGUHUX",
+      "userId": "NKAJ890",
+      "userName": "NexoraPlayer",
+      "amount": 100,
+      "utr": "941317262434",
+      "status": "approved",
+      "date": "19/7/2026, 12:50:16 pm"
+    }
+  ]
+}

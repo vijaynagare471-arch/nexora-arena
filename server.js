@@ -42,7 +42,25 @@ app.use(async (req, res, next) => {
         currentDb = doc.data;
       } else {
         console.log("MongoDB main document not found. Seeding from local db.json...");
-        const localDb = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+        let localDb = {};
+        try {
+          localDb = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+        } catch(err) {
+          console.error("Local db.json not found or failed to read. Seeding default template.");
+          localDb = {
+            settings: { appName: "Nexora Arena", commission: 15, maintenanceMode: false },
+            users: [],
+            tournaments: [],
+            games: [],
+            transactions: [],
+            withdrawals: [],
+            banners: [],
+            tickets: [],
+            predictions_banners: [],
+            qrPaymentSettings: { upiId: "9689901416.wallet@phonepe", qrImage: "assets/qr_payment_default.jpg" },
+            qrPaymentRequests: []
+          };
+        }
         
         // Scan and upload all base64 media to ImgBB
         const uploadPromises = [];
