@@ -354,12 +354,17 @@ window.searchT = function(q) {
               </button>
               <button class="btn btn-success btn-icon btn-sm" title="Set Live" onclick="setTStatus('${t.id}','live')">▶</button>
               <button class="btn btn-danger btn-icon btn-sm" title="Delete" onclick="deleteTournament('${t.id}','${t.name}')">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
-          </button>
-        </div>
-      </td>
-    </tr>
-  `).join('') || '<tr><td colspan="10" style="text-align:center;padding:20px;color:var(--text-muted)">No results</td></tr>';
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('') || '<tr><td colspan="10" style="text-align:center;color:var(--text-muted);padding:30px">No tournaments found</td></tr>';
+  } catch (err) {
+    console.error("Failed to search tournaments:", err);
+    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;color:#ef4444;padding:30px">Error searching tournaments</td></tr>';
+  }
 };
 
 window.viewTournamentUsers = function(id) {
@@ -735,7 +740,6 @@ function renderUsers(list = db.users || []) {
     tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:20px;color:#ef4444;">Error loading users data</td></tr>';
   }
 }
-}
 
 window.searchUsers = function(q) {
   const filtered = (db.users || []).filter(u =>
@@ -863,7 +867,6 @@ function renderWithdrawals(filter = wdFilter) {
     console.error("Failed to render withdrawals:", err);
     tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:#ef4444;">Error loading withdrawals</td></tr>';
   }
-}
 }
 
 window.filterWd = function(f, btn) {
@@ -3450,41 +3453,55 @@ window.loadAdminPredictions = async function() {
 };
 
 function renderAdminPredictionsDashboard() {
-  const matches = db.predictionMatches || [];
-  const preds = db.userPredictions || [];
+  try {
+    const matches = db.predictionMatches || [];
+    const preds = db.userPredictions || [];
 
-  const activeMatches = matches.filter(m => m.status === 'live' || m.status === 'upcoming');
-  const completedMatches = matches.filter(m => m.status === 'completed');
+    const activeMatches = matches.filter(m => m && (m.status === 'live' || m.status === 'upcoming'));
+    const completedMatches = matches.filter(m => m && m.status === 'completed');
 
-  const totalActivePool = activeMatches.reduce((acc, m) => acc + (m.prizePool || 0), 0);
-  const totalDistributedPool = completedMatches.reduce((acc, m) => acc + (m.prizePool || 0), 0);
+    const totalActivePool = activeMatches.reduce((acc, m) => acc + (m.prizePool || 0), 0);
+    const totalDistributedPool = completedMatches.reduce((acc, m) => acc + (m.prizePool || 0), 0);
 
-  // Quick stats panel
-  const uniquePlayers = [...new Set(preds.map(p => p.userId))].length;
-  const totalVolume = preds.reduce((s, p) => s + (p.stake || 0), 0);
-  const totalCommission = preds.reduce((s, p) => s + (p.commissionDeducted || 0), 0);
-  const qsPlayers = document.getElementById('qs-pred-players');
-  const qsComm = document.getElementById('qs-pred-commission');
-  const qsVol = document.getElementById('qs-pred-volume');
-  if (qsPlayers) qsPlayers.textContent = uniquePlayers;
-  if (qsComm) qsComm.textContent = `₹${totalCommission.toLocaleString('en-IN')}`;
-  if (qsVol) qsVol.textContent = `₹${totalVolume.toLocaleString('en-IN')}`;
+    // Quick stats panel
+    const uniquePlayers = [...new Set(preds.map(p => p && p.userId).filter(Boolean))].length;
+    const totalVolume = preds.reduce((s, p) => s + (p.stake || 0), 0);
+    const totalCommission = preds.reduce((s, p) => s + (p.commissionDeducted || 0), 0);
+    const qsPlayers = document.getElementById('qs-pred-players');
+    const qsComm = document.getElementById('qs-pred-commission');
+    const qsVol = document.getElementById('qs-pred-volume');
+    if (qsPlayers) qsPlayers.textContent = uniquePlayers;
+    if (qsComm) qsComm.textContent = `₹${(totalCommission || 0).toLocaleString('en-IN')}`;
+    if (qsVol) qsVol.textContent = `₹${(totalVolume || 0).toLocaleString('en-IN')}`;
 
-  // Fetch dynamic finance statistics for money system overview widgets
-  fetch(`${API}/predictions/finance-stats`)
-    .then(res => {
-      if (res.ok) return res.json();
-    })
-    .then(f => {
-      if (f) {
-        document.getElementById('ms-total-entry-fee').textContent = `₹${f.totalEntryFees.toLocaleString('en-IN')}`;
-        document.getElementById('ms-total-commission').textContent = `₹${f.totalCommission.toLocaleString('en-IN')}`;
-        document.getElementById('ms-total-withdrawn').textContent = `₹${f.totalWithdrawn.toLocaleString('en-IN')}`;
-        document.getElementById('ms-total-pending').textContent = `₹${f.totalPending.toLocaleString('en-IN')}`;
-        document.getElementById('ms-total-balance').textContent = `₹${f.totalPlatformBalance.toLocaleString('en-IN')}`;
-      }
-    })
-    .catch(err => console.error('Failed to fetch finance stats:', err));
+    // Fetch dynamic finance statistics for money system overview widgets
+    fetch(`${API}/predictions/finance-stats`)
+      .then(res => {
+        if (res.ok) return res.json();
+      })
+      .then(f => {
+        if (f) {
+          try {
+            const el1 = document.getElementById('ms-total-entry-fee');
+            const el2 = document.getElementById('ms-total-commission');
+            const el3 = document.getElementById('ms-total-withdrawn');
+            const el4 = document.getElementById('ms-total-pending');
+            const el5 = document.getElementById('ms-total-balance');
+
+            if (el1) el1.textContent = `₹${(f.totalEntryFees || 0).toLocaleString('en-IN')}`;
+            if (el2) el2.textContent = `₹${(f.totalCommission || 0).toLocaleString('en-IN')}`;
+            if (el3) el3.textContent = `₹${(f.totalWithdrawn || 0).toLocaleString('en-IN')}`;
+            if (el4) el4.textContent = `₹${(f.totalPending || 0).toLocaleString('en-IN')}`;
+            if (el5) el5.textContent = `₹${(f.totalPlatformBalance || 0).toLocaleString('en-IN')}`;
+          } catch (formatErr) {
+            console.error("Failed to format finance stats:", formatErr);
+          }
+        }
+      })
+      .catch(err => console.error('Failed to fetch finance stats:', err));
+  } catch (err) {
+    console.error("Failed to render admin predictions dashboard:", err);
+  }
 }
 
 let adminPredFilter = 'all';
