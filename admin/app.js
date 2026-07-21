@@ -258,38 +258,55 @@ window.setChartPeriod = function(period, btn) {
 function renderTournaments(filter = tFilter) {
   const tbody = document.getElementById('tournament-tbody');
   if (!tbody) return;
-  let list = db.tournaments || [];
-  if (filter !== 'all') list = list.filter(t => t.status === filter);
-  tbody.innerHTML = list.map((t, i) => `
-    <tr>
-      <td>${i + 1}</td>
-      <td><b>${t.name}</b></td>
-      <td>${getGameEmoji(t.game)} ${t.game}</td>
-      <td>${t.mode} · ${t.type}</td>
-      <td>₹${t.fee}</td>
-      <td style="color:var(--warning);font-weight:700">₹${t.prize.toLocaleString('en-IN')}</td>
-      <td>${t.slots}</td>
-      <td>${t.registered || t.filled}</td>
-      <td><span class="badge ${t.status}">${t.status.toUpperCase()}</span></td>
-      <td>
-        <div class="actions-row">
-          <button class="btn btn-ghost btn-icon btn-sm" title="Edit" onclick="editTournament('${t.id}')">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </button>
-          <button class="btn btn-ghost btn-icon btn-sm" title="View Joined Users" onclick="viewTournamentUsers('${t.id}')">
-            👥
-          </button>
-          <button class="btn btn-warning btn-icon btn-sm" title="Announce Winners" onclick="openAnnounceWinners('${t.id}')">
-            🏆
-          </button>
-          <button class="btn btn-success btn-icon btn-sm" title="Set Live" onclick="setTStatus('${t.id}','live')">▶</button>
-          <button class="btn btn-danger btn-icon btn-sm" title="Delete" onclick="deleteTournament('${t.id}','${t.name}')">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
-          </button>
-        </div>
-      </td>
-    </tr>
-  `).join('') || '<tr><td colspan="10" style="text-align:center;color:var(--text-muted);padding:30px">No tournaments found</td></tr>';
+  if (!Array.isArray(db.tournaments)) {
+    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;color:var(--text-muted);padding:30px">No tournaments found</td></tr>';
+    return;
+  }
+  
+  try {
+    let list = db.tournaments || [];
+    if (filter !== 'all') list = list.filter(t => t && t.status === filter);
+    tbody.innerHTML = list.map((t, i) => {
+      if (!t) return '';
+      const prizePool = typeof t.prize === 'number' ? t.prize.toLocaleString('en-IN') : '0';
+      const feeVal = typeof t.fee === 'number' ? t.fee : 0;
+      const statusVal = t.status || 'upcoming';
+      
+      return `
+        <tr>
+          <td>${i + 1}</td>
+          <td><b>${t.name || 'Tournament'}</b></td>
+          <td>${getGameEmoji(t.game || '')} ${t.game || ''}</td>
+          <td>${t.mode || ''} · ${t.type || ''}</td>
+          <td>₹${feeVal}</td>
+          <td style="color:var(--warning);font-weight:700">₹${prizePool}</td>
+          <td>${t.slots || 0}</td>
+          <td>${t.registered || t.filled || 0}</td>
+          <td><span class="badge ${statusVal}">${statusVal.toUpperCase()}</span></td>
+          <td>
+            <div class="actions-row">
+              <button class="btn btn-ghost btn-icon btn-sm" title="Edit" onclick="editTournament('${t.id}')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button class="btn btn-ghost btn-icon btn-sm" title="View Joined Users" onclick="viewTournamentUsers('${t.id}')">
+                👥
+              </button>
+              <button class="btn btn-warning btn-icon btn-sm" title="Announce Winners" onclick="openAnnounceWinners('${t.id}')">
+                🏆
+              </button>
+              <button class="btn btn-success btn-icon btn-sm" title="Set Live" onclick="setTStatus('${t.id}','live')">▶</button>
+              <button class="btn btn-danger btn-icon btn-sm" title="Delete" onclick="deleteTournament('${t.id}','${t.name}')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('') || '<tr><td colspan="10" style="text-align:center;color:var(--text-muted);padding:30px">No tournaments found</td></tr>';
+  } catch (err) {
+    console.error("Failed to render tournaments:", err);
+    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;color:#ef4444;padding:30px">Error loading tournaments</td></tr>';
+  }
 }
 
 window.filterT = function(f, btn) {
@@ -301,33 +318,42 @@ window.filterT = function(f, btn) {
 
 window.searchT = function(q) {
   const list = (db.tournaments || []).filter(t =>
-    t.name.toLowerCase().includes(q.toLowerCase()) || t.game.toLowerCase().includes(q.toLowerCase())
+    t && (t.name || '').toLowerCase().includes(q.toLowerCase()) || (t.game || '').toLowerCase().includes(q.toLowerCase())
   );
   const tbody = document.getElementById('tournament-tbody');
-  tbody.innerHTML = list.map((t, i) => `
-    <tr>
-      <td>${i + 1}</td>
-      <td><b>${t.name}</b></td>
-      <td>${getGameEmoji(t.game)} ${t.game}</td>
-      <td>${t.mode} · ${t.type}</td>
-      <td>₹${t.fee}</td>
-      <td style="color:var(--warning);font-weight:700">₹${t.prize.toLocaleString('en-IN')}</td>
-      <td>${t.slots}</td>
-      <td>${t.registered || t.filled}</td>
-      <td><span class="badge ${t.status}">${t.status.toUpperCase()}</span></td>
-      <td>
-        <div class="actions-row">
-          <button class="btn btn-ghost btn-icon btn-sm" title="Edit" onclick="editTournament('${t.id}')">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </button>
-          <button class="btn btn-ghost btn-icon btn-sm" title="View Joined Users" onclick="viewTournamentUsers('${t.id}')">
-            👥
-          </button>
-          <button class="btn btn-warning btn-icon btn-sm" title="Announce Winners" onclick="openAnnounceWinners('${t.id}')">
-            🏆
-          </button>
-          <button class="btn btn-success btn-icon btn-sm" title="Set Live" onclick="setTStatus('${t.id}','live')">▶</button>
-          <button class="btn btn-danger btn-icon btn-sm" title="Delete" onclick="deleteTournament('${t.id}','${t.name}')">
+  if (!tbody) return;
+  
+  try {
+    tbody.innerHTML = list.map((t, i) => {
+      if (!t) return '';
+      const prizePool = typeof t.prize === 'number' ? t.prize.toLocaleString('en-IN') : '0';
+      const feeVal = typeof t.fee === 'number' ? t.fee : 0;
+      const statusVal = t.status || 'upcoming';
+      
+      return `
+        <tr>
+          <td>${i + 1}</td>
+          <td><b>${t.name || 'Tournament'}</b></td>
+          <td>${getGameEmoji(t.game || '')} ${t.game || ''}</td>
+          <td>${t.mode || ''} · ${t.type || ''}</td>
+          <td>₹${feeVal}</td>
+          <td style="color:var(--warning);font-weight:700">₹${prizePool}</td>
+          <td>${t.slots || 0}</td>
+          <td>${t.registered || t.filled || 0}</td>
+          <td><span class="badge ${statusVal}">${statusVal.toUpperCase()}</span></td>
+          <td>
+            <div class="actions-row">
+              <button class="btn btn-ghost btn-icon btn-sm" title="Edit" onclick="editTournament('${t.id}')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button class="btn btn-ghost btn-icon btn-sm" title="View Joined Users" onclick="viewTournamentUsers('${t.id}')">
+                👥
+              </button>
+              <button class="btn btn-warning btn-icon btn-sm" title="Announce Winners" onclick="openAnnounceWinners('${t.id}')">
+                🏆
+              </button>
+              <button class="btn btn-success btn-icon btn-sm" title="Set Live" onclick="setTStatus('${t.id}','live')">▶</button>
+              <button class="btn btn-danger btn-icon btn-sm" title="Delete" onclick="deleteTournament('${t.id}','${t.name}')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
           </button>
         </div>
@@ -743,22 +769,39 @@ window.toggleBan = async function(id, currentStatus) {
 function renderTransactions(filter = txFilter) {
   const tbody = document.getElementById('tx-tbody');
   if (!tbody) return;
-  let list = db.transactions || [];
-  if (filter !== 'all') list = list.filter(t => t.type === filter);
-  tbody.innerHTML = list.map((tx, i) => `
-    <tr>
-      <td>${i+1}</td>
-      <td style="font-family:monospace;color:var(--accent-bright)">${tx.id}</td>
-      <td><b>${tx.user}</b></td>
-      <td style="text-transform:capitalize">${tx.type}</td>
-      <td style="color:${tx.amount > 0 ? 'var(--success)' : 'var(--danger)'};font-weight:700">
-        ${tx.amount > 0 ? '+' : ''}₹${Math.abs(tx.amount).toLocaleString('en-IN')}
-      </td>
-      <td style="color:var(--text-muted)">${tx.method}</td>
-      <td><span class="badge ${tx.status}">${tx.status}</span></td>
-      <td style="color:var(--text-muted)">${tx.date}</td>
-    </tr>
-  `).join('') || '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text-muted)">No transactions</td></tr>';
+  if (!Array.isArray(db.transactions)) {
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text-muted)">No transactions</td></tr>';
+    return;
+  }
+  
+  try {
+    let list = db.transactions || [];
+    if (filter !== 'all') list = list.filter(t => t && t.type === filter);
+    tbody.innerHTML = list.map((tx, i) => {
+      if (!tx) return '';
+      const amtVal = typeof tx.amount === 'number' ? tx.amount : 0;
+      const amtStr = Math.abs(amtVal).toLocaleString('en-IN');
+      const statusVal = tx.status || 'pending';
+      
+      return `
+        <tr>
+          <td>${i+1}</td>
+          <td style="font-family:monospace;color:var(--accent-bright)">${tx.id || ''}</td>
+          <td><b>${tx.user || 'User'}</b></td>
+          <td style="text-transform:capitalize">${tx.type || ''}</td>
+          <td style="color:${amtVal > 0 ? 'var(--success)' : 'var(--danger)'};font-weight:700">
+            ${amtVal > 0 ? '+' : ''}₹${amtStr}
+          </td>
+          <td style="color:var(--text-muted)">${tx.method || '–'}</td>
+          <td><span class="badge ${statusVal}">${statusVal}</span></td>
+          <td style="color:var(--text-muted)">${tx.date || '–'}</td>
+        </tr>
+      `;
+    }).join('') || '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text-muted)">No transactions</td></tr>';
+  } catch (err) {
+    console.error("Failed to render transactions:", err);
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:#ef4444;">Error loading transactions</td></tr>';
+  }
 }
 
 window.filterTx = function(f, btn) {
@@ -772,40 +815,55 @@ window.filterTx = function(f, btn) {
 function renderWithdrawals(filter = wdFilter) {
   const tbody = document.getElementById('wd-tbody');
   if (!tbody) return;
-  let list = db.withdrawals || [];
-  if (filter !== 'all') list = list.filter(w => w.status === filter);
-  tbody.innerHTML = list.map((w, i) => {
-    let detailsHtml = '';
-    if (w.method === 'bank' && w.details) {
-      detailsHtml = `
-        <div style="font-size:0.78rem; line-height:1.3; color:var(--text-secondary)">
-          🏦 <b>${w.details.bankName}</b><br>
-          A/C: <span style="color:var(--accent-bright); font-family:monospace">${w.details.accountNumber}</span><br>
-          IFSC: <span style="font-family:monospace">${w.details.ifsc}</span> | Name: <b>${w.details.accountHolder}</b>
-        </div>
-      `;
-    } else {
-      const upiId = w.details?.upi || w.upi || 'N/A';
-      detailsHtml = `<span style="font-family:monospace; color:var(--text-secondary)">📱 ${upiId}</span>`;
-    }
+  if (!Array.isArray(db.withdrawals)) {
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text-muted)">No withdrawals</td></tr>';
+    return;
+  }
+  
+  try {
+    let list = db.withdrawals || [];
+    if (filter !== 'all') list = list.filter(w => w && w.status === filter);
+    tbody.innerHTML = list.map((w, i) => {
+      if (!w) return '';
+      let detailsHtml = '';
+      if (w.method === 'bank' && w.details) {
+        detailsHtml = `
+          <div style="font-size:0.78rem; line-height:1.3; color:var(--text-secondary)">
+            🏦 <b>${w.details.bankName || 'Bank'}</b><br>
+            A/C: <span style="color:var(--accent-bright); font-family:monospace">${w.details.accountNumber || ''}</span><br>
+            IFSC: <span style="font-family:monospace">${w.details.ifsc || ''}</span> | Name: <b>${w.details.accountHolder || ''}</b>
+          </div>
+        `;
+      } else {
+        const upiId = w.details?.upi || w.upi || 'N/A';
+        detailsHtml = `<span style="font-family:monospace; color:var(--text-secondary)">📱 ${upiId}</span>`;
+      }
 
-    return `
-      <tr>
-        <td>${i+1}</td>
-        <td style="font-family:monospace;color:var(--accent-bright)">${w.id}</td>
-        <td><b>${w.user}</b></td>
-        <td style="color:var(--warning);font-weight:700">₹${w.amount.toLocaleString('en-IN')}</td>
-        <td>${detailsHtml}</td>
-        <td><span class="badge ${w.status}">${w.status}</span></td>
-        <td style="color:var(--text-muted)">${w.date}</td>
-        <td>
-          <button class="btn btn-ghost btn-icon" onclick="viewWithdrawalDetails('${w.id}')" style="padding:6px; display:inline-flex; align-items:center; justify-content:center; color:var(--text-secondary); cursor:pointer;" title="View Details">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-        </td>
-      </tr>
-    `;
-  }).join('') || '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text-muted)">No withdrawals</td></tr>';
+      const amtVal = typeof w.amount === 'number' ? w.amount : 0;
+      const statusVal = w.status || 'pending';
+
+      return `
+        <tr>
+          <td>${i+1}</td>
+          <td style="font-family:monospace;color:var(--accent-bright)">${w.id || ''}</td>
+          <td><b>${w.user || 'User'}</b></td>
+          <td style="color:var(--warning);font-weight:700">₹${amtVal.toLocaleString('en-IN')}</td>
+          <td>${detailsHtml}</td>
+          <td><span class="badge ${statusVal}">${statusVal}</span></td>
+          <td style="color:var(--text-muted)">${w.date || '–'}</td>
+          <td>
+            <button class="btn btn-ghost btn-icon" onclick="viewWithdrawalDetails('${w.id}')" style="padding:6px; display:inline-flex; align-items:center; justify-content:center; color:var(--text-secondary); cursor:pointer;" title="View Details">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('') || '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text-muted)">No withdrawals</td></tr>';
+  } catch (err) {
+    console.error("Failed to render withdrawals:", err);
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:#ef4444;">Error loading withdrawals</td></tr>';
+  }
+}
 }
 
 window.filterWd = function(f, btn) {
