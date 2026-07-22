@@ -11,7 +11,7 @@ const { MongoClient } = require('mongodb');
 const { AsyncLocalStorage } = require('async_hooks');
 
 const app  = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const DB_PATH = path.join(__dirname, 'db.json');
 
 const asyncLocalStorage = new AsyncLocalStorage();
